@@ -7,20 +7,11 @@ namespace Marketing.DataAccess.Interface
 {
    public  interface IModelManagementRepository : IWriteRepository
     {
-        IEnumerable<Category> GetCategory(ICriteria criteria);
+       IList<Category> GetCategory(ICriteria criteria);
 
        // IEnumerable<Store> GetStore(ICriteria criteria);
-        IEnumerable<Category> GetAllCategory();
-        IEnumerable<Store> GetAllStore();
-       
-        Category GetCategory(int id);
-        
-        Store GetStore(int id);
-
-        int GetTotalStore();
-        int GetTotalCategory();
-
-       
+        IList<Category> GetAllCategory();
+        IList<Store> GetAllStore();
       
     }
 }

@@ -9,7 +9,7 @@ namespace Marketing.DataAccess.Repositories
 {
    public  class ModelManagementRepository : WriteRepository<Context>, IModelManagementRepository
     {
-        public IEnumerable<Category> GetCategory(ICriteria criteria)
+       public IList<Category> GetCategory(ICriteria criteria)
         {
             IQueryable<Category> query = Context.Categories;
             if (criteria.IsSearch)
@@ -28,82 +28,19 @@ namespace Marketing.DataAccess.Repositories
             else
                 query = query.OrderBy(one => one.CategoryName);
             query = query.Skip((criteria.PageIndex - 1) * criteria.PageSize).Take(criteria.PageSize);
-            return query;
+            return query.ToList();
         }
-
-        public IEnumerable<Category> GetAllCategory()
+        public IList<Category> GetAllCategory()
         {
-            return Context.Categories.OrderBy(one => one.CategoryName);
+            return Context.Categories.OrderBy(one => one.CategoryName).ToList();
         }
-
-        public IEnumerable<Store> GetAllStore()
+        public IList<Store> GetAllStore()
         {
-            return Context.Stores.OrderBy(one => one.StoreName);
+            return Context.Stores.OrderBy(one => one.StoreName).ToList();
         }
-
-        //public IEnumerable<Category> GetStore(ICriteria criteria)
+        //public void Dispose()
         //{
-        //    IQueryable<Store> query = Context.Stores;
-        //    if (criteria.IsSearch)
-        //    {
-        //        var value = criteria.GetFieldData(criteria.FilterColumn);
-        //        if (criteria.FilterColumn == "StoreName")
-        //        {
-        //            query = query.Where(one => one.StoreName.Contains(value));
-        //        }
-        //        //else if (criteria.FilterColumn == "StoreId")
-        //        //{
-        //        //    query = query.Where(one => one.Categories.Contains(value));
-        //        //}
-
-        //    }
-        //    if (criteria.SortColumn == "StoreName" && criteria.SortOrder == "asc")
-        //    {
-        //        query = query.OrderBy(one => one.StoreName);
-        //    }
-        //    else if (criteria.SortColumn == "StoreName" && criteria.SortOrder == "desc")
-        //    {
-        //        query = query.OrderByDescending(one => one.StoreName);
-        //    }
-        //    //else if (criteria.SortColumn == "LastName" && criteria.SortOrder == "asc")
-        //    //{
-        //    //    query = query.OrderBy(one => one.LastName);
-        //    //}
-        //    //else if (criteria.SortColumn == "LastName" && criteria.SortOrder == "desc")
-        //    //{
-        //    //    query = query.OrderByDescending(one => one.LastName);
-        //    //}
-        //    else
-        //        query = query.OrderBy(one => one.StoreName);
-        //    query = query.Skip((criteria.PageIndex - 1) * criteria.PageSize).Take(criteria.PageSize);
-        //    return query.Select(one=>new Category
-        //        {
-        //            CategoryId = one.,
-        //            StoreName = one.StoreName
-
-        //        });
+        //    Context.Dispose();
         //}
-
-        public int GetTotalCategory()
-        {
-            return Context.Categories.Count();
-        }
-
-        public Category GetCategory(int id)
-        {
-            return Context.Categories.FirstOrDefault(one => one.CategoryId == id);
-        }
-
-        public Store GetStore(int id)
-        {
-            return Context.Stores.FirstOrDefault(one => one.StoreId == id);
-        }
-
-      
-        public int GetTotalStore()
-        {
-            return Context.Stores.Count();
-        }
-    
     }
 }

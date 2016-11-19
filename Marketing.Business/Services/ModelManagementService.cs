@@ -11,8 +11,7 @@ namespace Marketing.Business.Services
 {
     public class ModelManagementService : IModelManagementService
     {
-        private System.Data.Entity.DbSet<Category> Category;
-        public IEnumerable<Store> MapStoreToModel(List<Marketing.Data.Store> stores)
+        public IList<Store> MapStoreToModel(IList<Marketing.Data.Store> stores)
         {
             IList<Store> lst = new List<Store>();
             foreach (var store in stores)
@@ -39,5 +38,18 @@ namespace Marketing.Business.Services
         }
 
 
+
+
+        public IList<Category> MapCategoryToModel(IList<Data.Category> categories)
+        {
+            IList<Category> lst = new List<Category>();
+            foreach (var category in categories)
+            {
+                Category objCategory = new Category();
+                objCategory.CategoryName = category.CategoryName;
+                lst.Add(objCategory);
+            }
+            return lst;
+        }
     }
 }

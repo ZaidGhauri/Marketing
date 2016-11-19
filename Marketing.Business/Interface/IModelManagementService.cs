@@ -8,8 +8,8 @@ namespace Marketing.Business.Interface
 {
     public interface IModelManagementService 
     {
-        IEnumerable<Store> MapStoreToModel(List<Marketing.Data.Store> stores);
-
+        IList<Store> MapStoreToModel(IList<Marketing.Data.Store> stores);
+        IList<Category> MapCategoryToModel(IList<Marketing.Data.Category> categories);
         List<Category> GetCategory();
 
     }
