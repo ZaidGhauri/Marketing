@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Stores</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet" >
+	<link href="css/Custom.css" /rel="stylesheet" >
+    <link href="css/font-awesome.min.css" rel="stylesheet">	
+	  <script type="text/javascript" src="js/jssor.slider.min.js"></script>
+    <!-- use jssor.slider.debug.js instead for debug -->
+    <script>
+        jssor_1_slider_init = function() {
+            
+            var jssor_1_options = {
+              $AutoPlay: true,
+              $AutoPlaySteps: 4,
+              $SlideDuration: 160,
+              $SlideWidth: 200,
+              $SlideSpacing: 3,
+              $Cols: 4,
+              $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$,
+                $Steps: 4
+              },
+              $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$,
+                $SpacingX: 1,
+                $SpacingY: 1
+              }
+            };
+            
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+            
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizing
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 809);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+            ScaleSlider();
+            $Jssor$.$AddEvent(window, "load", ScaleSlider);
+            $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+            $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+            //responsive code end
+        };
+    </script>
+	
+	
+    <style>
+        
+        /* jssor slider bullet navigator skin 03 css */
+        /*
+        .jssorb03 div           (normal)
+        .jssorb03 div:hover     (normal mouseover)
+        .jssorb03 .av           (active)
+        .jssorb03 .av:hover     (active mouseover)
+        .jssorb03 .dn           (mousedown)
+        */
+        .jssorb03 {
+            position: absolute;
+        }
+        .jssorb03 div, .jssorb03 div:hover, .jssorb03 .av {
+            position: absolute;
+            /* size of bullet elment */
+            width: 21px;
+            height: 21px;
+            text-align: center;
+            line-height: 21px;
+            color: white;
+            font-size: 12px;
+            background: url('img/b03.png') no-repeat;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .jssorb03 div { background-position: -5px -4px; }
+        .jssorb03 div:hover, .jssorb03 .av:hover { background-position: -35px -4px; }
+        .jssorb03 .av { background-position: -65px -4px; }
+        .jssorb03 .dn, .jssorb03 .dn:hover { background-position: -95px -4px; }
+
+        /* jssor slider arrow navigator skin 03 css */
+        /*
+        .jssora03l                  (normal)
+        .jssora03r                  (normal)
+        .jssora03l:hover            (normal mouseover)
+        .jssora03r:hover            (normal mouseover)
+        .jssora03l.jssora03ldn      (mousedown)
+        .jssora03r.jssora03rdn      (mousedown)
+        */
+        .jssora03l, .jssora03r {
+            display: block;
+            position: absolute;
+            /* size of arrow element */
+            width: 55px;
+            height: 55px;
+            cursor: pointer;
+            background: url('img/a03.png') no-repeat;
+            overflow: hidden;
+        }
+        .jssora03l { background-position: -3px -33px; }
+        .jssora03r { background-position: -63px -33px; }
+        .jssora03l:hover { background-position: -123px -33px; }
+        .jssora03r:hover { background-position: -183px -33px; }
+        .jssora03l.jssora03ldn { background-position: -243px -33px; }
+        .jssora03r.jssora03rdn { background-position: -303px -33px; }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img src="img/logo.jpg" alt="logo" class="img-responsive" style="max-width: 191px;margin-top: -10px;"></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="Index.html">Home</a></li>
+					<li class="active"><a href="stores.html">Stores</a></li>
+                    <li><a href="event.html">Events</a></li>
+                
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Coupons <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+							<li class="divider"></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
+				</ul>
+				<form class="navbar-form" role="search">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+				</form>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+<h2 id="our"> OUR STORES </h2>
+<hr>
+<div class="col-md-12">
+<div class="col-md-4" style="border:none;background-color:#f6f6f6;margin-top: 15px;">
+
+<div class="nav">
+                <ul id="p04">
+                <li id="p03"><a href="accessories.html" id="p05"><img src="img/ic-1.jpg">ACCESSORIES</a></li>
+				<li id="p03"><a href="#" id="p05"><img src="img/ic-6.jpg">CLOTHING</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-3.jpg">BABIES</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-2.jpg">AUTOMOTIVE</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-5.jpg">MEDIA AND BOOKS</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-4.jpg">BEAUTY</a></li>
+				<li id="p03"><a href="#" id="p05"><img src="img/ic-4.jpg">MOVIES AND MUSIC</a></li>
+                </ul>
+                
+              </div></div>
+<div class="col-md-4" style="border:none;background-color:#f6f6f6;margin-top: 15px;">
+<div class="nav">
+                <ul id="p04">
+                
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-10.jpg">OFFICE SUPPLIES</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-8.jpg">HEALTH</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-9.jpg">DRINKS AND FOOD</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-7.jpg">ELECTRONICS</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-11.jpg">GIFTS</a></li>
+               <li id="p03"><a href="#" id="p05"><img src="img/ic-12.jpg">FLOWERS</a></li>
+			   <li id="p03"><a href="#" id="p05"><img src="img/ic-13.jpg">SERVICES ONLINE</a></li>
+                </ul>
+                
+              </div></div>
+			  <div class="col-md-4" style="border:none;background-color:#f6f6f6;margin-top: 15px;">
+<div class="nav">
+                <ul id="p04">
+                
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-14.jpg">TOYS</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-15.jpg">SPORTS</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-16.jpg">TRAVELING</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-17.jpg">SHOES</a></li>
+                <li id="p03"><a href="#" id="p05"><img src="img/ic-18.jpg">PHOTOGRAPHY</a></li>
+               <li id="p03"><a href="#" id="p05"><img src="img/ic-19.jpg">JEWELERY</a></li>
+			   <li id="p03"><a href="#" id="p05"><img src="img/ic-20.jpg">COMPUTER</a></li>
+                </ul>
+                
+              </div></div>
+
+			  </div>
+			  
+<div class="brand-slide">
+    <div id="jssor_1" style="position: relative; margin: 0 auto; top:25px; left: 0px; width: 809px; height: 150px; overflow: hidden; visibility: hidden;">
+        <!-- Loading Screen -->
+        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 809px; height: 150px; overflow: hidden;">
+            <div style="display: none;">
+              <a href=""><img data-u="image" src="img/005.jpg" />
+            </div>
+            <a href=""><div style="display: none;">
+                <a href=""><img data-u="image" src="img/006.jpg" />
+            </div>
+            <div style="display: none;">
+                <a href=""><a href=""><img data-u="image" src="img/011.jpg" />
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/013.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/014.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/019.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/020.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/021.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/022.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/024.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/025.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/027.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/029.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/030.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/031.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/030.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/034.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/038.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/039.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/043.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/044.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/047.jpg" /></a>
+            </div>
+            <div style="display: none;">
+                <a href=""><img data-u="image" src="img/050.jpg" /></a>
+            </div>
+            <a data-u="add" href="http://www.jssor.com" style="display:none">Jssor Slider</a>
+        
+        </div>
+        <!-- Bullet Navigator -->
+        <div data-u="navigator" class="jssorb03" style="bottom:10px;right:10px;">
+            <!-- bullet navigator item prototype -->
+            <div data-u="prototype" style="width:21px;height:21px;">
+                <div data-u="numbertemplate"></div>
+            </div>
+        </div>
+        <!-- Arrow Navigator -->
+        <span data-u="arrowleft" class="jssora03l" style="top:0px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
+        <span data-u="arrowright" class="jssora03r" style="top:0px;right:8px;width:55px;height:55px;" data-autocenter="2"></span></div>		  
+			   <script>
+        jssor_1_slider_init();
+    </script>
+
+			  
+<br clear="all">
+
+
+<footer>
+<div class="foot">
+<div class="col-md-12" style="width: 100%;background-color: #1a1a1a;margin-top: 30px;">
+<div class="col-md-4" style="border:none;margin-top:28px">
+<img src="img/logo.png" class="img-responsive left-block" style="max-width:50%;"><br>
+<p id="foot-text">Lorem ipsum dolor.Aenean commodo ligula eget dolor.Aenean massa.Cum socii dis parturient montes,<br>nascetur ridiuam felis,ltriciesue eu,pretium quis,sem.Nulla consequat massa quis enim. Donec pede justo,fringilla vel,aliquet nec,vulputate eget,</p>
+<br clear="all">
+<h3 id="fot-head">FIND US ON</h3>
+			<div class="soc">
+			
+                    <ul class="social-network social-circle">
+                        <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>				
+
+
+
+</div>
+</div>
+<>
+   <div class="col-lg-3 col-md-6"  style="align="center">
+			<h3>INFORMATION:</h3>
+                <ul id="foot-inform">
+				<li id="p01"><a href="#"> About Us</a></li>
+				<li id="p01"><a href="#"> Company</a></li>
+				<li id="p01"><a href="#">FAQ</a></li>
+				
+				</ul>
+      
+      </div>
+
+	  <div class="col-md-3" style="border:none;float:right;">
+<div class="newsletter">
+
+                                <h3 class="module-title"><span>NEWSLETTER SIGNUP!</span><i class="arrow_carrot-down accordion-show"></i></h3>
+								<p id="foot-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
+
+<div class="form-group">
+										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+										<div class="fot-but">
+										 <button type="button" class="btn btn-warning">SignUp</button></div>
+									</div>
+                            </div></div>
+
+			
+</div>
+<br clear="all">
+			
+				
+                    <p id="p02">Copyright © GET COUPONS | <a href="">Privacy Policy</a> | <a href="">Terms of Use</a></p>
+					
+	  </div>
+
+</footer>
+
+    <!-- #endregion Jssor Slider End -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"> 
+	
+	
+	
+	$(function () {
+        // Remove Search if user Resets Form or hits Escape!
+		$('body, .navbar-collapse form[role="search"] button[type="reset"]').on('click keyup', function(event) {
+			console.log(event.currentTarget);
+			if (event.which == 27 && $('.navbar-collapse form[role="search"]').hasClass('active') ||
+				$(event.currentTarget).attr('type') == 'reset') {
+				closeSearch();
+			}
+		});
+
+		function closeSearch() {
+            var $form = $('.navbar-collapse form[role="search"].active')
+    		$form.find('input').val('');
+			$form.removeClass('active');
+		}
+
+		// Show Search if form is not active // event.preventDefault() is important, this prevents the form from submitting
+		$(document).on('click', '.navbar-collapse form[role="search"]:not(.active) button[type="submit"]', function(event) {
+			event.preventDefault();
+			var $form = $(this).closest('form'),
+				$input = $form.find('input');
+
+			$form.addClass('active');
+			$input.focus();
+
+		});
+		// ONLY FOR DEMO // Please use $('form').submit(function(event)) to track from submission
+		// if your form is ajax remember to call `closeSearch()` to close the search container
+		$(document).on('click', '.navbar-collapse form[role="search"].active button[type="submit"]', function(event) {
+			event.preventDefault();
+			var $form = $(this).closest('form'),
+				$input = $form.find('input');
+			$('#showSearchTerm').text($input.val());
+            closeSearch()
+		});
+    });</script>
+
+</body>
+</html>

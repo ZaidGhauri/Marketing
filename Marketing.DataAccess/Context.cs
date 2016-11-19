@@ -1,0 +1,46 @@
+﻿using Marketing.Data;
+using System.Data.Entity;
+using Marketing.DataAccess.EntityConfigurations;
+
+namespace Marketing.DataAccess
+{
+    public class Context : DbContext
+    {
+        public Context()
+            : base("Name=MarketingCoupon")
+        {
+            
+        }
+
+        public DbSet<Company> Companies { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
+
+        public DbSet<ContactType> ContactTypes { get; set; }
+
+        public DbSet<WebSite> WebSite { get; set; }
+
+        public DbSet<Coupon> Coupon { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Store> Stores { get; set; }
+
+        public DbSet<Promotion> Promotion { get; set; }
+
+        public DbSet<Tag> Tag { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new AddressConfig());
+            modelBuilder.Configurations.Add(new ContactConfig());
+            modelBuilder.Configurations.Add(new CompanyConfig());
+            modelBuilder.Configurations.Add(new ContactTypeConfig());
+            modelBuilder.Configurations.Add(new WebSiteConfig());
+            modelBuilder.Configurations.Add(new CategoryConfig());
+            modelBuilder.Configurations.Add(new StoreConfig());
+            modelBuilder.Configurations.Add(new CouponConfig());
+            modelBuilder.Configurations.Add(new PromotionConfig());
+            modelBuilder.Configurations.Add(new TagConfig());
+         
+        }
+    }
+}

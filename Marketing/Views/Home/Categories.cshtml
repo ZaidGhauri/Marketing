@@ -1,0 +1,30 @@
+﻿@model List<Marketing.Business.Models.Category>
+
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Categories</h2>
+<h2 id="our"> Categories </h2>
+<hr>
+<div class="col-md-12">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4" style="border:none;background-color:#f6f6f6;margin-top: 15px;">
+
+            <div class="nav">
+                <ul id="p04">
+                    @Html.ActionLink(item.CategoryName, "Details", "Store", new { id = item.CategoryId }, null)
+
+
+                </ul>
+
+            </div>
+        </div>
+    }
+
+
+</div>
+
+<br clear="all">
