@@ -18,7 +18,7 @@ namespace Marketing.Controllers
             Marketing.Data.HeaderMenu model = new Marketing.Data.HeaderMenu();
             var repos = new ModelManagementRepository();
            // var f =repos.GetAllCategory().ToList();
-          
+           
             model.Categories =repos.GetAllCategory().ToList();
             model.Stores = repos.GetAllStore().ToList();
             return View(model);
