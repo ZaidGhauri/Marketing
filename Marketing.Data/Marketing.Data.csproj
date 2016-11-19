@@ -41,10 +41,6 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="Category.cs" />
-    <Compile Include="Company.cs" />
-    <Compile Include="Contact.cs" />
-    <Compile Include="ContactInfo.cs" />
-    <Compile Include="ContactType.cs" />
     <Compile Include="Coupon.cs" />
     <Compile Include="Promotion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -48,9 +48,6 @@
   <ItemGroup>
     <Compile Include="EntityConfigurations\AddressConfig.cs" />
     <Compile Include="EntityConfigurations\CategoryConfig.cs" />
-    <Compile Include="EntityConfigurations\CompanyConfig.cs" />
-    <Compile Include="EntityConfigurations\ContactConfig.cs" />
-    <Compile Include="EntityConfigurations\ContactTypeConfig.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="EntityConfigurations\CouponConfig.cs" />
     <Compile Include="EntityConfigurations\PromotionConfig.cs" />
@@ -89,8 +86,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ContactManagementRepository.cs" />
-    <Compile Include="Interface\IContactManagementRepository.cs" />
     <Compile Include="Repositories\Core\IWriteRepository.cs" />
     <Compile Include="Repositories\Core\WriteRepository.cs" />
     <Compile Include="Repositories\ModelManagementRepository.cs">
