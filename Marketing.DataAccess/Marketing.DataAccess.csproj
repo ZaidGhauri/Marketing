@@ -86,6 +86,10 @@
     <Compile Include="Migrations\201611091759363_Store.Designer.cs">
       <DependentUpon>201611091759363_Store.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611191234136_Store1.cs" />
+    <Compile Include="Migrations\201611191234136_Store1.Designer.cs">
+      <DependentUpon>201611191234136_Store1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611091759363_Store.resx">
       <DependentUpon>201611091759363_Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611191234136_Store1.resx">
+      <DependentUpon>201611191234136_Store1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

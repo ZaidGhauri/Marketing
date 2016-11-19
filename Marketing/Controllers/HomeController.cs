@@ -7,12 +7,14 @@ using System.Web.Mvc;
 using Marketing.Business.Mappings;
 using Marketing.DataAccess.Repositories;
 using System.Collections.Generic;
+using Marketing.Business.Services;
 
 
 namespace Marketing.Controllers
 {
     public class HomeController : Controller
     {
+        public IModelManagementService _mapperService { get; set; }
         private readonly IModelManagementService _modelmanagementservice;
         //protected override object MapEntityToModel(Category category)
         //{
@@ -28,16 +30,15 @@ namespace Marketing.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-           
-            // var s = _managementService.GetAllContactTypes();
-            //using (var repos = new ContactManagementRepository())
-            //{
-            //var f = repos.GetAllContactTypes().ToList().FirstOrDefault();
-            //f.IsActive = model.IsActive;
-            //}
-            return View();
 
-           // Marketing.Data.Website web = new Marketing.Data.Category();
+            HeaderMenu model = new HeaderMenu();
+            using (var repos = new ModelManagementRepository())
+            {
+                _mapperService = new ModelManagementService();
+                model.Categories = _mapperService.MapCategoryToModel(repos.GetAllCategory());
+                model.Stores = _mapperService.MapStoreToModel(repos.GetAllStore());
+            }
+            return View(model);
             
         }
         public ActionResult Stores()
