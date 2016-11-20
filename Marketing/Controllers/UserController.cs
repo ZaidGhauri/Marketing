@@ -1,7 +1,7 @@
-﻿using Marketing.Business.Models;
-using Marketing.DataAccess;
+﻿using Marketing.DataAccess;
 using Marketing.DataAccess.Interface;
 using Marketing.DataAccess.Repositories;
+using Marketing.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +56,7 @@ namespace Marketing.Controllers
                 {
                     if (userRepository.IsValid(model.UserName, model.Password))
                     {
-                        FormsAuthentication.SetAuthCookie(user.UserName, user.RememberMe);
+                        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                         return RedirectToAction("Index", "Home");
                     }
                     else

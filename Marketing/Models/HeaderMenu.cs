@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-namespace Marketing.Business.Models
+﻿using Marketing.Business.Models;
+using System.Collections.Generic;
+namespace Marketing.Models
 {
    public class HeaderMenu
    {

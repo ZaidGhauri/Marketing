@@ -42,6 +42,7 @@
     <Compile Include="Category.cs" />
     <Compile Include="Coupon.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="ContactUs.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Promotion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

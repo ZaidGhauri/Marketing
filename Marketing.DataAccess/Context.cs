@@ -22,10 +22,14 @@ namespace Marketing.DataAccess
 
         public DbSet<Tag> Tag { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<Country> Country { get; set; }
+        public DbSet<ContactUs> ContactUs { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new WebSiteConfig());
             modelBuilder.Configurations.Add(new UserConfig());
+            modelBuilder.Configurations.Add(new CountryConfig());
+            modelBuilder.Configurations.Add(new ContactUsConfig());
             modelBuilder.Configurations.Add(new CategoryConfig());
             modelBuilder.Configurations.Add(new StoreConfig());
             modelBuilder.Configurations.Add(new CouponConfig());

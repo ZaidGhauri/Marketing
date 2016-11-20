@@ -1,6 +1,5 @@
 ﻿using Marketing.DataAccess;
 using Marketing.DataAccess.Repositories;
-using Marketing.Business.Models;
 using Marketing.Business;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Marketing.Business.Interface;
 using Marketing.Business.Services;
+using Marketing.Models;
 
 namespace Marketing.Controllers
 {
