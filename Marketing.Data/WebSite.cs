@@ -1,16 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Marketing.Common;
+using System.Collections.Generic;
 
 
 namespace Marketing.Data
 {
-    public class WebSite
+    public class WebSite : DomainObject
     {
-        public int WebId { get; set; }
-
+        public int Id { get; set; }
         public string Name { get; set; }
-
-        public bool IsActive { get; set; }
-
         public string Url { get; set; }
     }
 }

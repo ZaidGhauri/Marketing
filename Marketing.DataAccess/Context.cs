@@ -23,7 +23,6 @@ namespace Marketing.DataAccess
         public DbSet<Tag> Tag { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new AddressConfig());
             modelBuilder.Configurations.Add(new WebSiteConfig());
             modelBuilder.Configurations.Add(new CategoryConfig());
             modelBuilder.Configurations.Add(new StoreConfig());

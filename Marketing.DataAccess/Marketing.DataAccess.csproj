@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityConfigurations\AddressConfig.cs" />
     <Compile Include="EntityConfigurations\CategoryConfig.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="EntityConfigurations\CouponConfig.cs" />

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Marketing.Business.Interface;
 using Marketing.Business.Models;
-using Marketing.Common;
 using Marketing.DataAccess.Interface;
 using StructureMap;
 using System.Collections.Generic;
