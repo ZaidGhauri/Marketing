@@ -21,9 +21,11 @@ namespace Marketing.DataAccess
         public DbSet<Promotion> Promotion { get; set; }
 
         public DbSet<Tag> Tag { get; set; }
+        public DbSet<User> User { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new WebSiteConfig());
+            modelBuilder.Configurations.Add(new UserConfig());
             modelBuilder.Configurations.Add(new CategoryConfig());
             modelBuilder.Configurations.Add(new StoreConfig());
             modelBuilder.Configurations.Add(new CouponConfig());

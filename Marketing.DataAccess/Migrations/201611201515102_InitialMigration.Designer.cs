@@ -13,7 +13,7 @@ namespace Marketing.DataAccess.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611200126355_Initial Migration"; }
+            get { return "201611201515102_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

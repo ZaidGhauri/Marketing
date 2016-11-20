@@ -133,6 +133,18 @@
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
                         </li>
+                        <li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <strong>@Html.Encode(User.Identity.Name)</strong>
+                                @Html.ActionLink("Sign Out", "Logout", "User")
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Register", "Register", "User")
+                                <span> | </span>
+                                @Html.ActionLink("Sign In", "Login", "User")
+                            }
                     </ul>
                     <div class="navbar-form" role="search">
                         <div class="input-group">
@@ -240,7 +252,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6" style="align=" center">
+                <div class="col-lg-3 col-md-6" style="align: center">
                     <h3>INFORMATION:</h3>
                     <ul id="foot-inform">
                         <li id="p01"><a href="#"> About Us</a></li>

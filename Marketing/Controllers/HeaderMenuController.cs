@@ -14,7 +14,6 @@ namespace Marketing.Controllers
     public class HeaderMenuController : Controller
     {
         public IModelManagementService _mapperService { get; set; }
-        public IModelManagementService _categoryService { get; set; }
         public ActionResult Index()
         {
             HeaderMenu model = new HeaderMenu();

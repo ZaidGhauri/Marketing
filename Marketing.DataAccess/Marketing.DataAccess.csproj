@@ -49,20 +49,24 @@
     <Compile Include="EntityConfigurations\CategoryConfig.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="EntityConfigurations\CouponConfig.cs" />
+    <Compile Include="EntityConfigurations\CountryConfig.cs" />
+    <Compile Include="EntityConfigurations\UserConfig.cs" />
     <Compile Include="EntityConfigurations\PromotionConfig.cs" />
     <Compile Include="EntityConfigurations\StoreConfig.cs" />
     <Compile Include="EntityConfigurations\TagConfig.cs" />
     <Compile Include="EntityConfigurations\WebSiteConfig.cs" />
+    <Compile Include="Interface\IUserManagementRepository.cs" />
     <Compile Include="Interface\IModelManagementRepository.cs" />
-    <Compile Include="Migrations\201611200126355_Initial Migration.cs" />
-    <Compile Include="Migrations\201611200126355_Initial Migration.Designer.cs">
-      <DependentUpon>201611200126355_Initial Migration.cs</DependentUpon>
+    <Compile Include="Migrations\201611201515102_InitialMigration.cs" />
+    <Compile Include="Migrations\201611201515102_InitialMigration.Designer.cs">
+      <DependentUpon>201611201515102_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Core\IWriteRepository.cs" />
     <Compile Include="Repositories\Core\WriteRepository.cs" />
+    <Compile Include="Repositories\UserManagementRepository.cs" />
     <Compile Include="Repositories\ModelManagementRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -82,8 +86,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611200126355_Initial Migration.resx">
-      <DependentUpon>201611200126355_Initial Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611201515102_InitialMigration.resx">
+      <DependentUpon>201611201515102_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

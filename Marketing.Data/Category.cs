@@ -16,6 +16,6 @@ namespace Marketing.Data
         public bool Published { get; set; }
         public bool Deleted { get; set; }
         public int WebSiteId { get; set; }
-        public virtual WebSite Website { get; set; }
+        public virtual WebSite WebSite { get; set; }
     }
 }
