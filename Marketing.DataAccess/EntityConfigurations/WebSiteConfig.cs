@@ -12,7 +12,5 @@ namespace Marketing.DataAccess.EntityConfigurations
             // Properties
             Property(w => w.Name).HasMaxLength(60).IsRequired();
         }
-
-
     }
 }

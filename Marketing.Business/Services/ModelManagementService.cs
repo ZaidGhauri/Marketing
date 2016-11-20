@@ -16,7 +16,7 @@ namespace Marketing.Business.Services
             foreach (var store in stores)
             {
                 Store objStore = new Store();
-                objStore.StoreName = store.StoreName;
+                objStore.Name = store.Name;
                 lst.Add(objStore);
             }
             return lst;
@@ -29,7 +29,7 @@ namespace Marketing.Business.Services
             foreach (var item in cat1)
             {
                 Category c = new Category();
-                c.CategoryName = item.CategoryName;
+                c.Name = item.Name;
                 cat2.Add(c);
              
             }
@@ -45,7 +45,7 @@ namespace Marketing.Business.Services
             foreach (var category in categories)
             {
                 Category objCategory = new Category();
-                objCategory.CategoryName = category.CategoryName;
+                objCategory.Name = category.Name;
                 lst.Add(objCategory);
             }
             return lst;

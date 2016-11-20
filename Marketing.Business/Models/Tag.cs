@@ -1,16 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Marketing.Common;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace Marketing.Business.Models
 {
-   public class Tag
+   public class Tag : DomainObject
    {
-       public int Id { get; set; }
-
+       [StringLength(50)]
+       [Display(Name = "Name")]
        public string Name { get; set; }
-
        public string Description { get; set; }
-   
-   
+       public string Meta { get; set; }
    }
 }

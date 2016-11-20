@@ -54,33 +54,9 @@
     <Compile Include="EntityConfigurations\TagConfig.cs" />
     <Compile Include="EntityConfigurations\WebSiteConfig.cs" />
     <Compile Include="Interface\IModelManagementRepository.cs" />
-    <Compile Include="Migrations\201302080212283_InitialCreate.cs" />
-    <Compile Include="Migrations\201302080212283_InitialCreate.Designer.cs">
-      <DependentUpon>201302080212283_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201302101545526_AddActiveFlag.cs" />
-    <Compile Include="Migrations\201302101545526_AddActiveFlag.Designer.cs">
-      <DependentUpon>201302101545526_AddActiveFlag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201308241935178_stuff.cs" />
-    <Compile Include="Migrations\201308241935178_stuff.Designer.cs">
-      <DependentUpon>201308241935178_stuff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611052311302_test.cs" />
-    <Compile Include="Migrations\201611052311302_test.Designer.cs">
-      <DependentUpon>201611052311302_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611070756274_IsActiveColumnAddedInContactType.cs" />
-    <Compile Include="Migrations\201611070756274_IsActiveColumnAddedInContactType.Designer.cs">
-      <DependentUpon>201611070756274_IsActiveColumnAddedInContactType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611082242116_Category.cs" />
-    <Compile Include="Migrations\201611082242116_Category.Designer.cs">
-      <DependentUpon>201611082242116_Category.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611091759363_Store.cs" />
-    <Compile Include="Migrations\201611091759363_Store.Designer.cs">
-      <DependentUpon>201611091759363_Store.cs</DependentUpon>
+    <Compile Include="Migrations\201611200126355_Initial Migration.cs" />
+    <Compile Include="Migrations\201611200126355_Initial Migration.Designer.cs">
+      <DependentUpon>201611200126355_Initial Migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrator.cs" />
@@ -102,31 +78,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201302080212283_InitialCreate.resx">
-      <DependentUpon>201302080212283_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201302101545526_AddActiveFlag.resx">
-      <DependentUpon>201302101545526_AddActiveFlag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201308241935178_stuff.resx">
-      <DependentUpon>201308241935178_stuff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611052311302_test.resx">
-      <DependentUpon>201611052311302_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611070756274_IsActiveColumnAddedInContactType.resx">
-      <DependentUpon>201611070756274_IsActiveColumnAddedInContactType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611082242116_Category.resx">
-      <DependentUpon>201611082242116_Category.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611091759363_Store.resx">
-      <DependentUpon>201611091759363_Store.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611200126355_Initial Migration.resx">
+      <DependentUpon>201611200126355_Initial Migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

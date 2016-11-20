@@ -3,24 +3,15 @@ using Marketing.Data;
 
 namespace Marketing.DataAccess.EntityConfigurations
 {
-  public class CategoryConfig : EntityTypeConfiguration<Category>
+    public class CategoryConfig : EntityTypeConfiguration<Category>
     {
-      public CategoryConfig(){
+        public CategoryConfig()
+        {
             // Primary Key
-            HasKey(cat => cat.CategoryId);
-
+            HasKey(cat => cat.Id);
             // Properties
-            Property(cat => cat.CategoryName).HasMaxLength(50).IsRequired();
-
-            // Relationships
-            HasMany(cat => cat.Store)
-                .WithMany(cat => cat.Categories)
-                .Map(m =>
-                {
-                    m.ToTable("Stores");
-                    m.MapLeftKey("CategoryId");
-                    m.MapRightKey("StoreId");
-                });
-      }
+            Property(cat => cat.Name).HasMaxLength(50).IsRequired();
+            HasRequired(p => p.Website).WithMany().HasForeignKey(p => p.WebSiteId).WillCascadeOnDelete(true);
+        }
     }
 }

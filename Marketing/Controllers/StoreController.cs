@@ -28,7 +28,7 @@ namespace Marketing.Controllers
             if (id.HasValue)
             {            var repos = new ModelManagementRepository();
 
-            var f = repos.GetAllStore().Where(a => a.StoreId == id);
+            var f = repos.GetAllStore().Where(a => a.Id == id);
              
                                                          
                 return View(f.ToList());
