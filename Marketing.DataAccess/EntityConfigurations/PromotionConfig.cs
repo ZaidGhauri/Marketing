@@ -7,10 +7,10 @@ namespace Marketing.DataAccess.EntityConfigurations
     {
         public PromotionConfig() 
        {   // Primary Key
-            HasKey(p => p.PromotionId);
+            HasKey(p => p.Id);
 
             // Properties
-            Property(p => p.Name).HasMaxLength(30).IsRequired();
+            Property(p => p.Name).HasMaxLength(80).IsRequired();
 
          
        }

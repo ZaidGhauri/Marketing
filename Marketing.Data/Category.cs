@@ -1,40 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using Marketing.Common;
+using System.Collections.Generic;
 
 namespace Marketing.Data
 {
-   public class Category 
-   {
-       public Category()
-        {
-            WebSite w = new WebSite();
-        }
-       public int CategoryId { get; set; }
-       public string CategoryName { get; set; }
-
-       public string Description { get; set; }
-
-       public string Collection { get; set; }
-
-       public int PictureId { get; set; }
-
-       public bool IsActive { get; set; }
-
-       public bool ShowOnHome { get; set; }
-
-       public bool InTopMenu { get; set; }
-
-       public bool Published { get; set; }
-       public string UpdatedBy { get; set; }
-
-       public string CreatedBy { get; set; }
-
-       public string Deleted { get; set; }
-
-       public string Created { get; set; }
-
-       public string Updated { get; set; }
-       public ICollection<Store> Store { get; set; }
-
-
+    public class Category : DomainObject
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Collection { get; set; }
+        public int PictureId { get; set; }
+        public int ParentCategoryId { get; set; }
+        public bool IsFeatured { get; set; }
+        public bool ShowOnHomePage { get; set; }
+        public bool IncludeInTopMenu { get; set; }
+        public bool Published { get; set; }
+        public bool Deleted { get; set; }
+        public int WebSiteId { get; set; }
+        public virtual WebSite WebSite { get; set; }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model Marketing.Models.RegisterModel
+@{
+    ViewBag.Title = "Create New Account";
+    var IsAllowedToAdmin = true;
+}
+<style>
+    .field-validation-error {
+        color:red;
+    }
+</style>
+<div class="col-md-10" style="border:none;">
+    @using (Html.BeginForm("Register", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>@ViewBag.Title</h4>
+        <hr />
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "User Name" })
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+        <div class="form-group">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+        <div class="form-group">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+        </div>
+        if (IsAllowedToAdmin)
+        {
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.IsAdmin, new { @class = "form-control", placeholder = "Is Admin" })
+                @Html.ValidationMessageFor(m => m.IsAdmin)
+            </div>
+        }
+        <div class="fot-but">
+            <input type="submit" class="btn btn-warning" value="Register" />
+        </div>
+    }
+</div>

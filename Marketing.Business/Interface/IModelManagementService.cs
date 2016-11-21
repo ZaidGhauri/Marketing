@@ -1,5 +1,4 @@
 ﻿using Marketing.Business.Models;
-using Marketing.Common;
 using System;
 using System.Collections.Generic;
 

@@ -1,21 +1,20 @@
-﻿using Marketing.Business.Interface;
-using Marketing.Business.Models;
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Web.Mvc;
-using Marketing.Business.Mappings;
+﻿using Marketing.DataAccess;
 using Marketing.DataAccess.Repositories;
+using Marketing.Business.Models;
+using Marketing.Business;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Marketing.Business.Interface;
 using Marketing.Business.Services;
 
 
 namespace Marketing.Controllers
 {
     public class HomeController : Controller
-    {
-        public IModelManagementService _mapperService { get; set; }
-        private readonly IModelManagementService _modelmanagementservice;
+    {   public IModelManagementService _mapperService { get; set; }
+
         //protected override object MapEntityToModel(Category category)
         //{
         //    return new
@@ -28,10 +27,10 @@ namespace Marketing.Controllers
 
         //
         // GET: /Home/
+       
         public ActionResult Index()
         {
-
-            HeaderMenu model = new HeaderMenu();
+            Marketing.Models.HeaderMenu model = new Marketing.Models.HeaderMenu();
             using (var repos = new ModelManagementRepository())
             {
                 _mapperService = new ModelManagementService();
@@ -39,28 +38,42 @@ namespace Marketing.Controllers
                 model.Stores = _mapperService.MapStoreToModel(repos.GetAllStore());
             }
             return View(model);
-            
         }
+                      
+       
         public ActionResult Stores()
         {
-           
-           
-             var repos = new ModelManagementRepository();
-             return View(repos.GetAllStore().ToList());
-            
-           
+            Store model = new Store();
+            var _modelmanagementservice = new ModelManagementService();
+            var Stores = new List<Store>();
+            using ( var repos = new ModelManagementRepository())
+            {
+                Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore()).ToList();                
+            }
+            return View(Stores);
         }
         public ActionResult Categories()
         {
 
-            Marketing.Business.Models.Category model = new Marketing.Business.Models.Category();
-            var repos = new ModelManagementRepository();
-            //var f = repos.GetAllCategory().ToList();
-            var a = _modelmanagementservice.MapStoreToModel(repos.GetAllStore().ToList());
-            return View(a);
+            Category model = new Category();
+            var _modelmanagementservice = new ModelManagementService();
+            var Category = new List<Category>();
+            using ( var repos = new ModelManagementRepository())
+            {
+                Category = _modelmanagementservice.MapCategoryToModel(repos.GetAllCategory()).ToList();                
+            }
+            return View(Category);
            
 
             
         }
+
+        public ActionResult fb()
+        {
+           
+            return View();
+        }
+
+
     }
 }

@@ -1,13 +1,11 @@
 ﻿
+using Marketing.Common;
 namespace Marketing.Data
 {
-  public class Tag
+    public class Tag : DomainObject
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
-
         public string Description { get; set; }
-
+        public string Meta { get; set; }
     }
 }

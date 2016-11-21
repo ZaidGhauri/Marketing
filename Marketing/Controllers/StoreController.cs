@@ -1,4 +1,6 @@
-﻿using Marketing.Business.Models;
+﻿using Marketing.Business.Interface;
+using Marketing.Business.Models;
+using Marketing.Business.Services;
 using Marketing.DataAccess;
 using Marketing.DataAccess.Repositories;
 using System;
@@ -12,6 +14,7 @@ namespace Marketing.Controllers
 {
     public class StoreController : Controller
     {
+        public IModelManagementService _mapperService { get; set; }
         //
         // GET: /Store/
 
@@ -26,12 +29,20 @@ namespace Marketing.Controllers
         public ActionResult Details(int? id)
         {
             if (id.HasValue)
-            {            var repos = new ModelManagementRepository();
+            {
+                Store model = new Store();
+                var _modelmanagementservice = new ModelManagementService();
+                var Stores = new List<Store>();
+                using (var repos = new ModelManagementRepository())
+                {
+                    ////Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore().Where(a=> a.)).ToList();
+                }
+                return View(Stores);
 
-            var f = repos.GetAllStore().Where(a => a.StoreId == id);
+           // var f = repos.GetAllStore().Where(a => a.Id == id);
              
                                                          
-                return View(f.ToList());
+               // return View(f.ToList());
             }
 
 

@@ -11,13 +11,6 @@ namespace Marketing.DataAccess
         {
             
         }
-
-        public DbSet<Company> Companies { get; set; }
-
-        public DbSet<Contact> Contacts { get; set; }
-
-        public DbSet<ContactType> ContactTypes { get; set; }
-
         public DbSet<WebSite> WebSite { get; set; }
 
         public DbSet<Coupon> Coupon { get; set; }
@@ -28,13 +21,15 @@ namespace Marketing.DataAccess
         public DbSet<Promotion> Promotion { get; set; }
 
         public DbSet<Tag> Tag { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Country> Country { get; set; }
+        public DbSet<ContactUs> ContactUs { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new AddressConfig());
-            modelBuilder.Configurations.Add(new ContactConfig());
-            modelBuilder.Configurations.Add(new CompanyConfig());
-            modelBuilder.Configurations.Add(new ContactTypeConfig());
             modelBuilder.Configurations.Add(new WebSiteConfig());
+            modelBuilder.Configurations.Add(new UserConfig());
+            modelBuilder.Configurations.Add(new CountryConfig());
+            modelBuilder.Configurations.Add(new ContactUsConfig());
             modelBuilder.Configurations.Add(new CategoryConfig());
             modelBuilder.Configurations.Add(new StoreConfig());
             modelBuilder.Configurations.Add(new CouponConfig());

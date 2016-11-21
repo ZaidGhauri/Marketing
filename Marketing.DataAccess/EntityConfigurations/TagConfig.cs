@@ -10,7 +10,7 @@ namespace Marketing.DataAccess.EntityConfigurations
             HasKey(t => t.Id);
 
             // Properties
-            Property(t => t.Name).HasMaxLength(30).IsRequired();
+            Property(t => t.Name).HasMaxLength(80).IsRequired();
 
          
        }

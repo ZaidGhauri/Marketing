@@ -8,13 +8,9 @@ namespace Marketing.DataAccess.EntityConfigurations
         public WebSiteConfig()
         {
             // Primary Key
-            HasKey(w => w.WebId);
-
+            HasKey(w => w.Id);
             // Properties
-            Property(w => w.Name).HasMaxLength(30).IsRequired();
-
+            Property(w => w.Name).HasMaxLength(60).IsRequired();
         }
-
-
     }
 }

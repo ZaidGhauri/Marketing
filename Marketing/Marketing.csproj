@@ -137,18 +137,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
-    <Compile Include="Controllers\ContactTypeController.cs" />
-    <Compile Include="Controllers\HeaderMenuController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
-    <Compile Include="DependencyResolution\IoC.cs" />
-    <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
-    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactUsModel.cs" />
     <Compile Include="Models\HeaderMenu.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -387,20 +386,20 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\ContactType\Create.cshtml" />
-    <Content Include="Views\ContactType\Delete.cshtml" />
-    <Content Include="Views\ContactType\Edit.cshtml" />
-    <Content Include="Views\ContactType\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\HeaderMenu\Index.cshtml" />
     <Content Include="Views\Home\Stores.cshtml" />
     <Content Include="Views\Home\Categories.cshtml" />
     <Content Include="Views\Store\Details.cshtml" />
     <Content Include="Views\_Menu.cshtml" />
+    <Content Include="Views\About\ContactUs.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Home\fb.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DependencyResolution\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

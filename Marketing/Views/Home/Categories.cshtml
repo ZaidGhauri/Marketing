@@ -1,8 +1,7 @@
 ﻿@model List<Marketing.Business.Models.Category>
 
 @{
-    ViewBag.Title = "Categories";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+        Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Categories</h2>
@@ -15,7 +14,7 @@
 
             <div class="nav">
                 <ul id="p04">
-                    @Html.ActionLink(item.CategoryName, "Details", "Store", new { id = item.CategoryId }, null)
+                    @Html.ActionLink(item.Name, "Details", "Store", new { id = item.Id }, null)
 
 
                 </ul>

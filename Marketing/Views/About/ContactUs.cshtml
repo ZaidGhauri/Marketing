@@ -1,0 +1,45 @@
+﻿@model Marketing.Models.ContactUsModel
+@{
+    ViewBag.Title = "Submit your query";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+<div class="col-md-10" style="border:none;">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <h4>@ViewBag.Title</h4>
+        <hr />
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+            @Html.ValidationMessageFor(m => m.FirstName)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
+            @Html.ValidationMessageFor(m => m.LastName)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone Number" })
+            @Html.ValidationMessageFor(m => m.Phone)
+        </div>
+        <div class="form-group">
+            @Html.DropDownListFor(m => m.CountryId, new List<SelectListItem>() { new SelectListItem() { Text = "A", Value = 1 } })
+            @Html.ValidationMessageFor(m => m.CountryId)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Comments, new { @class = "form-control", placeholder = "Comments" })
+            @Html.ValidationMessageFor(m => m.Comments)
+        </div>
+        <div class="fot-but">
+            <input type="submit" class="btn btn-warning" value="Register" />
+        </div>
+    }
+</div>
