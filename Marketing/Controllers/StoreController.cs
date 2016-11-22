@@ -35,7 +35,7 @@ namespace Marketing.Controllers
                 var Stores = new List<Store>();
                 using (var repos = new ModelManagementRepository())
                 {
-                    ////Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore().Where(a=> a.)).ToList();
+                  // Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore().Where(a=> a.Id==Store)).ToList();
                 }
                 return View(Stores);
 

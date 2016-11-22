@@ -1,0 +1,27 @@
+﻿@model List<Marketing.Business.Models.Promotion>
+
+
+@{
+    ViewBag.Title = "Promotions";
+     Layout = "~/Views/Shared/_Layout.cshtml"
+}
+
+<div class="col-md-12">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4" style="border:none;background-color:#f6f6f6;margin-top: 15px;">
+
+            <div class="nav">
+                <ul id="p04">
+                    <a href="@Html.DisplayFor(modelItem => item.Name)"></a>
+
+                </ul>
+
+            </div>
+        </div>
+    }
+
+
+</div>
+
+<br clear="all">

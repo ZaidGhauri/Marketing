@@ -67,7 +67,21 @@ namespace Marketing.Controllers
 
             
         }
+        public ActionResult Promotions()
+        {
 
+            Promotion model = new Promotion();
+            var _modelmanagementservice = new ModelManagementService();
+            var Promotions = new List<Promotion>();
+            using (var repos = new ModelManagementRepository())
+            {
+                Promotions = _modelmanagementservice.MapPromotionToModel(repos.GetAllPromotion()).ToList();
+            }
+            return View(Promotions);
+
+
+
+        }
         public ActionResult fb()
         {
            

@@ -34,13 +34,18 @@ namespace Marketing.DataAccess.Repositories
         {
             return Context.Categories.OrderBy(z => z.Name).ToList();
         }
+        public IList<Promotion> GetAllPromotion()
+        {
+            return Context.Promotion.OrderBy(z => z.Name).ToList();
+        }
         public IList<Store> GetAllStore()
         {
             return Context.Stores.OrderBy(z => z.Name).ToList();
         }
-        //public void Dispose()
-        //{
-        //    Context.Dispose();
-        //}
+        public Store GetStoreDetail(int id)
+        {
+            return Context.Stores.FirstOrDefault(one => one.Id == id);
+        } 
+
     }
 }
