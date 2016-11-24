@@ -13,5 +13,11 @@ namespace Marketing.DataAccess.Interface
         IList<Category> GetAllCategory();
         IList<Store> GetAllStore();
         Store GetStoreDetail(int id);
+
+        Store FindById(int id);
+
+
+
+
     }
 }

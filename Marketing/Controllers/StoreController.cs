@@ -2,6 +2,7 @@
 using Marketing.Business.Models;
 using Marketing.Business.Services;
 using Marketing.DataAccess;
+using Marketing.DataAccess.Interface;
 using Marketing.DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Marketing.Controllers
 {
     public class StoreController : Controller
     {
+        private IModelManagementRepository modelManagementRepository;
         public IModelManagementService _mapperService { get; set; }
         //
         // GET: /Store/
@@ -28,6 +30,7 @@ namespace Marketing.Controllers
 
         public ActionResult Details(int? id)
         {
+
             if (id.HasValue)
             {
                 Store model = new Store();
@@ -35,14 +38,15 @@ namespace Marketing.Controllers
                 var Stores = new List<Store>();
                 using (var repos = new ModelManagementRepository())
                 {
-                  // Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore().Where(a=> a.Id==Store)).ToList();
+                    var d = repos.GetAllStore().Where(a => a.Id == id);
+                     // Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore().Where(a=> a.Id==Store)).ToList();
                 }
                 return View(Stores);
 
-           // var f = repos.GetAllStore().Where(a => a.Id == id);
-             
-                                                         
-               // return View(f.ToList());
+                // var f = repos.GetAllStore().Where(a => a.Id == id);
+
+
+                // return View(f.ToList());
             }
 
 
@@ -63,18 +67,29 @@ namespace Marketing.Controllers
         // POST: /Store/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Store model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                using (modelManagementRepository = new ModelManagementRepository())
+                {
+                    var store = new Data.Store();
+                    store.Name = model.Name;
+                    store.WebSiteId = 2;
+                    store.IsActive = model.IsActive;
+                    if (model.Id > 0)
+                    {
 
-                return RedirectToAction("Index");
+                        store = modelManagementRepository.FindById(model.Id);
+                        modelManagementRepository.Update(store);
+                    }
+                    else
+                    {
+                        modelManagementRepository.Insert(store);
+                    }
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(model);
         }
 
         //

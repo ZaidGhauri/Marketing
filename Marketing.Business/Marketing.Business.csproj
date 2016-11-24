@@ -60,6 +60,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Coupon.cs" />
+    <Compile Include="Models\Picture.cs" />
     <Compile Include="Models\Promotion.cs" />
     <Compile Include="Models\Store.cs">
       <SubType>Code</SubType>

@@ -55,22 +55,43 @@
                                 <a href="#"> @Html.ActionLink("View All Stores", "Stores", "Home")</a>
                             </ul>
                         </li>
-                        @*
-                            <li class="dropdown">
+                        <li>@Html.ActionLink("Coupons Deals", "Index", "Promotion")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Coupons <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <strong>@Html.Encode(User.Identity.Name)</strong>
+                                @Html.ActionLink("Sign Out", "Logout", "User")
+                            }
+                            else
+                            {
+                                <div style="padding-top: 15px;padding-bottom: 15px;padding-right: 15px;">
+                                    @Html.ActionLink("Register", "Register", "User", null, new { style = "color: #777; text-shadow: 0 1px 0 rgba(255, 255, 255, .25);" })
+                                    <span> | </span>
+                                    @Html.ActionLink("Sign In", "Login", "User", null, new { style = "color: #777; text-shadow: 0 1px 0 rgba(255, 255, 255, .25);" })
+                                </div>
 
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    @foreach (var item in Model.Events)
-                                    {
-                                        <li><a href="#"> @item.EventName</a></li>
+                            }
+                        </li>
 
-                                    }
-                                    <a href="#"> @Html.ActionLink("View All Events", "Events", "Home")</a>
-                                </ul>
-                            </li>*@
 
                     </ul>
-
+                    <div class="navbar-form" role="search">
+                        <div class="input-group">
+                            @Html.TextBox("Category")
+                        </div>
+                    </div>
 
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

@@ -30,6 +30,7 @@ namespace Marketing.Controllers
             {
                 using (userRepository = new UserManagementRepository())
                 {
+                   
                     var user = userRepository.Register(model.UserName, model.Password, model.IsAdmin);
                     if (user.Id > 0)
                     {

@@ -24,6 +24,9 @@ namespace Marketing.DataAccess
         public DbSet<User> User { get; set; }
         public DbSet<Country> Country { get; set; }
         public DbSet<ContactUs> ContactUs { get; set; }
+
+        public DbSet<Picture> Picture { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new WebSiteConfig());
@@ -35,6 +38,7 @@ namespace Marketing.DataAccess
             modelBuilder.Configurations.Add(new CouponConfig());
             modelBuilder.Configurations.Add(new PromotionConfig());
             modelBuilder.Configurations.Add(new TagConfig());
+            modelBuilder.Configurations.Add(new PictureConfig());
          
         }
     }
