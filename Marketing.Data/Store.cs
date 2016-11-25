@@ -6,6 +6,7 @@ namespace Marketing.Data
     public class Store : DomainObject
     {
         public string Name { get; set; }
+        public string img { get; set; }
         public bool IsPopular { get; set; }
         public bool IsNew { get; set; }
         public string Url { get; set; }

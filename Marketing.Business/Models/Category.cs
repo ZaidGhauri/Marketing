@@ -18,5 +18,6 @@ namespace Marketing.Business.Models
         public bool Deleted { get; set; }
         public int WebSiteId { get; set; }
         public virtual WebSite Website { get; set; }
+        public int MyProperty { get; set; }
     }
 }

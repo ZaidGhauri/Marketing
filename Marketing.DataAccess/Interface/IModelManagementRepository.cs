@@ -12,6 +12,12 @@ namespace Marketing.DataAccess.Interface
        // IEnumerable<Store> GetStore(ICriteria criteria);
         IList<Category> GetAllCategory();
         IList<Store> GetAllStore();
-      
+        Store GetStoreDetail(int id);
+
+        Store FindById(int id);
+
+
+
+
     }
 }

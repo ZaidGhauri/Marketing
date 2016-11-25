@@ -1,19 +1,20 @@
-﻿using Marketing.Business.Interface;
-using Marketing.Business.Models;
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Web.Mvc;
-using Marketing.Business.Mappings;
+﻿using Marketing.DataAccess;
 using Marketing.DataAccess.Repositories;
+using Marketing.Business.Models;
+using Marketing.Business;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Marketing.Business.Interface;
 using Marketing.Business.Services;
 
 
 namespace Marketing.Controllers
 {
     public class HomeController : Controller
-    {
+    {   public IModelManagementService _mapperService { get; set; }
+
         //protected override object MapEntityToModel(Category category)
         //{
         //    return new
@@ -26,43 +27,77 @@ namespace Marketing.Controllers
 
         //
         // GET: /Home/
+       
         public ActionResult Index()
         {
-           
-            // var s = _managementService.GetAllContactTypes();
-            //using (var repos = new ContactManagementRepository())
-            //{
-            //var f = repos.GetAllContactTypes().ToList().FirstOrDefault();
-            //f.IsActive = model.IsActive;
-            //}
-            return View();
+            Marketing.Models.HeaderMenu model = new Marketing.Models.HeaderMenu();
+            using (var repos = new ModelManagementRepository())
+            {
+                _mapperService = new ModelManagementService();
+                model.Categories = _mapperService.MapCategoryToModel(repos.GetAllCategory());
+                model.Stores = _mapperService.MapStoreToModel(repos.GetAllStore());
+            }
+            return View(model);
+        }
 
-           // Marketing.Data.Website web = new Marketing.Data.Category();
-            
+        public ActionResult SetHeader() 
+        {
+            Marketing.Models.HeaderMenu model = new Marketing.Models.HeaderMenu();
+            using (var repos = new ModelManagementRepository())
+            {
+                _mapperService = new ModelManagementService();
+                model.Categories = _mapperService.MapCategoryToModel(repos.GetAllCategory());
+                model.Stores = _mapperService.MapStoreToModel(repos.GetAllStore());
+            }
+            return View("_SetHeader", model);
         }
         public ActionResult Stores()
         {
-           
-           
-             var repos = new ModelManagementRepository();
-             return View(repos.GetAllStore().ToList());
-            
-           
+            Store model = new Store();
+            var _modelmanagementservice = new ModelManagementService();
+            var Stores = new List<Store>();
+            using ( var repos = new ModelManagementRepository())
+            {
+                Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore()).ToList();                
+            }
+            return View(Stores);
         }
         public ActionResult Categories()
         {
 
-            Marketing.Business.Models.Category model = new Marketing.Business.Models.Category();
+            Category model = new Category();
             var _modelmanagementservice = new ModelManagementService();
-            var stores = new List<Store>();
+            var Category = new List<Category>();
             using ( var repos = new ModelManagementRepository())
             {
-                stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore()).ToList();                
+                Category = _modelmanagementservice.MapCategoryToModel(repos.GetAllCategory()).ToList();                
             }
-            return View(stores);
+            return View(Category);
            
 
             
         }
+        public ActionResult Promotions()
+        {
+
+            Promotion model = new Promotion();
+            var _modelmanagementservice = new ModelManagementService();
+            var Promotions = new List<Promotion>();
+            using (var repos = new ModelManagementRepository())
+            {
+                Promotions = _modelmanagementservice.MapPromotionToModel(repos.GetAllPromotion()).ToList();
+            }
+            return View(Promotions);
+
+
+
+        }
+        public ActionResult fb()
+        {
+           
+            return View();
+        }
+
+
     }
 }

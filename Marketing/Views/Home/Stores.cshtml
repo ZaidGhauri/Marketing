@@ -1,7 +1,6 @@
-﻿@model List<Marketing.Data.Store>
+﻿@model List<Marketing.Business.Models.Store>
 
 @{
-    ViewBag.Title = "Stores";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -12,20 +11,19 @@
     {
         <div class="span4">
             <div class="col-md-4">
-                <a href="@item.StoreName">
-                    @*<img src="@Url.Content(@item.bimg)" class="img-responsive center-block" style="border:1px solid #e6e6e6">*@
-                </a>
+                <a href="@item.Name"><p id="offer-1">@item.Name</p>
+                    @*<img src="@Url.Content(@item.img)" class="img-responsive center-block" style="border:1px solid #e6e6e6">*@</a>
+                                  
                 <div class="button-1">
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Get your discount coupon</button>
                 </div>
-                @*<p id="offer-2">@Html.DisplayFor(modelItem => item.Tittle)</p>*@
             </div>
         </div>}
 
 </div>
 
 <br clear="all">
-@*@foreach (var item in Model)
+@foreach (var item in Model)
 {
           <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
@@ -38,13 +36,13 @@
                     <h4 class="modal-title">Copy the code</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Go to and paste the code checkout at .<a href="@Html.DisplayFor(modelItem => item.Tittle)"></a> </p>
+                    <p>Go to and paste the code checkout at .<a href="@Html.DisplayFor(modelItem => item.Name)"></a> </p>
                 </div>
                 <div class="modal-footer">
-                    @*                        <img src="@Url.Content(@item.bimg)" class="img-responsive center-block" style="border:1px solid #e6e6e6">*@
-                    @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                           @*<img src="@Url.Content(@item.img)" class="img-responsive center-block" style="border:1px solid #e6e6e6">*@
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
 
         </div>
-    </div>}*@
+    </div>}

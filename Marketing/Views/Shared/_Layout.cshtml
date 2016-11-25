@@ -8,73 +8,14 @@
     @Styles.Render("~/css/bootstrap-theme.css")
     @Styles.Render("~/css/Custom.css")
     @Styles.Render("~/css/font-awesome.min.css")
-    @Scripts.Render("~/js/bootstrap.js")
     @Scripts.Render("~/js/jquery-1.11.3.min.js")
+    @Scripts.Render("~/js/bootstrap.js")
 </head>
 
 <body>
-    <div class="navigation" style="height: 80px;">
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/"><img src="~/img/logo.jpg" alt="logo" class="img-responsive" style="max-width: 191px;margin-top: -10px;" /></a>
-                </div>
+    @Html.Partial("~/Views/_Menu.cshtml");
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Store", "Stores", "Home")</li>
-                        <li>@Html.ActionLink("Categories", "Categories", "Home")</li>
-                        <li>@Html.ActionLink("Coupons Deals", "Index", "Promotion")</li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Coupons <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            @if (Request.IsAuthenticated)
-                            {
-                                <strong>@Html.Encode(User.Identity.Name)</strong>
-                                @Html.ActionLink("Sign Out", "Logout", "User")
-                            }
-                            else
-                            {
-                                <div style="padding-top: 15px;padding-bottom: 15px;padding-right: 15px;">
-                                    @Html.ActionLink("Register", "Register", "User", null, new { style = "color: #777; text-shadow: 0 1px 0 rgba(255, 255, 255, .25);" })
-                                    <span> | </span>
-                                    @Html.ActionLink("Sign In", "Login", "User", null, new { style = "color: #777; text-shadow: 0 1px 0 rgba(255, 255, 255, .25);" })
-                                </div>
-
-                            }
-                        </li>
-                    </ul>
-                    <div class="navbar-form" role="search">
-                        <div class="input-group">
-                            @Html.TextBox("Category")
-                        </div>
-                    </div>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-
-    </div>
-
-
+    @*@{Html.RenderAction("SetHeader", "Home");}*@
     @RenderBody()
 
     <footer>
@@ -139,54 +80,5 @@
     <!-- #endregion Jssor Slider End -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-
-
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#VisitorDetail').hide();
-        });
-        var item;
-        $("#Category").autocomplete({
-            source: function (request, response) {
-                var customer = new Array();
-                $.ajax({
-                    async: false,
-                    cache: false,
-                    type: "POST",
-                    url: "@(Url.Action("Autocomplete", "Search"))",
-                    data: { "term": request.term },
-                    success: function (data) {
-                        for (var i = 0; i < data.length ; i++) {
-                            customer[i] = { label: data[i].EventName, Id: data[i].EventId };
-                        }
-                    }
-                });
-                response(customer);
-            },
-            select: function (event, ui) {
-
-                //fill selected customer details on form
-                $.ajax({
-                    cache: false,
-                    async: false,
-                    type: "POST",
-                    url: "@(Url.Action("Details", "Search"))",
-                    data: { "Id": ui.item.Id },
-
-                    success: function (data) {
-                        debugger;
-                        var id = parseInt(ui.item.Id);
-                        alert(id);
-                        window.location = "/Search/Details/" + id;
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert(thrownError);
-                    }
-                });
-            }
-        });
-
-    </script>
 </body>
 </html>

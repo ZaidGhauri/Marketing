@@ -43,13 +43,12 @@
     <Compile Include="Coupon.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="ContactUs.cs" />
-    <Compile Include="Required.cs" />
+    <Compile Include="Picture.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Promotion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="Tag.cs" />
-    <Compile Include="UserClass.cs" />
     <Compile Include="WebSite.cs" />
   </ItemGroup>
   <ItemGroup>

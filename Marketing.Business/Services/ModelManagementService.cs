@@ -21,24 +21,6 @@ namespace Marketing.Business.Services
             }
             return lst;
         }
-
-        public List<Category> GetCategory()
-        {
-            var cat1 = new List<Marketing.Data.Category>();
-            var cat2 = new List<Marketing.Business.Models.Category>();
-            foreach (var item in cat1)
-            {
-                Category c = new Category();
-                c.Name = item.Name;
-                cat2.Add(c);
-             
-            }
-            return cat2;
-        }
-
-
-
-
         public IList<Category> MapCategoryToModel(IList<Data.Category> categories)
         {
             IList<Category> lst = new List<Category>();
@@ -50,5 +32,33 @@ namespace Marketing.Business.Services
             }
             return lst;
         }
+
+        public IList<Promotion> MapPromotionToModel(IList<Data.Promotion> promotions)
+        {
+            IList<Promotion> lst = new List<Promotion>();
+            foreach (var promo in promotions)
+            {
+                Promotion objPromo = new Promotion();
+                objPromo.Name = promo.Name;
+                lst.Add(objPromo);
+            }
+            return lst;
+        }
+
+        public IList<Store> GetStoreDetail(int id)
+        {
+            var store1 = new List<Marketing.Data.Store>();
+            var store2 = new List<Marketing.Business.Models.Store>();
+            foreach (var item in store1)
+            {
+                Store c = new Store();
+                c.Name = item.Name;
+                store2.Add(c);
+
+            }
+            return store2;
+        }
+
+      
     }
 }
