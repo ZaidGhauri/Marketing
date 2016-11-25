@@ -30,7 +30,14 @@ namespace Marketing.Controllers
        
         public ActionResult Index()
         {
-            return View();
+            Marketing.Models.HeaderMenu model = new Marketing.Models.HeaderMenu();
+            using (var repos = new ModelManagementRepository())
+            {
+                _mapperService = new ModelManagementService();
+                model.Categories = _mapperService.MapCategoryToModel(repos.GetAllCategory());
+                model.Stores = _mapperService.MapStoreToModel(repos.GetAllStore());
+            }
+            return View(model);
         }
 
         public ActionResult SetHeader() 
@@ -42,7 +49,7 @@ namespace Marketing.Controllers
                 model.Categories = _mapperService.MapCategoryToModel(repos.GetAllCategory());
                 model.Stores = _mapperService.MapStoreToModel(repos.GetAllStore());
             }
-            return View("/shared/_menu", model);
+            return View("_SetHeader", model);
         }
         public ActionResult Stores()
         {

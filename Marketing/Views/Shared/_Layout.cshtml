@@ -13,7 +13,9 @@
 </head>
 
 <body>
-    @{Html.RenderAction("SetHeader", "Home");}
+    @Html.Partial("~/Views/_Menu.cshtml");
+
+    @*@{Html.RenderAction("SetHeader", "Home");}*@
     @RenderBody()
 
     <footer>
