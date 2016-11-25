@@ -73,6 +73,7 @@
     <Compile Include="Repositories\ModelManagementRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UserClassConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Marketing.Common\Marketing.Common.csproj">
