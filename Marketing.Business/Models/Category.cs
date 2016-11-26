@@ -6,6 +6,8 @@ namespace Marketing.Business.Models
 {
     public class Category : DomainObject
     {
+        [Required]
+        [Display(Name = "Category Name")]
         public string Name { get; set; }
         public string Description { get; set; }
         public string Collection { get; set; }

@@ -1,0 +1,127 @@
+﻿@model Marketing.Business.Models.Store
+
+@{
+    ViewBag.Title = "Update Store";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+<div class="col-md-10" style="border:none;">
+    @using (Html.BeginForm("Save", "Store", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <h4>@ViewBag.Title</h4>
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Store Name" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+             <div class="form-group">
+            @Html.LabelFor(model => model.Url)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Url, new { @class = "form-control", placeholder = "Url" })
+            @Html.ValidationMessageFor(model => model.Url)
+        </div>
+
+        <div class="form-group">
+            @Html.HiddenFor(m => m.CompanyName)
+            @Html.HiddenFor(m=>m.CompanyPhoneNo)
+            @Html.ValidationMessageFor(model => model.CompanyId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyName)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control", placeholder = "Company Name" })
+            @Html.ValidationMessageFor(model => model.CompanyName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyPhoneNo)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.CompanyPhoneNo, new { @class = "form-control", placeholder = "Company Phone #" })
+          
+        </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsPopular)
+
+        @Html.EditorFor(model => model.IsPopular)
+        @Html.ValidationMessageFor(model => model.IsPopular)
+
+        @Html.LabelFor(model => model.IsNew)
+
+        @Html.EditorFor(model => model.IsNew)
+        @Html.ValidationMessageFor(model => model.IsNew)
+
+        @Html.LabelFor(model => model.IsFeatured)
+
+        @Html.EditorFor(model => model.IsFeatured)
+        @Html.ValidationMessageFor(model => model.IsFeatured)
+
+        @Html.LabelFor(model => model.ShowOnHomePage)
+
+        @Html.EditorFor(model => model.ShowOnHomePage)
+        @Html.ValidationMessageFor(model => model.ShowOnHomePage)
+
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.IncludeInTopMenu)
+
+        @Html.EditorFor(model => model.IncludeInTopMenu)
+        @Html.ValidationMessageFor(model => model.IncludeInTopMenu)
+
+        @Html.LabelFor(model => model.Published)
+
+        @Html.EditorFor(model => model.Published)
+        @Html.ValidationMessageFor(model => model.Published)
+
+        @Html.LabelFor(model => model.Deleted)
+
+        @Html.EditorFor(model => model.Deleted)
+        @Html.ValidationMessageFor(model => model.Deleted)
+
+        @Html.LabelFor(model => model.IsActive)
+
+        @Html.EditorFor(model => model.IsActive)
+        @Html.ValidationMessageFor(model => model.IsActive)
+    </div>
+        using (Html.BeginForm("ImageUpload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        @Html.LabelFor(model => model.img)
+        <input type="file" name="file" />&nbsp;&nbsp;&nbsp;
+        <input type="submit" value="Upload Image" name="Command" /><br />
+      
+    </div>
+    <div>
+        @ViewBag.Message
+    </div>
+}
+         
+        
+        
+        <div class="fot-but">
+            <input type="submit" class="btn btn-warning" value="Create" />
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back To Stores", "Stores","Home")
+
+    </div>
+</div>

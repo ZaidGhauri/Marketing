@@ -15,11 +15,10 @@ namespace Marketing.Controllers
 {
     public class StoreController : Controller
     {
-        private IModelManagementRepository modelManagementRepository;
+        private IStoreManagementRepository storeManagementRepository;
         public IModelManagementService _mapperService { get; set; }
         //
         // GET: /Store/
-
         public ActionResult Index()
         {
             return View();
@@ -36,10 +35,10 @@ namespace Marketing.Controllers
                 Store model = new Store();
                 var _modelmanagementservice = new ModelManagementService();
                 var Stores = new List<Store>();
-                using (var repos = new ModelManagementRepository())
+                using (var repos = new StoreManagementRepository())
                 {
                     var d = repos.GetAllStore().Where(a => a.Id == id);
-                     // Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore().Where(a=> a.Id==Store)).ToList();
+                    // Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore().Where(a=> a.Id==Store)).ToList();
                 }
                 return View(Stores);
 
@@ -58,7 +57,7 @@ namespace Marketing.Controllers
         //
         // GET: /Store/Create
 
-        public ActionResult Create()
+        public ActionResult Save()
         {
             return View();
         }
@@ -67,11 +66,11 @@ namespace Marketing.Controllers
         // POST: /Store/Create
 
         [HttpPost]
-        public ActionResult Create(Store model)
+        public ActionResult Save(Store model)
         {
             if (ModelState.IsValid)
             {
-                using (modelManagementRepository = new ModelManagementRepository())
+                using (storeManagementRepository = new StoreManagementRepository())
                 {
                     var store = new Data.Store();
                     store.Name = model.Name;
@@ -80,12 +79,12 @@ namespace Marketing.Controllers
                     if (model.Id > 0)
                     {
 
-                        store = modelManagementRepository.FindById(model.Id);
-                        modelManagementRepository.Update(store);
+                        store = storeManagementRepository.FindById(model.Id);
+                        storeManagementRepository.Update(store);
                     }
                     else
                     {
-                        modelManagementRepository.Insert(store);
+                        storeManagementRepository.Insert(store);
                     }
                 }
             }
@@ -130,18 +129,33 @@ namespace Marketing.Controllers
         // POST: /Store/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Store model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add delete logic here
+                using (storeManagementRepository = new StoreManagementRepository())
+                {
+                    var store = new Data.Store();
+                    store.Name = model.Name;
+                    store.WebSiteId = 2;
+                    store.IsActive = model.IsActive;
+                    if (model.Id > 0)
+                    {
 
-                return RedirectToAction("Index");
+                        store = storeManagementRepository.FindById(model.Id);
+                        storeManagementRepository.Delete(store);
+                    }
+                    else
+                    {
+                        
+                    }
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(model);
         }
+
+     
+
+
     }
 }

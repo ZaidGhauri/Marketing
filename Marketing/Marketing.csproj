@@ -138,6 +138,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -359,6 +360,7 @@
     <Content Include="js\star-rating.js" />
     <Content Include="js\star-rating.min.js" />
     <Content Include="no-jquery.html" />
+    <Content Include="Picture\images.jpg" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -397,14 +399,15 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Home\fb.cshtml" />
     <Content Include="Views\Home\Promotions.cshtml" />
-    <Content Include="Views\Store\Create.cshtml" />
+    <Content Include="Views\Store\Save.cshtml" />
     <Content Include="Views\Home\_SetHeader.cshtml" />
-    <Content Include="Views\_Menu.cshtml" />
+    <Content Include="Views\Store\Delete.cshtml" />
+    <Content Include="Views\Home\ImageUpload.cshtml" />
+    <Content Include="Views\Category\Save.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DependencyResolution\" />
-    <Folder Include="Picture\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

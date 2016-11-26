@@ -5,19 +5,13 @@ using System.Collections.Generic;
 
 namespace Marketing.DataAccess.Interface
 {
-    public interface IModelManagementRepository : IWriteRepository
+    public interface ICategoryManagementRepository : IWriteRepository
     {
         IList<Category> GetCategory(ICriteria criteria);
-
-        // IEnumerable<Store> GetStore(ICriteria criteria);
         IList<Category> GetAllCategory();
-        IList<Store> GetAllStore();
-        Store GetStoreDetail(int id);
-
-        Store FindById(int id);
-
-
+        Category FindById(int id);
 
 
     }
 }
+   

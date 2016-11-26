@@ -49,6 +49,6 @@ namespace Marketing.DataAccess.Repositories
         public Store FindById(int id)
         {
             return Context.Stores.FirstOrDefault(one => one.Id == id);
-        } 
+        }
     }
 }
