@@ -399,6 +399,8 @@
     <Content Include="Views\Home\fb.cshtml" />
     <Content Include="Views\Home\Promotions.cshtml" />
     <Content Include="Views\Store\Create.cshtml" />
+    <Content Include="Views\Home\_SetHeader.cshtml" />
+    <Content Include="Views\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
