@@ -46,7 +46,7 @@ namespace Marketing.DataAccess.Repositories
         {
             return Context.Stores.FirstOrDefault(one => one.Id == id);
         }
-        public Store FindById(int id)
+        public Store FindStoreById(int id)
         {
             return Context.Stores.FirstOrDefault(one => one.Id == id);
         } 

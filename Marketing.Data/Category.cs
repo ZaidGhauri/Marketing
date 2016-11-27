@@ -9,6 +9,7 @@ namespace Marketing.Data
         public string Description { get; set; }
         public string Collection { get; set; }
         public int PictureId { get; set; }
+        public virtual Picture Picture { get; set; }
         public int ParentCategoryId { get; set; }
         public bool IsFeatured { get; set; }
         public bool ShowOnHomePage { get; set; }

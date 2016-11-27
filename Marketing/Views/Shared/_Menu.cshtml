@@ -69,9 +69,9 @@
                             </ul>
                         </li>
                         <li>
-                            @if (Request.IsAuthenticated)
+                            @if (Session["UName"] != null)
                             {
-                                <strong>@Html.Encode(User.Identity.Name)</strong>
+                                <strong>Hi! @Html.Encode(Session["UName"])</strong>
                                 @Html.ActionLink("Sign Out", "Logout", "User")
                             }
                             else

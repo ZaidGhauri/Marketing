@@ -80,7 +80,7 @@ namespace Marketing.Controllers
                     if (model.Id > 0)
                     {
 
-                        store = modelManagementRepository.FindById(model.Id);
+                        store = modelManagementRepository.FindStoreById(model.Id);
                         modelManagementRepository.Update(store);
                     }
                     else

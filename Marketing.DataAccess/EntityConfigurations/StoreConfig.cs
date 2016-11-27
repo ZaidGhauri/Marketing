@@ -11,8 +11,9 @@ namespace Marketing.DataAccess.EntityConfigurations
             HasKey(s => s.Id);
 
             // Properties
-            Property(s => s.Name).HasMaxLength(50).IsRequired();
-            HasRequired(p => p.WebSite).WithMany().HasForeignKey(p => p.WebSiteId).WillCascadeOnDelete(true);
+            Property(s => s.Name).HasMaxLength(150).IsRequired();
+            HasRequired(p => p.WebSite).WithMany().HasForeignKey(p => p.WebSiteId).WillCascadeOnDelete(false);
+            HasRequired(p => p.Picture).WithMany().HasForeignKey(p => p.PictureId).WillCascadeOnDelete(false);
 
         
         }

@@ -14,7 +14,7 @@ namespace Marketing.DataAccess.Interface
         IList<Store> GetAllStore();
         Store GetStoreDetail(int id);
 
-        Store FindById(int id);
+        Store FindStoreById(int id);
 
 
 

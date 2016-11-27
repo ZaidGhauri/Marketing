@@ -16,7 +16,8 @@ namespace Marketing.DataAccess.EntityConfigurations
             HasOptional(p => p.Category).WithMany().HasForeignKey(p => p.CategoryId).WillCascadeOnDelete(false);
             HasOptional(p => p.Tag).WithMany().HasForeignKey(p => p.TagId).WillCascadeOnDelete(false);
             // Relationships
-            HasMany(p=>p.Promotions)
+            HasRequired(p => p.Picture).WithMany().HasForeignKey(p => p.PictureId).WillCascadeOnDelete(false);
+            HasMany(p => p.Promotions)
                 .WithMany(p=>p.Coupons)
                 .Map(m =>
                 {

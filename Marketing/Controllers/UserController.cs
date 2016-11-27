@@ -7,12 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
-
 
 namespace Marketing.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private IUserManagementRepository userRepository;
         public ActionResult Index()
@@ -31,10 +29,10 @@ namespace Marketing.Controllers
                 using (userRepository = new UserManagementRepository())
                 {
                    
-                    var user = userRepository.Register(model.UserName, model.Password, model.IsAdmin);
+                    var user = userRepository.Register(model.UserName, model.Password, WebSite.Id, model.IsAdmin);
                     if (user.Id > 0)
                     {
-                        FormsAuthentication.SetAuthCookie(user.Name, true);
+                        Session["UName"] = model.UserName;
                     }
                     else
                     {
@@ -55,9 +53,9 @@ namespace Marketing.Controllers
             {
                 using (userRepository = new UserManagementRepository())
                 {
-                    if (userRepository.IsValid(model.UserName, model.Password))
+                    if (userRepository.IsValid(model.UserName, model.Password, WebSite.Id))
                     {
-                        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                        Session["UName"] = model.UserName;
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -70,7 +68,7 @@ namespace Marketing.Controllers
         }
         public ActionResult Logout()
         {
-            FormsAuthentication.SignOut();
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
     }

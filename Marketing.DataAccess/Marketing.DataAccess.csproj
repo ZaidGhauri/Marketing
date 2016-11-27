@@ -60,6 +60,7 @@
     <Compile Include="EntityConfigurations\WebSiteConfig.cs" />
     <Compile Include="Interface\IContactUsManagementRepository.cs" />
     <Compile Include="Interface\IModelManagementRepository.cs" />
+    <Compile Include="Interface\IWebSiteRepository.cs" />
     <Compile Include="Interface\IUserManagementRepository.cs" />
     <Compile Include="Migrations\201611201515102_InitialMigration.cs" />
     <Compile Include="Migrations\201611201515102_InitialMigration.Designer.cs">
@@ -78,6 +79,7 @@
     <Compile Include="Repositories\ModelManagementRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repositories\WebSiteRepository.cs" />
     <Compile Include="Repositories\UserManagementRepository.cs" />
   </ItemGroup>
   <ItemGroup>
