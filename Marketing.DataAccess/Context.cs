@@ -25,7 +25,7 @@ namespace Marketing.DataAccess
         public DbSet<Country> Country { get; set; }
         public DbSet<ContactUs> ContactUs { get; set; }
 
-        public DbSet<Picture> Picture { get; set; }
+        public DbSet<Image> Image { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,7 +38,7 @@ namespace Marketing.DataAccess
             modelBuilder.Configurations.Add(new CouponConfig());
             modelBuilder.Configurations.Add(new PromotionConfig());
             modelBuilder.Configurations.Add(new TagConfig());
-            modelBuilder.Configurations.Add(new PictureConfig());
+            modelBuilder.Configurations.Add(new ImageConfig());
          
         }
     }

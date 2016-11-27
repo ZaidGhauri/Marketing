@@ -52,9 +52,9 @@
     <Compile Include="EntityConfigurations\ContactUsConfig.cs" />
     <Compile Include="EntityConfigurations\CountryConfig.cs" />
     <Compile Include="EntityConfigurations\CouponConfig.cs" />
-    <Compile Include="EntityConfigurations\PictureConfig.cs" />
     <Compile Include="EntityConfigurations\PromotionConfig.cs" />
     <Compile Include="EntityConfigurations\StoreConfig.cs" />
+    <Compile Include="EntityConfigurations\ImageConfig.cs" />
     <Compile Include="EntityConfigurations\TagConfig.cs" />
     <Compile Include="EntityConfigurations\UserConfig.cs" />
     <Compile Include="EntityConfigurations\WebSiteConfig.cs" />
@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201611241000230_seedMigration.cs" />
     <Compile Include="Migrations\201611241000230_seedMigration.Designer.cs">
       <DependentUpon>201611241000230_seedMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611270736071_ImageEntityAdded.cs" />
+    <Compile Include="Migrations\201611270736071_ImageEntityAdded.Designer.cs">
+      <DependentUpon>201611270736071_ImageEntityAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrator.cs" />
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611241000230_seedMigration.resx">
       <DependentUpon>201611241000230_seedMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611270736071_ImageEntityAdded.resx">
+      <DependentUpon>201611270736071_ImageEntityAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

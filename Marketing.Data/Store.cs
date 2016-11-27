@@ -19,7 +19,7 @@ namespace Marketing.Data
         public bool Deleted { get; set; }
         public int WebSiteId { get; set; }
         public virtual WebSite WebSite { get; set; }
-        public int PictureId { get; set; }
-        public virtual Picture Picture { get; set; }
+        public int ImageId { get; set; }
+        public virtual Image Image { get; set; }
     }
 }

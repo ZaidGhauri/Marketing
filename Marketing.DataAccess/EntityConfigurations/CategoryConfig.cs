@@ -12,7 +12,7 @@ namespace Marketing.DataAccess.EntityConfigurations
             // Properties
             Property(cat => cat.Name).HasMaxLength(50).IsRequired();
             HasRequired(p => p.WebSite).WithMany().HasForeignKey(p => p.WebSiteId).WillCascadeOnDelete(false);
-            HasRequired(p => p.Picture).WithMany().HasForeignKey(p => p.PictureId).WillCascadeOnDelete(false);
+            HasRequired(p => p.Image).WithMany().HasForeignKey(p => p.ImageId).WillCascadeOnDelete(false);
         }
     }
 }
