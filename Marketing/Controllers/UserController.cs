@@ -1,4 +1,5 @@
-﻿using Marketing.DataAccess;
+﻿using Marketing.Common;
+using Marketing.DataAccess;
 using Marketing.DataAccess.Interface;
 using Marketing.DataAccess.Repositories;
 using Marketing.Models;
@@ -19,7 +20,22 @@ namespace Marketing.Controllers
         }
         public ActionResult Register()
         {
-            return View();
+            RegisterModel model = new RegisterModel();
+            model.DateOfBirth = DateTimeHelper.Now();
+            using (var countryRepo = new CountryRepository())
+            {
+                var countries = countryRepo.All().ToList();
+
+                foreach (var item in countries)
+                {
+                    model.Countries.Add(new SelectListItem()
+                    {
+                        Text = item.Name,
+                        Value = item.Id.ToString()
+                    });
+                }
+            }
+            return View(model);
         }
         [HttpPost]
         public ActionResult Register(RegisterModel model)
@@ -28,17 +44,34 @@ namespace Marketing.Controllers
             {
                 using (userRepository = new UserManagementRepository())
                 {
-                   
-                    var user = userRepository.Register(model.UserName, model.Password, WebSite.Id, model.IsAdmin);
-                    if (user.Id > 0)
+                    var user = new Marketing.Data.User()
                     {
-                        Session["UName"] = model.UserName;
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Register data is incorrect!");
-                    }
+                        Name = model.UserName,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Email = model.Email,
+                        IsAdmin = model.IsAdmin,
+                        WebSiteId = WebSite.Id,
+                        CountryId = model.CountryId,
+                        Phone = model.Phone,
+                        DateOfBirth = model.DateOfBirth,
+                        Address = model.Address,
+                        City = model.City,
+                        Gender = model.Gender,
+                        IsNewsLetter = model.IsNewsLetter,
+                        Password = model.Password,
+                        PostCode = model.PostCode,
+                        State = model.State
+                    };
+                    userRepository.Insert(user);
+                    Session["UName"] = model.UserName;
+                    Session["IsAdmin"] = model.IsAdmin;
+                    return RedirectToAction("Index", "Home");
                 }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Login data is incorrect!");
             }
             return View(model);
         }
@@ -53,9 +86,11 @@ namespace Marketing.Controllers
             {
                 using (userRepository = new UserManagementRepository())
                 {
-                    if (userRepository.IsValid(model.UserName, model.Password, WebSite.Id))
+                    var user = userRepository.ValidUser(model.UserName, model.Password, WebSite.Id);
+                    if (user != null && user.Id > 0)
                     {
                         Session["UName"] = model.UserName;
+                        Session["IsAdmin"] = user.IsAdmin;
                         return RedirectToAction("Index", "Home");
                     }
                     else

@@ -10,7 +10,7 @@ namespace Marketing.Business.Services
 {
     public class ModelManagementService : IModelManagementService
     {
-        public IList<Store> MapStoreToModel(IList<Marketing.Data.Store> stores)
+        public IList<Store> MapStoresToModel(IList<Marketing.Data.Store> stores)
         {
             IList<Store> lst = new List<Store>();
             foreach (var store in stores)
@@ -21,7 +21,7 @@ namespace Marketing.Business.Services
             }
             return lst;
         }
-        public IList<Category> MapCategoryToModel(IList<Data.Category> categories)
+        public IList<Category> MapCategoriesToModel(IList<Data.Category> categories)
         {
             IList<Category> lst = new List<Category>();
             foreach (var category in categories)
@@ -33,7 +33,7 @@ namespace Marketing.Business.Services
             return lst;
         }
 
-        public IList<Promotion> MapPromotionToModel(IList<Data.Promotion> promotions)
+        public IList<Promotion> MapPromotionsToModel(IList<Data.Promotion> promotions)
         {
             IList<Promotion> lst = new List<Promotion>();
             foreach (var promo in promotions)
@@ -58,7 +58,47 @@ namespace Marketing.Business.Services
             }
             return store2;
         }
-
+        public Category MapCategoryToModel(Data.Category category)
+        {
+            Category model = new Category();
+            model.Name = category.Name;
+            model.Published = category.Published;
+            model.ShowOnHomePage = category.ShowOnHomePage;
+            model.ParentCategoryId = 0;
+            model.IsFeatured = category.IsFeatured;
+            model.IncludeInTopMenu = category.IncludeInTopMenu;
+            model.Description = category.Description;
+            model.Deleted = category.Deleted;
+            model.WebSiteId = category.WebSiteId;
+            model.IsActive = category.IsActive;
+            model.Created = category.Created;
+            model.CreatedBy = category.CreatedBy;
+            model.Modified = category.Modified;
+            model.ModifiedBy = category.ModifiedBy;
+            return model;
+        }
+        public Store MapStoreToModel(Data.Store store)
+        {
+            Store model = new Store();
+            model.Name = store.Name;
+            model.Published = store.Published;
+            model.ShowOnHomePage = store.ShowOnHomePage;
+            store.CompanyId = 0;
+            store.CompanyName = store.CompanyName;
+            store.CompanyPhoneNo = store.CompanyPhoneNo;
+            store.IsNew = store.IsNew;
+            store.IsPopular = store.IsPopular;
+            store.IsFeatured = model.IsFeatured;
+            model.IncludeInTopMenu = store.IncludeInTopMenu;
+            model.Deleted = store.Deleted;
+            model.WebSiteId = store.WebSiteId;
+            model.IsActive = store.IsActive;
+            model.Created = store.Created;
+            model.CreatedBy = store.CreatedBy;
+            model.Modified = store.Modified;
+            model.ModifiedBy = store.ModifiedBy;
+            return model;
+        }
       
     }
 }

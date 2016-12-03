@@ -6,7 +6,6 @@ namespace Marketing.Data
     public class Country : DomainObject
     {
         public string Name { get; set; }
-        public string Code { get; set; }
         public string TwoLetterIsoCode { get; set; }
         public string ThreeLetterIsoCode { get; set; }
         public string NumericIsoCode { get; set; }

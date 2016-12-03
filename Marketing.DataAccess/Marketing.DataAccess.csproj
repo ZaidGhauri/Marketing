@@ -59,7 +59,12 @@
     <Compile Include="EntityConfigurations\UserConfig.cs" />
     <Compile Include="EntityConfigurations\WebSiteConfig.cs" />
     <Compile Include="Interface\IContactUsManagementRepository.cs" />
-    <Compile Include="Interface\IModelManagementRepository.cs" />
+    <Compile Include="Interface\IPromotionRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interface\IStoreRepository.cs" />
+    <Compile Include="Interface\ICountryRepository.cs" />
+    <Compile Include="Interface\ICategoryRepository.cs" />
     <Compile Include="Interface\IWebSiteRepository.cs" />
     <Compile Include="Interface\IUserManagementRepository.cs" />
     <Compile Include="Migrations\201611201515102_InitialMigration.cs" />
@@ -74,13 +79,24 @@
     <Compile Include="Migrations\201611270736071_ImageEntityAdded.Designer.cs">
       <DependentUpon>201611270736071_ImageEntityAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612022314464_CountryRemoveCodeColumn.cs" />
+    <Compile Include="Migrations\201612022314464_CountryRemoveCodeColumn.designer.cs">
+      <DependentUpon>201612022314464_CountryRemoveCodeColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612030404298_UpdateEntities.cs" />
+    <Compile Include="Migrations\201612030404298_UpdateEntities.Designer.cs">
+      <DependentUpon>201612030404298_UpdateEntities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\PromotionRepository.cs" />
+    <Compile Include="Repositories\StoreRepository.cs" />
     <Compile Include="Repositories\ContactUsManagementRepository.cs" />
     <Compile Include="Repositories\Core\IWriteRepository.cs" />
     <Compile Include="Repositories\Core\WriteRepository.cs" />
-    <Compile Include="Repositories\ModelManagementRepository.cs">
+    <Compile Include="Repositories\CountryRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repositories\WebSiteRepository.cs" />
@@ -105,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611270736071_ImageEntityAdded.resx">
       <DependentUpon>201611270736071_ImageEntityAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612022314464_CountryRemoveCodeColumn.resx">
+      <DependentUpon>201612022314464_CountryRemoveCodeColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612030404298_UpdateEntities.resx">
+      <DependentUpon>201612030404298_UpdateEntities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

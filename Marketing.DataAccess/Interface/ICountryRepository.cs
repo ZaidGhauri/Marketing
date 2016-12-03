@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace Marketing.DataAccess.Interface
 {
-    public interface IUserManagementRepository : IWriteRepository
+    public interface ICountryRepository : IWriteRepository
     {
-        User ValidUser(string UserName, string Password, int WebSiteId);
+        IEnumerable<Country> All();
     }
 }

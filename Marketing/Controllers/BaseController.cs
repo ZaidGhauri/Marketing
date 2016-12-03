@@ -1,4 +1,6 @@
-﻿using Marketing.Business.Models;
+﻿using Marketing.Business.Interface;
+using Marketing.Business.Models;
+using Marketing.Business.Services;
 using Marketing.DataAccess.Interface;
 using Marketing.DataAccess.Repositories;
 using System;
@@ -14,9 +16,11 @@ namespace Marketing.Controllers
         public static WebSite WebSite { get; set; }
         public string AppWebSiteName { get; set; }
         public IWebSiteRepository websiteRepo{ get; set; }
+        public IModelManagementService _mapperService { get; set; }
         public BaseController()
         {
             getWebSite();
+            setHeader();
         }
 
         private void getWebSite()
@@ -32,6 +36,18 @@ namespace Marketing.Controllers
                     WebSite.Name = web.Name;
                     WebSite.Url = web.Url;
                 }
+            }
+        }
+        private void setHeader()
+        {
+            Marketing.Models.HeaderMenu model = new Marketing.Models.HeaderMenu();
+            using (var categoryRepo = new CategoryRepository())
+            using (var storeRepo = new StoreRepository())
+            {
+                _mapperService = new ModelManagementService();
+                model.Categories = _mapperService.MapCategoriesToModel(categoryRepo.All());
+                model.Stores = _mapperService.MapStoresToModel(storeRepo.All());
+                ViewBag.HeaderMenu = model;
             }
         }
     }

@@ -1,102 +1,99 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-@model Marketing.Models.HeaderMenu
-<html>
+@{
+    var model = ViewBag.HeaderMenu != null ? ViewBag.HeaderMenu : new Marketing.Models.HeaderMenu(); ;
+}
+<div class="navigation">
 
-<body>
-    <div class="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        @if (Session["IsAdmin"] != null)
+        {
+            <div style=" text-align: center;padding: 10px 10px 10px 10px;background-color: darkgray;"><a href="/Administrator" style="color: white; font-size: 17px;text-decoration:none">Administrator</a></div>
+        }
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><img src="~/img/logo.jpg" alt="logo" class="img-responsive" style="max-width: 191px;margin-top: -10px;" /></a>
+            </div>
 
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><img src="~/img/logo.jpg" alt="logo" class="img-responsive" style="max-width: 191px;margin-top: -10px;" /></a>
-                </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li class="dropdown">
-
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                @foreach (var item in Model.Categories)
-                                {
-                                    <li>@item.Name</li>
-                                    <ul>
-                                        @*@foreach (var subCategory in Model.SubCategories.Where(a => a.category_id == item.category_id))
-                                            {
-                                                <li>@subCategory.SubCatName</li>
-                                            }*@
-                                    </ul>
-                                }
-
-
-                                <a href="#"> @Html.ActionLink("View All Categories", "Categories", "Home")</a>
-                            </ul>
-
-                        </li>
-
-                        <li class="dropdown">
-
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stores <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                @foreach (var item in Model.Stores)
-                                {
-                                    <li><a href="#">@item.Name</a></li>
-
-                                }
-                                <a href="#"> @Html.ActionLink("View All Stores", "Stores", "Home")</a>
-                            </ul>
-                        </li>
-                        <li>@Html.ActionLink("Coupons Deals", "Index", "Promotion")</li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Coupons <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            @if (Session["UName"] != null)
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @foreach (var item in model.Categories)
                             {
-                                <strong>Hi! @Html.Encode(Session["UName"])</strong>
-                                @Html.ActionLink("Sign Out", "Logout", "User")
+                                <li>@item.Name</li>
                             }
-                            else
+                            @if (Session["IsAdmin"] != null)
                             {
-                                <div style="padding-top: 15px;padding-bottom: 15px;padding-right: 15px;">
-                                    @Html.ActionLink("Register", "Register", "User", null, new { style = "color: #777; text-shadow: 0 1px 0 rgba(255, 255, 255, .25);" })
-                                    <span> | </span>
-                                    @Html.ActionLink("Sign In", "Login", "User", null, new { style = "color: #777; text-shadow: 0 1px 0 rgba(255, 255, 255, .25);" })
-                                </div>
-
+                                <li>@Html.ActionLink("Add New Category", "Category", "Edit", new { type = "Category" })</li>
+                                <li>@Html.ActionLink("Add New Sub Category", "Category", "Edit", new { type = "SubCategory"})</li>
                             }
-                        </li>
+                            <li>@Html.ActionLink("View All Categories", "Category", "Home")</li>
+                        </ul>
 
+                    </li>
 
-                    </ul>
-                    <div class="navbar-form" role="search">
-                        <div class="input-group">
-                            @Html.TextBox("Category")
-                        </div>
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stores <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @foreach (var item in model.Stores)
+                            {
+                                <li><a href="#">@item.Name</a></li>
+                            }
+                            @if (Session["IsAdmin"] != null)
+                            {
+                                <li>@Html.ActionLink("Add New Store", "Store", "Edit")</li>
+                            }
+                            <li>@Html.ActionLink("View All Store", "Store", "Home")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Coupons Deals", "Index", "Promotion")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Coupons <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="navbar-form" role="search">
+                    <div class="input-group">
+                        @Html.TextBox("Category")
+                    </div>
+                    <div style="width: 10%; float: right;">
+                        @if (Session["UName"] != null)
+                        {
+                            <strong>Hi! @Html.Encode(Session["UName"])</strong>
+                            @Html.ActionLink("Sign Out", "Logout", "User")
+
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Register", "Register", "User", null, new { style = "color: #777; text-shadow: 0 1px 0 rgba(255, 255, 255, .25);" })
+                            <span> | </span>
+                            @Html.ActionLink("Sign In", "Login", "User", null, new { style = "color: #777; text-shadow: 0 1px 0 rgba(255, 255, 255, .25);" })
+                        }
                     </div>
 
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
+                </div>
 
-    </div>
-</body>
-</html>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+</div>

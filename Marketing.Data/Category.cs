@@ -7,7 +7,6 @@ namespace Marketing.Data
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Collection { get; set; }
         public int ImageId { get; set; }
         public virtual Image Image { get; set; }
         public int ParentCategoryId { get; set; }

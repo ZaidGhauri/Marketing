@@ -7,11 +7,12 @@ namespace Marketing.Business.Interface
 {
     public interface IModelManagementService 
     {
-        IList<Store> MapStoreToModel(IList<Marketing.Data.Store> stores);
-        IList<Category> MapCategoryToModel(IList<Marketing.Data.Category> categories);
+        IList<Store> MapStoresToModel(IList<Marketing.Data.Store> stores);
+        IList<Category> MapCategoriesToModel(IList<Marketing.Data.Category> categories);
 
-        IList<Promotion> MapPromotionToModel(IList<Data.Promotion> promotions);
+        IList<Promotion> MapPromotionsToModel(IList<Data.Promotion> promotions);
         IList<Store> GetStoreDetail(int id);
-
+        Category MapCategoryToModel(Data.Category category);
+        Store MapStoreToModel(Data.Store store);
     }
 }

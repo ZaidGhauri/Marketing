@@ -5,8 +5,9 @@ using System.Collections.Generic;
 
 namespace Marketing.DataAccess.Interface
 {
-    public interface IUserManagementRepository : IWriteRepository
+    public interface IPromotionRepository : IWriteRepository
     {
-        User ValidUser(string UserName, string Password, int WebSiteId);
+        Promotion FindById(int Id);
+        IList<Promotion> All();
     }
 }

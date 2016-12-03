@@ -47,6 +47,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Kendo.Mvc, Version=2014.2.903.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocation.1.0.0\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -138,8 +142,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -149,10 +155,25 @@
     <Compile Include="Models\HeaderMenu.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\SessionExpireAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="accessories.html" />
+    <Content Include="Content\kendo\BlueOpal\editor.png" />
+    <Content Include="Content\kendo\BlueOpal\imagebrowser.png" />
+    <Content Include="Content\kendo\BlueOpal\indeterminate.gif" />
+    <Content Include="Content\kendo\BlueOpal\loading-image.gif" />
+    <Content Include="Content\kendo\BlueOpal\loading.gif" />
+    <Content Include="Content\kendo\BlueOpal\loading_2x.gif" />
+    <Content Include="Content\kendo\BlueOpal\markers.png" />
+    <Content Include="Content\kendo\BlueOpal\markers_2x.png" />
+    <Content Include="Content\kendo\BlueOpal\slider-h.gif" />
+    <Content Include="Content\kendo\BlueOpal\slider-v.gif" />
+    <Content Include="Content\kendo\BlueOpal\sprite.png" />
+    <Content Include="Content\kendo\BlueOpal\sprite_2x.png" />
+    <Content Include="Content\kendo\kendo.blueopal.min.css" />
+    <Content Include="Content\kendo\kendo.common.min.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -371,6 +392,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kendo\kendo.all.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -401,6 +423,7 @@
     <Content Include="Views\Store\Create.cshtml" />
     <Content Include="Views\Home\_SetHeader.cshtml" />
     <Content Include="Views\_Menu.cshtml" />
+    <Content Include="Views\Administrator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
