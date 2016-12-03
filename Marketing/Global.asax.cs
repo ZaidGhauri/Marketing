@@ -1,6 +1,7 @@
 ﻿using Marketing.Business.Mappings;
 using Marketing.DataAccess;
 using System.Data.Entity;
+using StructureMap;
 using System;
 using System.Collections.Generic;
 using System.Linq;

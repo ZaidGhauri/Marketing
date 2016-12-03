@@ -28,28 +28,16 @@ namespace Marketing.Controllers
             {
                 using (userRepository = new UserManagementRepository())
                 {
-                    var user = new Marketing.Data.User()
+                   
+                    var user = userRepository.Register(model.UserName, model.Password, WebSite.Id, model.IsAdmin);
+                    if (user.Id > 0)
                     {
-                        Name = model.UserName,
-                        FirstName = model.FirstName,
-                        LastName = model.LastName,
-                        Email = model.Email,
-                        IsAdmin = model.IsAdmin,
-                        WebSiteId = WebSite.Id,
-                        CountryId = 0,
-                        Phone = model.Phone,
-                        DateOfBirth = model.DateOfBirth,
-                        Address = model.Address,
-                        City = model.City,
-                        Gender = model.Gender,
-                        IsNewsLetter = model.IsNewsLetter,
-                        Password = model.Password,
-                        PostCode = model.PostCode,
-                        State = model.State
-                    };
-                    userRepository.Insert(user);
-                    Session["UName"] = model.UserName;
-                    Session["IsAdmin"] = model.IsAdmin;
+                        Session["UName"] = model.UserName;
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Register data is incorrect!");
+                    }
                 }
             }
             return View(model);
@@ -65,11 +53,9 @@ namespace Marketing.Controllers
             {
                 using (userRepository = new UserManagementRepository())
                 {
-                    var user = userRepository.ValidUser(model.UserName, model.Password, WebSite.Id);
-                    if (user != null && user.Id > 0)
+                    if (userRepository.IsValid(model.UserName, model.Password, WebSite.Id))
                     {
                         Session["UName"] = model.UserName;
-                        Session["IsAdmin"] = user.IsAdmin;
                         return RedirectToAction("Index", "Home");
                     }
                     else

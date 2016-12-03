@@ -3,6 +3,7 @@ using Marketing.Business.Models;
 using Marketing.Business.Services;
 using Marketing.DataAccess.Interface;
 using Marketing.DataAccess.Repositories;
+using StructureMap;
 
 namespace Marketing.Business.Mappings
 {

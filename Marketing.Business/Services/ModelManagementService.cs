@@ -2,6 +2,7 @@
 using Marketing.Business.Interface;
 using Marketing.Business.Models;
 using Marketing.DataAccess.Interface;
+using StructureMap;
 using System.Collections.Generic;
 using System.Linq;
 

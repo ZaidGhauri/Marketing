@@ -29,22 +29,6 @@ namespace Marketing.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-        public bool IsAdmin { get; set; }
-
-        public string Phone { get; set; }
-
-        public System.DateTime DateOfBirth { get; set; }
-
-        public string Address { get; set; }
-
-        public string City { get; set; }
-
-        public string Gender { get; set; }
-
-        public bool IsNewsLetter { get; set; }
-
-        public string PostCode { get; set; }
-
-        public string State { get; set; }
+        public bool IsAdmin { get; set; }   
     }
 }
