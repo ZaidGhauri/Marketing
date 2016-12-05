@@ -17,7 +17,7 @@ namespace Marketing.Controllers
     public class StoreController : BaseController
     {
         private IStoreRepository storeRepository;
-        public IModelManagementService _mapperService { get; set; }
+        public IModelManagementService _mapperService  { get; set; }
         public ActionResult Index()
         {
             return View();
