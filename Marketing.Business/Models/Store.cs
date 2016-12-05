@@ -7,6 +7,8 @@ namespace Marketing.Business.Models
 {
     public class Store : DomainObject
     {
+         [Required]
+         [Display(Name = "Store Name")]
         public string Name { get; set; }
 
         public string img { get; set; }

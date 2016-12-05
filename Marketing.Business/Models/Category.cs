@@ -12,6 +12,8 @@ namespace Marketing.Business.Models
         {
             Categories = new List<SelectListItem>();
         }
+        [Required]
+        [Display(Name = "Category Name")]
         public string Name { get; set; }
         public string Description { get; set; }
         public int ImageId { get; set; }

@@ -16,8 +16,8 @@ namespace Marketing.Controllers
 {
     public class StoreController : BaseController
     {
-        private IStoreRepository storeRepository;
-        public IModelManagementService _mapperService  { get; set; }
+        //private IStoreRepository storeRepository;
+        public IModelManagementService _mapperService { get; set; }
         public ActionResult Index()
         {
             return View();
@@ -28,11 +28,11 @@ namespace Marketing.Controllers
             if (Id > 0)
             {
                 _mapperService = new ModelManagementService();
-                using (storeRepository = new StoreRepository())
-                {
-                    model = _mapperService.MapStoreToModel(storeRepository.FindById(Id));
+                //using (storeRepository = new StoreRepository())
+                //{
+                //    model = _mapperService.MapStoreToModel(storeRepository.FindById(Id));
+                //}
                 }
-            }
             return View(model);
         }
         [HttpPost]
@@ -40,36 +40,36 @@ namespace Marketing.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (storeRepository = new StoreRepository())
-                {
-                    var store = new Data.Store();
-                    store.Name = model.Name;
-                    store.Published = model.Published;
-                    store.ShowOnHomePage = model.ShowOnHomePage;
-                    store.CompanyId = 0;
-                    store.CompanyName = store.CompanyName;
-                    store.CompanyPhoneNo = store.CompanyPhoneNo;
-                    store.IsNew = store.IsNew;
-                    store.IsPopular = store.IsPopular;
-                    store.IsFeatured = model.IsFeatured;
-                    store.IncludeInTopMenu = model.IncludeInTopMenu;
-                    store.Deleted = model.Deleted;
-                    store.WebSiteId = WebSite.Id;
-                    store.IsActive = model.IsActive;
-                    store.Created = DateTimeHelper.Now();
-                    store.CreatedBy = Session["UName"].ToString();
-                    store.Modified = DateTimeHelper.Now();
-                    store.ModifiedBy = Session["UName"].ToString(); ;
-                    if (model.Id > 0)
-                    {
-                        store = storeRepository.FindById(model.Id);
-                        storeRepository.Update(store);
-                    }
-                    else
-                    {
-                        storeRepository.Insert(store);
-                    }
-                }
+                //using (storeRepository = new StoreRepository())
+                //{
+                //    var store = new Data.Store();
+                //    store.Name = model.Name;
+                //    store.Published = model.Published;
+                //    store.ShowOnHomePage = model.ShowOnHomePage;
+                //    store.CompanyId = 0;
+                //    store.CompanyName = store.CompanyName;
+                //    store.CompanyPhoneNo = store.CompanyPhoneNo;
+                //    store.IsNew = store.IsNew;
+                //    store.IsPopular = store.IsPopular;
+                //    store.IsFeatured = model.IsFeatured;
+                //    store.IncludeInTopMenu = model.IncludeInTopMenu;
+                //    store.Deleted = model.Deleted;
+                //    store.WebSiteId = WebSite.Id;
+                //    store.IsActive = model.IsActive;
+                //    store.Created = DateTimeHelper.Now();
+                //    store.CreatedBy = Session["UName"].ToString();
+                //    store.Modified = DateTimeHelper.Now();
+                //    store.ModifiedBy = Session["UName"].ToString(); ;
+                //    if (model.Id > 0)
+                //    {
+                //        store = storeRepository.FindById(model.Id);
+                //        storeRepository.Update(store);
+                //    }
+                //    else
+                //    {
+                //        storeRepository.Insert(store);
+                //    }
+                //}
             }
             return View(model);
         }
