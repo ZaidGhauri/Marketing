@@ -28,6 +28,8 @@ namespace Marketing.Data
         public virtual Category Category { get; set; }
         public virtual Store Store { get; set; }
         public virtual Tag Tag { get; set; }
+        public int ImageId { get; set; }
+        public virtual Image Image { get; set; }
         public ICollection<Promotion> Promotions { get; set; }
     }
 }

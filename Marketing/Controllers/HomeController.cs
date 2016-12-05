@@ -12,22 +12,8 @@ using Marketing.Business.Services;
 
 namespace Marketing.Controllers
 {
-    public class HomeController : Controller
-    {   public IModelManagementService _mapperService { get; set; }
-
-        //protected override object MapEntityToModel(Category category)
-        //{
-        //    return new
-        //    {
-        //        category.CategoryId,
-        //        category.CategoryName,
-                
-        //    };
-        //}
-
-        //
-        // GET: /Home/
-       
+    public class HomeController : BaseController
+    {
         public ActionResult Index()
         {
             return View();
@@ -64,28 +50,13 @@ namespace Marketing.Controllers
             }
             return View();
         }
-
-    
-
-        public ActionResult SetHeader() 
-        {
-            Marketing.Models.HeaderMenu model = new Marketing.Models.HeaderMenu();
-            using (var repos = new ModelManagementRepository())
+        public ActionResult Stores()
             {
                 _mapperService = new ModelManagementService();
-                model.Categories = _mapperService.MapCategoryToModel(repos.GetAllCategory());
-                model.Stores = _mapperService.MapStoreToModel(repos.GetAllStore());
-            }
-            return View("/shared/_menu", model);
-        }
-        public ActionResult Stores()
-        {
-            Store model = new Store();
-            var _modelmanagementservice = new ModelManagementService();
             var Stores = new List<Store>();
-            using (var repos = new StoreManagementRepository())
+            using (var repos = new StoreRepository())
             {
-                Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore()).ToList();                
+                Stores = _mapperService.MapStoresToModel(repos.All()).ToList();
             }
             return View(Stores);
         }
@@ -93,11 +64,11 @@ namespace Marketing.Controllers
         {
 
             Category model = new Category();
-            var _modelmanagementservice = new ModelManagementService();
+            _mapperService = new ModelManagementService();
             var Category = new List<Category>();
-            using (var repos = new CategoryManagementRepository())
+            using (var repos = new CategoryRepository())
             {
-                Category = _modelmanagementservice.MapCategoryToModel(repos.GetAllCategory()).ToList();                
+                Category = _mapperService.MapCategoriesToModel(repos.All()).ToList();
             }
             return View(Category);
            
@@ -108,11 +79,11 @@ namespace Marketing.Controllers
         {
 
             Promotion model = new Promotion();
-            var _modelmanagementservice = new ModelManagementService();
+            _mapperService = new ModelManagementService();
             var Promotions = new List<Promotion>();
-            using (var repos = new ModelManagementRepository())
+            using (var repos = new PromotionRepository())
             {
-                Promotions = _modelmanagementservice.MapPromotionToModel(repos.GetAllPromotion()).ToList();
+                Promotions = _mapperService.MapPromotionsToModel(repos.All()).ToList();
             }
             return View(Promotions);
 

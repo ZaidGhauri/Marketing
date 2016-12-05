@@ -1,6 +1,7 @@
 ﻿using Marketing.Business.Interface;
 using Marketing.Business.Models;
 using Marketing.Business.Services;
+using Marketing.Common;
 using Marketing.DataAccess;
 using Marketing.DataAccess.Interface;
 using Marketing.DataAccess.Repositories;
@@ -10,132 +11,81 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Marketing.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
-        private ICategoryManagementRepository categoryManagementRepository;
+        private ICategoryRepository categoryRepository;
         public IModelManagementService _mapperService { get; set; }
-        //
-        // GET: /Category/
-
         public ActionResult Index()
         {
             return View();
         }
-
-        //
-        // GET: /Category/Details/5
-
-        public ActionResult Details(int? id)
+        public ActionResult Edit(int Id, string type)
         {
+            var model = new Category();
 
-            if (id.HasValue)
+            _mapperService = new ModelManagementService();
+            using (categoryRepository = new CategoryRepository())
             {
-                Category model = new Category();
-                var _modelmanagementservice = new ModelManagementService();
-                var Categories = new List<Category>();
-                using (var repos = new CategoryManagementRepository())
+                if (type == "SubCategory")
                 {
-                    var d = repos.GetAllCategory().Where(a => a.Id == id);
-                
+                    var categories = categoryRepository.All().ToList();
+                    foreach (var item in categories)
+                    {
+                        model.Categories.Add(new SelectListItem()
+                        {
+                            Text = item.Name,
+                            Value = item.Id.ToString()
+                        });
+                    }
                 }
-                return View(Categories);
-
-            }
-
-
-            return null;
-
-
-        }
-        //
-        // GET: /Category/Create
-
-        public ActionResult Save()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Category/Create
-
-        [HttpPost]
-        public ActionResult Save(Category model)
-        {
-            if (ModelState.IsValid)
-            {
-                using (categoryManagementRepository = new CategoryManagementRepository())
+                else
                 {
-                    var category = new Data.Category();
-                    category.Name = model.Name;
-                    category.WebSiteId = 2;
-                    category.IsActive = model.IsActive;
-                    if (model.Id > 0)
-                    {
-
-                        category = categoryManagementRepository.FindById(model.Id);
-                        categoryManagementRepository.Update(category);
-                    }
-                    else
-                    {
-                        categoryManagementRepository.Insert(category);
-                    }
+                    model.ParentCategoryId = 0;
+                }
+                if (Id > 0)
+                {
+                    model = _mapperService.MapCategoryToModel(categoryRepository.FindById(Id));
                 }
             }
             return View(model);
         }
-
-        //
-        // GET: /Category/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Category/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Category model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                using (categoryRepository = new CategoryRepository())
+                {
+                    var category = new Data.Category();
+                    category.Name = model.Name;
+                    category.Published = model.Published;
+                    category.ShowOnHomePage = model.ShowOnHomePage;
+                    category.ParentCategoryId = model.type == "Category" ? 0 : model.ParentCategoryId;
+                    category.IsFeatured = model.IsFeatured;
+                    category.IncludeInTopMenu = model.IncludeInTopMenu;
+                    category.Description = model.Description;
+                    category.Deleted = model.Deleted;
+                    category.WebSiteId = WebSite.Id;
+                    category.IsActive = model.IsActive;
+                    category.Created = DateTimeHelper.Now();
+                    category.CreatedBy = Session["UName"].ToString();
+                    category.Modified = DateTimeHelper.Now();
+                    category.ModifiedBy = Session["UName"].ToString(); ;
+                    if (model.Id > 0)
+                    {
+                        category = categoryRepository.FindById(model.Id);
+                        categoryRepository.Update(category);
+                    }
+                    else
+                    {
+                        categoryRepository.Insert(category);
+                    }
+                }
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Category/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Category/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(model);
         }
     }
 }

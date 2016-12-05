@@ -7,7 +7,6 @@ namespace Marketing.DataAccess.Interface
 {
     public interface IUserManagementRepository : IWriteRepository
     {
-        bool IsValid(string UserName, string Password);
-        User Register(string UserName, string Password, bool IsAdmin, int WebsiteId = 1);
+        User ValidUser(string UserName, string Password, int WebSiteId);
     }
 }

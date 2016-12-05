@@ -26,13 +26,6 @@ namespace Marketing
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-//            Mapper.CreateMaps();
-//            Mapper.CreateServiceMaps();
-//            GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(ObjectFactory.Container);
-//#if DEBUG
-//            Database.SetInitializer(new Migrator());
-//#endif
         }
     }
 }

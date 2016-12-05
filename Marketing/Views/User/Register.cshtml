@@ -1,11 +1,16 @@
-﻿@model Marketing.Models.RegisterModel
+﻿@using Kendo.Mvc.UI;
+@using System.Web.WebPages;
+
+@model Marketing.Models.RegisterModel
 @{
     ViewBag.Title = "Create New Account";
     var IsAllowedToAdmin = true;
 }
+<link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
 <style>
     .field-validation-error {
-        color:red;
+        color: red;
     }
 </style>
 <div class="col-md-10" style="border:none;">
@@ -15,12 +20,20 @@
         <h4>@ViewBag.Title</h4>
         <hr />
         <div class="form-group">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
-            @Html.ValidationMessageFor(m => m.Email)
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+            @Html.ValidationMessageFor(m => m.FirstName)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
+            @Html.ValidationMessageFor(m => m.LastName)
         </div>
         <div class="form-group">
             @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "User Name" })
             @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
+            @Html.ValidationMessageFor(m => m.Email)
         </div>
         <div class="form-group">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
@@ -30,10 +43,50 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
             @Html.ValidationMessageFor(m => m.ConfirmPassword)
         </div>
+        <div class="form-group">
+            @Html.Kendo().DropDownListFor(m => m.CountryId).DataTextField("Text").DataValueField("Value").BindTo(Model.Countries).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone" })
+        </div>
+        <div class="form-group">
+            @Html.Kendo().DatePickerFor(m => m.DateOfBirth).Min(new DateTime(1900, 1, 1))
+        </div>
+        <div class="form-group">
+            @Html.TextAreaFor(m => m.Address, new { @class = "form-control", placeholder = "Address" })
+        </div>
+        <div class="form-group">
+            @Html.TextAreaFor(m => m.City, new { @class = "form-control", placeholder = "City" })
+        </div>
+        <div class="form-group">
+            @Html.Kendo().DropDownListFor(m => m.Gender).DataTextField("Text").DataValueField("Value").BindTo(new List<SelectListItem>() {
+                new SelectListItem() {
+                  Text = "Male",
+                  Value = "Male"
+                },
+                new SelectListItem() {
+                  Text = "Female",
+                  Value = "Female"
+                }})
+        </div>
+        <div class="form-group">
+            @Html.TextAreaFor(m => m.PostCode, new { @class = "form-control", placeholder = "Post Code" })
+        </div>
+        <div class="form-group">
+            @Html.TextAreaFor(m => m.State, new { @class = "form-control", placeholder = "State" })
+        </div>
+
+        <div class="form-group">
+            @Html.CheckBoxFor(m => m.IsNewsLetter, new { title = "Is News Letter" })
+            Is News Letter
+        </div>
+        <div class="form-group">
+        </div>
         if (IsAllowedToAdmin)
         {
             <div class="form-group">
-                @Html.TextBoxFor(m => m.IsAdmin, new { @class = "form-control", placeholder = "Is Admin" })
+                @Html.CheckBoxFor(m => m.IsAdmin)
+                Is Admin
                 @Html.ValidationMessageFor(m => m.IsAdmin)
             </div>
         }

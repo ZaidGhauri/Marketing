@@ -1,6 +1,7 @@
 ﻿using Marketing.Business.Interface;
 using Marketing.Business.Models;
 using Marketing.Business.Services;
+using Marketing.Common;
 using Marketing.DataAccess;
 using Marketing.DataAccess.Interface;
 using Marketing.DataAccess.Repositories;
@@ -13,149 +14,64 @@ using System.Web.Mvc;
 
 namespace Marketing.Controllers
 {
-    public class StoreController : Controller
+    public class StoreController : BaseController
     {
-        private IStoreManagementRepository storeManagementRepository;
+        private IStoreRepository storeRepository;
         public IModelManagementService _mapperService { get; set; }
-        //
-        // GET: /Store/
         public ActionResult Index()
         {
             return View();
         }
-
-        //
-        // GET: /Store/Details/5
-
-        public ActionResult Details(int? id)
+        public ActionResult Edit(int Id)
         {
-
-            if (id.HasValue)
+            var model = new Store();
+            if (Id > 0)
             {
-                Store model = new Store();
-                var _modelmanagementservice = new ModelManagementService();
-                var Stores = new List<Store>();
-                using (var repos = new StoreManagementRepository())
+                _mapperService = new ModelManagementService();
+                using (storeRepository = new StoreRepository())
                 {
-                    var d = repos.GetAllStore().Where(a => a.Id == id);
-                    // Stores = _modelmanagementservice.MapStoreToModel(repos.GetAllStore().Where(a=> a.Id==Store)).ToList();
+                    model = _mapperService.MapStoreToModel(storeRepository.FindById(Id));
                 }
-                return View(Stores);
-
-                // var f = repos.GetAllStore().Where(a => a.Id == id);
-
-
-                // return View(f.ToList());
             }
-
-
-            return null;
-
-
+            return View(model);
         }
-
-        //
-        // GET: /Store/Create
-
-        public ActionResult Save()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Store/Create
-
         [HttpPost]
-        public ActionResult Save(Store model)
+        public ActionResult Edit(Store model)
         {
             if (ModelState.IsValid)
             {
-                using (storeManagementRepository = new StoreManagementRepository())
+                using (storeRepository = new StoreRepository())
                 {
                     var store = new Data.Store();
                     store.Name = model.Name;
-                    store.WebSiteId = 2;
+                    store.Published = model.Published;
+                    store.ShowOnHomePage = model.ShowOnHomePage;
+                    store.CompanyId = 0;
+                    store.CompanyName = store.CompanyName;
+                    store.CompanyPhoneNo = store.CompanyPhoneNo;
+                    store.IsNew = store.IsNew;
+                    store.IsPopular = store.IsPopular;
+                    store.IsFeatured = model.IsFeatured;
+                    store.IncludeInTopMenu = model.IncludeInTopMenu;
+                    store.Deleted = model.Deleted;
+                    store.WebSiteId = WebSite.Id;
                     store.IsActive = model.IsActive;
+                    store.Created = DateTimeHelper.Now();
+                    store.CreatedBy = Session["UName"].ToString();
+                    store.Modified = DateTimeHelper.Now();
+                    store.ModifiedBy = Session["UName"].ToString(); ;
                     if (model.Id > 0)
                     {
-
-                        store = storeManagementRepository.FindById(model.Id);
-                        storeManagementRepository.Update(store);
+                        store = storeRepository.FindById(model.Id);
+                        storeRepository.Update(store);
                     }
                     else
                     {
-                        storeManagementRepository.Insert(store);
+                        storeRepository.Insert(store);
                     }
                 }
             }
             return View(model);
         }
-
-        //
-        // GET: /Store/Edit/5
-
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Store/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Store/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Store/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(Store model)
-        {
-            if (ModelState.IsValid)
-            {
-                using (storeManagementRepository = new StoreManagementRepository())
-                {
-                    var store = new Data.Store();
-                    store.Name = model.Name;
-                    store.WebSiteId = 2;
-                    store.IsActive = model.IsActive;
-                    if (model.Id > 0)
-                    {
-
-                        store = storeManagementRepository.FindById(model.Id);
-                        storeManagementRepository.Delete(store);
-                    }
-                    else
-                    {
-                        
-                    }
-                }
-            }
-            return View(model);
-        }
-
-     
-
-
     }
 }

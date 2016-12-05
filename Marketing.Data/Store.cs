@@ -6,7 +6,6 @@ namespace Marketing.Data
     public class Store : DomainObject
     {
         public string Name { get; set; }
-        public string img { get; set; }
         public bool IsPopular { get; set; }
         public bool IsNew { get; set; }
         public string Url { get; set; }
@@ -20,5 +19,7 @@ namespace Marketing.Data
         public bool Deleted { get; set; }
         public int WebSiteId { get; set; }
         public virtual WebSite WebSite { get; set; }
+        public int ImageId { get; set; }
+        public virtual Image Image { get; set; }
     }
 }
