@@ -40,15 +40,15 @@ namespace Marketing.Controllers
         }
         private void setHeader()
         {
-            //Marketing.Models.HeaderMenu model = new Marketing.Models.HeaderMenu();
-            //using (var categoryRepo = new CategoryRepository())
-            //using (var storeRepo = new StoreRepository())
-            //{
-            //    _mapperService = new ModelManagementService();
-            //    model.Categories = _mapperService.MapCategoriesToModel(categoryRepo.All());
-            //    model.Stores = _mapperService.MapStoresToModel(storeRepo.All());
-            //    ViewBag.HeaderMenu = model;
-            //}
+            Marketing.Models.HeaderMenu model = new Marketing.Models.HeaderMenu();
+            using (var categoryRepo = new CategoryRepository())
+            using (var storeRepo = new StoreRepository())
+            {
+                _mapperService = new ModelManagementService();
+                model.Categories = _mapperService.MapCategoriesToModel(categoryRepo.All());
+                model.Stores = _mapperService.MapStoresToModel(storeRepo.All());
+                ViewBag.HeaderMenu = model;
+            }
         }
     }
 }

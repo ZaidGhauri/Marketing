@@ -8,12 +8,16 @@ using System.Web;
 using System.Web.Mvc;
 using Marketing.Business.Interface;
 using Marketing.Business.Services;
+using Marketing.DataAccess.Interface;
 
 
 namespace Marketing.Controllers
 {
     public class HomeController : BaseController
     {
+        public IStoreRepository storeRepository { get; set; }
+        public ICategoryRepository categoryRepository { get; set; }
+        public IPromotionRepository promotionRepository { get; set; }
         public ActionResult Index()
         {
             return View();
@@ -54,10 +58,10 @@ namespace Marketing.Controllers
             {
                 _mapperService = new ModelManagementService();
             var Stores = new List<Store>();
-            //using (var repos = new StoreRepository())
-            //{
-            //    Stores = _mapperService.MapStoresToModel(repos.All()).ToList();
-            //}
+            using (storeRepository = new StoreRepository())
+            {
+                Stores = _mapperService.MapStoresToModel(storeRepository.All()).ToList();
+            }
             return View(Stores);
         }
         public ActionResult Categories()
@@ -66,10 +70,10 @@ namespace Marketing.Controllers
             Category model = new Category();
             _mapperService = new ModelManagementService();
             var Category = new List<Category>();
-            //using (var repos = new CategoryRepository())
-            //{
-            //    Category = _mapperService.MapCategoriesToModel(repos.All()).ToList();
-            //}
+            using (categoryRepository = new CategoryRepository())
+            {
+                Category = _mapperService.MapCategoriesToModel(categoryRepository.All()).ToList();
+            }
             return View(Category);
            
 
@@ -81,9 +85,9 @@ namespace Marketing.Controllers
             Promotion model = new Promotion();
             _mapperService = new ModelManagementService();
             var Promotions = new List<Promotion>();
-            using (var repos = new PromotionRepository())
+            using (promotionRepository = new PromotionRepository())
             {
-                Promotions = _mapperService.MapPromotionsToModel(repos.All()).ToList();
+                Promotions = _mapperService.MapPromotionsToModel(promotionRepository.All()).ToList();
             }
             return View(Promotions);
 

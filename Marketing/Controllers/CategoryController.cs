@@ -18,6 +18,7 @@ namespace Marketing.Controllers
     {
        // private ICategoryRepository categoryRepository;
         public IModelManagementService _mapperService { get; set; }
+        public ICategoryRepository categoryRepository { get; set; }
         public ActionResult Index()
         {
             return View();
@@ -26,30 +27,30 @@ namespace Marketing.Controllers
         {
             var model = new Category();
 
-            //_mapperService = new ModelManagementService();
-            //using (categoryRepository = new CategoryRepository())
-            //{
-            //    if (type == "SubCategory")
-            //    {
-            //        var categories = categoryRepository.All().ToList();
-            //        foreach (var item in categories)
-            //        {
-            //            model.Categories.Add(new SelectListItem()
-            //            {
-            //                Text = item.Name,
-            //                Value = item.Id.ToString()
-            //            });
-            //        }
-            //    }
-            //    else
-            //    {
-            //        model.ParentCategoryId = 0;
-            //    }
-            //    if (Id > 0)
-            //    {
-            //        model = _mapperService.MapCategoryToModel(categoryRepository.FindById(Id));
-            //    }
-            //}
+            _mapperService = new ModelManagementService();
+            using (categoryRepository = new CategoryRepository())
+            {
+                if (type == "SubCategory")
+                {
+                    var categories = categoryRepository.All().ToList();
+                    foreach (var item in categories)
+                    {
+                        model.Categories.Add(new SelectListItem()
+                        {
+                            Text = item.Name,
+                            Value = item.Id.ToString()
+                        });
+                    }
+                }
+                else
+                {
+                    model.ParentCategoryId = 0;
+                }
+                if (Id > 0)
+                {
+                    model = _mapperService.MapCategoryToModel(categoryRepository.FindById(Id));
+                }
+            }
             return View(model);
         }
         [HttpPost]
@@ -57,33 +58,33 @@ namespace Marketing.Controllers
         {
             if (ModelState.IsValid)
             {
-                //using (categoryRepository = new CategoryRepository())
-                //{
-                //    var category = new Data.Category();
-                //    category.Name = model.Name;
-                //    category.Published = model.Published;
-                //    category.ShowOnHomePage = model.ShowOnHomePage;
-                //    category.ParentCategoryId = model.type == "Category" ? 0 : model.ParentCategoryId;
-                //    category.IsFeatured = model.IsFeatured;
-                //    category.IncludeInTopMenu = model.IncludeInTopMenu;
-                //    category.Description = model.Description;
-                //    category.Deleted = model.Deleted;
-                //    category.WebSiteId = WebSite.Id;
-                //    category.IsActive = model.IsActive;
-                //    category.Created = DateTimeHelper.Now();
-                //    category.CreatedBy = Session["UName"].ToString();
-                //    category.Modified = DateTimeHelper.Now();
-                //    category.ModifiedBy = Session["UName"].ToString(); ;
-                //    if (model.Id > 0)
-                //    {
-                //        category = categoryRepository.FindById(model.Id);
-                //        categoryRepository.Update(category);
-                //    }
-                //    else
-                //    {
-                //        categoryRepository.Insert(category);
-                //    }
-                //}
+                using (categoryRepository = new CategoryRepository())
+                {
+                    var category = new Data.Category();
+                    category.Name = model.Name;
+                    category.Published = model.Published;
+                    category.ShowOnHomePage = model.ShowOnHomePage;
+                    category.ParentCategoryId = model.type == "Category" ? 0 : model.ParentCategoryId;
+                    category.IsFeatured = model.IsFeatured;
+                    category.IncludeInTopMenu = model.IncludeInTopMenu;
+                    category.Description = model.Description;
+                    category.Deleted = model.Deleted;
+                    category.WebSiteId = WebSite.Id;
+                    category.IsActive = model.IsActive;
+                    category.Created = DateTimeHelper.Now();
+                    category.CreatedBy = Session["UName"].ToString();
+                    category.Modified = DateTimeHelper.Now();
+                    category.ModifiedBy = Session["UName"].ToString(); ;
+                    if (model.Id > 0)
+                    {
+                        category = categoryRepository.FindById(model.Id);
+                        categoryRepository.Update(category);
+                    }
+                    else
+                    {
+                        categoryRepository.Insert(category);
+                    }
+                }
             }
             return View(model);
         }
