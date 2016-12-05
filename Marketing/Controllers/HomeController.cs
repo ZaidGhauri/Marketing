@@ -54,10 +54,10 @@ namespace Marketing.Controllers
             {
                 _mapperService = new ModelManagementService();
             var Stores = new List<Store>();
-            using (var repos = new StoreRepository())
-            {
-                Stores = _mapperService.MapStoresToModel(repos.All()).ToList();
-            }
+            //using (var repos = new StoreRepository())
+            //{
+            //    Stores = _mapperService.MapStoresToModel(repos.All()).ToList();
+            //}
             return View(Stores);
         }
         public ActionResult Categories()
@@ -66,10 +66,10 @@ namespace Marketing.Controllers
             Category model = new Category();
             _mapperService = new ModelManagementService();
             var Category = new List<Category>();
-            using (var repos = new CategoryRepository())
-            {
-                Category = _mapperService.MapCategoriesToModel(repos.All()).ToList();
-            }
+            //using (var repos = new CategoryRepository())
+            //{
+            //    Category = _mapperService.MapCategoriesToModel(repos.All()).ToList();
+            //}
             return View(Category);
            
 
