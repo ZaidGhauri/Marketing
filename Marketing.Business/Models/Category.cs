@@ -16,6 +16,7 @@ namespace Marketing.Business.Models
         [Display(Name = "Category Name")]
         public string Name { get; set; }
         public string Description { get; set; }
+        [Required]
         public int ImageId { get; set; }
         public virtual Image Image { get; set; }
         public int ParentCategoryId { get; set; }
@@ -28,6 +29,6 @@ namespace Marketing.Business.Models
         public int WebSiteId { get; set; }
         public virtual WebSite Website { get; set; }
         public List<SelectListItem> Categories { get; set; }
-
+        public string ImagePath { get; set; }
     }
 }

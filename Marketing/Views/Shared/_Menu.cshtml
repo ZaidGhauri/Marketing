@@ -20,7 +20,20 @@
                 </button>
                 <a class="navbar-brand" href="/"><img src="~/img/logo.jpg" alt="logo" class="img-responsive" style="max-width: 191px;margin-top: -10px;" /></a>
             </div>
+            <style>
+                .navbar-nav > li > .dropdown-menu {
+                    margin-top: 0;
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                }
 
+                .mega-dropdown-menu {
+                    padding: 20px 0px;
+                    width: 100%;
+                    box-shadow: none;
+                    -webkit-box-shadow: none;
+                }
+            </style>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -28,16 +41,25 @@
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+
                             @foreach (var item in model.Categories)
                             {
-                                <li>@item.Name</li>
-                            }
-                            @if (Session["IsAdmin"] != null)
+    <ul  id="p04">
+        <li class="mega-dropdown-menu">@Html.ActionLink((string)item.Name, "Edit", "Category", new { Id = item.Id, type = "Category" }, null)</li>
+        
+    </ul>
+<li class="divider"></li>
+}
+                            @*@if (Session["IsAdmin"] != null)
                             {
-                                <li>@Html.ActionLink("Add New Category", "Category", "Edit", new { type = "Category" })</li>
-                                <li>@Html.ActionLink("Add New Sub Category", "Category", "Edit", new { type = "SubCategory"})</li>
-                            }
-                            <li>@Html.ActionLink("View All Categories", "Category", "Home")</li>
+                                <li>@Html.ActionLink("Add New Category", "Edit", "Category", new { Id = 0, type = "Category" }, new { type = "Category" })</li>
+                                <li>@Html.ActionLink("Add New Sub Category", "Edit", "Category", new { Id = 0, type = "SubCategory" }, new { type = "SubCategory" })</li>
+                            }*@
+                            <li>@Html.ActionLink("Add New Category", "Edit", "Category", new { Id = 0, type = "Category" }, null)</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Add New Sub Category", "Edit", "Category", new { Id = 0, type = "SubCategory" }, null)</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("View All Categories", "Categories", "Home")</li>
                         </ul>
 
                     </li>
@@ -52,18 +74,18 @@
                             }
                             @if (Session["IsAdmin"] != null)
                             {
-                                <li>@Html.ActionLink("Add New Store", "Store", "Edit")</li>
+                                <li>@Html.ActionLink("Add New Store", "Edit", "Store")</li>
                             }
-                            <li>@Html.ActionLink("View All Store", "Store", "Home")</li>
+                            <li>@Html.ActionLink("View All Store", "Stores", "Home")</li>
                         </ul>
                     </li>
                     <li>@Html.ActionLink("Coupons Deals", "Index", "Promotion")</li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Coupons <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li class="mega-dropdown-menu"><a href="#">Action</a></li>
+                            <li class ="mega-dropdown-menu"><a href="#">Another action</a></li>
+                            <li class="mega-dropdown-menu"><a href="#">Something else here</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Separated link</a></li>
                             <li class="divider"></li>

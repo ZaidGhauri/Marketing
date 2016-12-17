@@ -2,11 +2,13 @@
 using Marketing.Business.Models;
 using Marketing.Business.Services;
 using Marketing.Common;
+using Marketing.Data;
 using Marketing.DataAccess;
 using Marketing.DataAccess.Interface;
 using Marketing.DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,14 +21,14 @@ namespace Marketing.Controllers
        // private ICategoryRepository categoryRepository;
         public IModelManagementService _mapperService { get; set; }
         public ICategoryRepository categoryRepository { get; set; }
+        public IImageRepository imageRepository { get; set; }
         public ActionResult Index()
         {
             return View();
         }
         public ActionResult Edit(int Id, string type)
         {
-            var model = new Category();
-
+            var model = new Marketing.Business.Models.Category();
             _mapperService = new ModelManagementService();
             using (categoryRepository = new CategoryRepository())
             {
@@ -51,15 +53,28 @@ namespace Marketing.Controllers
                     model = _mapperService.MapCategoryToModel(categoryRepository.FindById(Id));
                 }
             }
+            model.type = type;
             return View(model);
         }
         [HttpPost]
-        public ActionResult Edit(Category model)
+        public ActionResult Edit(Marketing.Business.Models.Category model)
         {
             if (ModelState.IsValid)
             {
                 using (categoryRepository = new CategoryRepository())
+                using (imageRepository = new ImageRepository())
                 {
+                    var image = new Image()
+                    {
+                        Name = model.ImagePath,
+                        Created = DateTimeHelper.Now(),
+                        CreatedBy = Session["UName"].ToString(),
+                        IsActive = true,
+                        Modified = DateTimeHelper.Now(),
+                        ModifiedBy = Session["UName"].ToString()
+                    };
+                    image = imageRepository.Insert(image); 
+                    
                     var category = new Data.Category();
                     category.Name = model.Name;
                     category.Published = model.Published;
@@ -74,7 +89,8 @@ namespace Marketing.Controllers
                     category.Created = DateTimeHelper.Now();
                     category.CreatedBy = Session["UName"].ToString();
                     category.Modified = DateTimeHelper.Now();
-                    category.ModifiedBy = Session["UName"].ToString(); ;
+                    category.ModifiedBy = Session["UName"].ToString();
+                    category.ImageId = image.Id;
                     if (model.Id > 0)
                     {
                         category = categoryRepository.FindById(model.Id);
@@ -88,5 +104,54 @@ namespace Marketing.Controllers
             }
             return View(model);
         }
+        public ActionResult SaveImage(IEnumerable<HttpPostedFileBase> attachments)
+        {
+            foreach (var file in attachments)
+            {
+                var fileName = SHA1.Encode(Path.GetFileNameWithoutExtension(file.FileName)) + Path.GetExtension(file.FileName);
+                var destinationPath = Path.Combine(Server.MapPath("~/App_Data/Storage/Images"), fileName);
+                file.SaveAs(destinationPath);
+                //using (imageRepository = new ImageRepository())
+                //{
+                //    image = new Image()
+                //    {
+                //        Name = fileName,
+                //        Created = DateTimeHelper.Now(),
+                //        CreatedBy = Session["UName"].ToString(),
+                //        IsActive = true,
+                //        Modified = DateTimeHelper.Now(),
+                //        ModifiedBy = Session["UName"].ToString()
+                //    };
+                //    image = imageRepository.Insert(image);
+                //}
+            }
+            //ViewBag.ImageId = image.Id;
+            return Content("");
+        }
+        public ActionResult Remove(string[] fileNames)
+        {
+            // The parameter of the Remove action must be called "fileNames"
+
+            if (fileNames != null)
+            {
+                foreach (var fullName in fileNames)
+                {
+                    var fileName = SHA1.Encode(Path.GetFileNameWithoutExtension(fullName)) + Path.GetExtension(fullName);
+                    var physicalPath = Path.Combine(Server.MapPath("~/App_Data/Storage/Images"), fileName);
+
+                    // TODO: Verify user permissions
+
+                    if (System.IO.File.Exists(physicalPath))
+                    {
+                        // The files are not actually removed in this demo
+                        System.IO.File.Delete(physicalPath);
+                    }
+                }
+            }
+
+            // Return an empty string to signify success
+            return Content("");
+        }
+
     }
 }

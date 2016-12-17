@@ -8,7 +8,7 @@ namespace Marketing.DataAccess.EntityConfigurations
         public ImageConfig() 
        {   // Primary Key
             HasKey(t => t.Id);
-            Property(t => t.Url).HasMaxLength(200).IsRequired();
+            Property(t => t.Name).HasMaxLength(400).IsRequired();
        }
    }
 }

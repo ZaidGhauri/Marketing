@@ -4,7 +4,6 @@
         Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Categories</h2>
 <h2 id="our"> Categories </h2>
 <hr>
 <div class="col-md-12">
@@ -15,8 +14,6 @@
             <div class="nav">
                 <ul id="p04">
                     @Html.ActionLink(item.Name, "Details", "Store", new { id = item.Id }, null)
-
-
                 </ul>
 
             </div>

@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Interface\ICountryRepository.cs" />
+    <Compile Include="Interface\IImageRepository.cs" />
     <Compile Include="Interface\IStoreRepository.cs" />
     <Compile Include="Interface\IWebSiteRepository.cs" />
     <Compile Include="Interface\IUserManagementRepository.cs" />
@@ -87,10 +88,15 @@
     <Compile Include="Migrations\201612030404298_UpdateEntities.Designer.cs">
       <DependentUpon>201612030404298_UpdateEntities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612171054446_UpdateUrlColumntoNameInImageEntity.cs" />
+    <Compile Include="Migrations\201612171054446_UpdateUrlColumntoNameInImageEntity.Designer.cs">
+      <DependentUpon>201612171054446_UpdateUrlColumntoNameInImageEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\ImageRepository.cs" />
     <Compile Include="Repositories\StoreRepository.cs" />
     <Compile Include="Repositories\PromotionRepository.cs" />
     <Compile Include="Repositories\ContactUsManagementRepository.cs" />
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612030404298_UpdateEntities.resx">
       <DependentUpon>201612030404298_UpdateEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612171054446_UpdateUrlColumntoNameInImageEntity.resx">
+      <DependentUpon>201612171054446_UpdateUrlColumntoNameInImageEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

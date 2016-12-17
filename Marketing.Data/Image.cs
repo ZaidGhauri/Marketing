@@ -4,6 +4,6 @@ namespace Marketing.Data
 {
     public class Image : DomainObject
     {
-        public string Url { get; set; }
+        public string Name { get; set; }
     }
 }
