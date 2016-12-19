@@ -1,7 +1,8 @@
 ﻿using Marketing.Common;
+using Marketing.Data;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.Web.Mvc;
 
 namespace Marketing.Business.Models
 {
@@ -9,6 +10,7 @@ namespace Marketing.Business.Models
     {
         public Coupon()
         {
+
             Promotions = new List<Promotion>();
         }
         public string Name { get; set; }
@@ -31,5 +33,15 @@ namespace Marketing.Business.Models
         public virtual Store Store { get; set; }
         public virtual Tag Tag { get; set; }
         public ICollection<Promotion> Promotions { get; set; }
+
+        [Required]
+        [Display(Name = "Image")]
+        public string ImagePath { get; set; }
+
+        [Required]
+        public int ImageId { get; set; }
+        public virtual Image Image { get; set; }
+
+        public List<SelectListItem> Coupon { get; set; }
     }
 }

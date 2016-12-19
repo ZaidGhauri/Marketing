@@ -1,8 +1,8 @@
 ﻿@using Kendo.Mvc.UI;
-@model Marketing.Business.Models.Category
+@model Marketing.Business.Models.Coupon
 
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = "Coupon";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
@@ -11,6 +11,7 @@
     .field-validation-error {
         color: red;
     }
+
     .navigation {
         height: 100px;
     }
@@ -25,8 +26,12 @@
             @Html.ValidationMessageFor(model => model.Name)
         </div>
         <div class="form-group">
-            @Html.TextBoxFor(model => model.Description, new { @class = "form-control", placeholder = "Description" })
-            @Html.ValidationMessageFor(model => model.Description)
+            @Html.TextBoxFor(model => model.ShortDescription, new { @class = "form-control", placeholder = "Description" })
+            @Html.ValidationMessageFor(model => model.ShortDescription)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.FullDescription, new { @class = "form-control", placeholder = "Description" })
+            @Html.ValidationMessageFor(model => model.FullDescription)
         </div>
         <div class="form-group">
             @(Html.Kendo().Upload()
@@ -45,42 +50,27 @@
         </div>
         <div class="form-group">
             @Html.CheckBoxFor(m => m.IsFeatured)
-           Is Featured
+            Is Featured
             @Html.ValidationMessageFor(model => model.IsFeatured)
-        
+
             @Html.CheckBoxFor(m => m.ShowOnHomePage)
-           Show On Home
+            Show On Home
             @Html.ValidationMessageFor(model => model.ShowOnHomePage)
-        
+
             @Html.CheckBoxFor(m => m.IncludeInTopMenu)
             Include In Menu
             @Html.ValidationMessageFor(model => model.IncludeInTopMenu)
-        
-           @Html.CheckBoxFor(m => m.Published)
+
+            @Html.CheckBoxFor(m => m.Published)
             Published
             @Html.ValidationMessageFor(model => model.Published)
-       
-           @Html.CheckBoxFor(m => m.IsActive)
+
+            @Html.CheckBoxFor(m => m.IsActive)
             Is Active
             @Html.ValidationMessageFor(model => model.IsActive)
         </div>
-        
-        if (Model.type == "Category")
-        {
-            @Html.HiddenFor(m => m.ParentCategoryId)
-        }
-        else
-        {
-            <div class="form-group">
-                Parent Category
-                @Html.Kendo().DropDownListFor(m => m.ParentCategoryId).DataTextField("Text").DataValueField("Value").BindTo(Model.Categories).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ParentCategoryId)
-            </div>
-      
-    
-    }
-    
-       <p>
+
+        <p>
             <input type="submit" class="btn btn-warning" value="Create" />
         </p>
     }

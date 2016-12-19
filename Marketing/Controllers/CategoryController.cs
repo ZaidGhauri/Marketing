@@ -18,7 +18,7 @@ namespace Marketing.Controllers
 {
     public class CategoryController : BaseController
     {
-       // private ICategoryRepository categoryRepository;
+       
         public IModelManagementService _mapperService { get; set; }
         public ICategoryRepository categoryRepository { get; set; }
         public IImageRepository imageRepository { get; set; }

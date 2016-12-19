@@ -14,5 +14,7 @@ namespace Marketing.Business.Interface
         IList<Store> GetStoreDetail(int id);
         Category MapCategoryToModel(Data.Category category);
         Store MapStoreToModel(Data.Store store);
+
+        Coupon MapCouponToModel(Data.Coupon coupon);
     }
 }
