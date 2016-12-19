@@ -26,11 +26,11 @@
             @Html.ValidationMessageFor(model => model.Name)
         </div>
         <div class="form-group">
-            @Html.TextBoxFor(model => model.ShortDescription, new { @class = "form-control", placeholder = "Description" })
+            @Html.TextBoxFor(model => model.ShortDescription, new { @class = "form-control", placeholder = "Short Description" })
             @Html.ValidationMessageFor(model => model.ShortDescription)
         </div>
         <div class="form-group">
-            @Html.TextBoxFor(model => model.FullDescription, new { @class = "form-control", placeholder = "Description" })
+            @Html.TextBoxFor(model => model.FullDescription, new { @class = "form-control", placeholder = "Full Description" })
             @Html.ValidationMessageFor(model => model.FullDescription)
         </div>
         <div class="form-group">
@@ -70,12 +70,30 @@
             @Html.ValidationMessageFor(model => model.IsActive)
         </div>
 
+       
+            <div class="form-group">
+                Category
+                @Html.Kendo().DropDownListFor(m => m.CategoryId).DataTextField("Text").DataValueField("Value").BindTo(Model.Categories).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryId)
+            </div>
+      <div class="form-group">
+                SubCategory
+                @Html.Kendo().DropDownListFor(m => m.CategoryId).DataTextField("Text").DataValueField("Value").BindTo(Model.Categories).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CategoryId)
+            </div>
+    
+    <div class="form-group">
+               Store
+                @Html.Kendo().DropDownListFor(m => m.StoreId).DataTextField("Text").DataValueField("Value").BindTo(Model.Stores).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StoreId)
+            </div>
+        
         <p>
             <input type="submit" class="btn btn-warning" value="Create" />
         </p>
     }
     <div>
-        @Html.ActionLink("Back To Categories", "Categories", "Home")
+        @Html.ActionLink("Back To Coupons", "Coupon", "Home")
     </div>
 </div>
 <script>
