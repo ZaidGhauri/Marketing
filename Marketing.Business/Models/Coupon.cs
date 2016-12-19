@@ -41,8 +41,7 @@ namespace Marketing.Business.Models
         [Required]
         public int ImageId { get; set; }
         public virtual Image Image { get; set; }
-        public virtual Category Category { get; set; }
-        public virtual Store Store { get; set; }
+       
         public List<SelectListItem> Categories { get; set; }
 
         public List<SelectListItem> Stores { get; set; }
