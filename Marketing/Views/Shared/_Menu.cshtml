@@ -72,10 +72,12 @@
                             {
                                 <li><a href="#">@item.Name</a></li>
                             }
-                            @if (Session["IsAdmin"] != null)
+                            @*@if (Session["IsAdmin"] != null)
                             {
                                 <li>@Html.ActionLink("Add New Store", "Edit", "Store")</li>
-                            }
+                            }*@
+                            <li>@Html.ActionLink("Add New Store", "Edit", "Store", new { Id = 0 }, null)</li>
+                            
                             <li>@Html.ActionLink("View All Store", "Stores", "Home")</li>
                         </ul>
                     </li>

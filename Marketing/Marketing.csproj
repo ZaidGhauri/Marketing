@@ -427,6 +427,7 @@
     <Content Include="Views\Administrator\Index.cshtml" />
     <Content Include="Views\Home\ImageUpload.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Store\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

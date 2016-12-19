@@ -2,6 +2,7 @@
 using Marketing.Business.Models;
 using Marketing.Business.Services;
 using Marketing.Common;
+using Marketing.Data;
 using Marketing.DataAccess;
 using Marketing.DataAccess.Interface;
 using Marketing.DataAccess.Repositories;
@@ -19,6 +20,7 @@ namespace Marketing.Controllers
         //private IStoreRepository storeRepository;
         public IModelManagementService _mapperService { get; set; }
         public IStoreRepository storeRepository { get; set; }
+        public IImageRepository imageRepository { get; set; }
         
         public ActionResult Index()
         {
@@ -26,7 +28,7 @@ namespace Marketing.Controllers
         }
         public ActionResult Edit(int Id)
         {
-            var model = new Store();
+            var model = new Marketing.Business.Models.Store();
             if (Id > 0)
             {
                 _mapperService = new ModelManagementService();
@@ -34,16 +36,29 @@ namespace Marketing.Controllers
                 {
                     model = _mapperService.MapStoreToModel(storeRepository.FindById(Id));
                 }
-                }
+            }
             return View(model);
         }
         [HttpPost]
-        public ActionResult Edit(Store model)
+        public ActionResult Edit(Marketing.Business.Models.Store model)
         {
             if (ModelState.IsValid)
             {
                 using (storeRepository = new StoreRepository())
+                using (imageRepository = new ImageRepository())
                 {
+
+                    var image = new Image()
+                    {
+                        Name = model.ImagePath,
+                        Created = DateTimeHelper.Now(),
+                        CreatedBy = Session["UName"].ToString(),
+                        IsActive = true,
+                        Modified = DateTimeHelper.Now(),
+                        ModifiedBy = Session["UName"].ToString()
+                    };
+                    image = imageRepository.Insert(image); 
+
                     var store = new Data.Store();
                     store.Name = model.Name;
                     store.Published = model.Published;
