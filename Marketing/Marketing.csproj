@@ -146,6 +146,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -160,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="accessories.html" />
+    <Content Include="App_Data\Storage\Images\19f49d852660fe0a079cbf95c3efb34ba88de911.jpg" />
     <Content Include="Content\kendo\BlueOpal\editor.png" />
     <Content Include="Content\kendo\BlueOpal\imagebrowser.png" />
     <Content Include="Content\kendo\BlueOpal\indeterminate.gif" />
@@ -427,11 +429,12 @@
     <Content Include="Views\Administrator\Index.cshtml" />
     <Content Include="Views\Home\ImageUpload.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
-    <Content Include="Views\Store\Edit.cshtml" />
+    <Content Include="Views\Promotion\Edit.cshtml" />
+    <Content Include="Views\Store\Edit.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>

@@ -99,6 +99,41 @@ namespace Marketing.Business.Services
             model.ModifiedBy = store.ModifiedBy;
             return model;
         }
-      
+        public Coupon MapCouponToModel(Data.Coupon coupon)
+        {
+            Coupon model = new Coupon();
+            model.Name = coupon.Name;
+            model.Published = coupon.Published;
+            model.ShowOnHomePage = coupon.ShowOnHomePage;
+            coupon.IsFeatured = model.IsFeatured;
+            model.IncludeInTopMenu = coupon.IncludeInTopMenu;
+            model.Deleted = coupon.Deleted;
+            model.IsActive = coupon.IsActive;
+            model.Created = coupon.Created;
+            model.CreatedBy = coupon.CreatedBy;
+            model.Modified = coupon.Modified;
+            model.ModifiedBy = coupon.ModifiedBy;
+            model.AllowCustomerReviews = coupon.AllowCustomerReviews;
+            model.TotalReviews = coupon.TotalReviews;
+            model.ManufacturerNo = coupon.ManufacturerNo;
+            model.CategoryId = 0;
+            model.StoreId = 0;
+            model.TagId = 0;
+            return model;
+        }
+
+
+        public Promotion MapPromotionToModel(Data.Promotion promotion)
+        {
+            Promotion model = new Promotion();
+            model.Name = promotion.Name;
+            model.Id = promotion.Id;
+            model.Description = promotion.Description;
+            model.Created = promotion.Created;
+            model.IsActive = promotion.IsActive;
+            model.Modified = promotion.Modified;
+            model.ModifiedBy = promotion.ModifiedBy;
+          return model;
+        }
     }
 }

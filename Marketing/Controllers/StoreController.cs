@@ -47,7 +47,6 @@ namespace Marketing.Controllers
                 using (storeRepository = new StoreRepository())
                 using (imageRepository = new ImageRepository())
                 {
-
                     var image = new Image()
                     {
                         Name = model.ImagePath,
@@ -57,17 +56,16 @@ namespace Marketing.Controllers
                         Modified = DateTimeHelper.Now(),
                         ModifiedBy = Session["UName"].ToString()
                     };
-                    image = imageRepository.Insert(image); 
-
+                    image = imageRepository.Insert(image);
                     var store = new Data.Store();
                     store.Name = model.Name;
                     store.Published = model.Published;
                     store.ShowOnHomePage = model.ShowOnHomePage;
                     store.CompanyId = 0;
-                    store.CompanyName = store.CompanyName;
-                    store.CompanyPhoneNo = store.CompanyPhoneNo;
-                    store.IsNew = store.IsNew;
-                    store.IsPopular = store.IsPopular;
+                    store.CompanyName = model.CompanyName;
+                    store.CompanyPhoneNo = model.CompanyPhoneNo;
+                    store.IsNew = model.IsNew;
+                    store.IsPopular = model.IsPopular;
                     store.IsFeatured = model.IsFeatured;
                     store.IncludeInTopMenu = model.IncludeInTopMenu;
                     store.Deleted = model.Deleted;
@@ -76,7 +74,8 @@ namespace Marketing.Controllers
                     store.Created = DateTimeHelper.Now();
                     store.CreatedBy = Session["UName"].ToString();
                     store.Modified = DateTimeHelper.Now();
-                    store.ModifiedBy = Session["UName"].ToString(); ;
+                    store.ModifiedBy = Session["UName"].ToString();
+                    store.ImageId = image.Id;
                     if (model.Id > 0)
                     {
                         store = storeRepository.FindById(model.Id);
