@@ -18,7 +18,7 @@ namespace Marketing.Controllers
 {
     public class CategoryController : BaseController
     {
-       // private ICategoryRepository categoryRepository;
+        // private ICategoryRepository categoryRepository;
         public IModelManagementService _mapperService { get; set; }
         public ICategoryRepository categoryRepository { get; set; }
         public IImageRepository imageRepository { get; set; }
@@ -32,9 +32,13 @@ namespace Marketing.Controllers
             _mapperService = new ModelManagementService();
             using (categoryRepository = new CategoryRepository())
             {
+                if (Id > 0)
+                {
+                    model = _mapperService.MapCategoryToModel(categoryRepository.FindById(Id));
+                }
                 if (type == "SubCategory")
                 {
-                    var categories = categoryRepository.All().ToList();
+                    var categories = categoryRepository.All().Where(a=>a.ParentCategoryId == 0).ToList();
                     foreach (var item in categories)
                     {
                         model.Categories.Add(new SelectListItem()
@@ -47,10 +51,6 @@ namespace Marketing.Controllers
                 else
                 {
                     model.ParentCategoryId = 0;
-                }
-                if (Id > 0)
-                {
-                    model = _mapperService.MapCategoryToModel(categoryRepository.FindById(Id));
                 }
             }
             model.type = type;
@@ -73,8 +73,8 @@ namespace Marketing.Controllers
                         Modified = DateTimeHelper.Now(),
                         ModifiedBy = Session["UName"].ToString()
                     };
-                    image = imageRepository.Insert(image); 
-                    
+                    image = imageRepository.Insert(image);
+
                     var category = new Data.Category();
                     category.Name = model.Name;
                     category.Published = model.Published;
@@ -90,26 +90,34 @@ namespace Marketing.Controllers
                     category.CreatedBy = Session["UName"].ToString();
                     category.Modified = DateTimeHelper.Now();
                     category.ModifiedBy = Session["UName"].ToString();
-                    category.ImageId = image.Id;
                     if (model.Id > 0)
                     {
                         category = categoryRepository.FindById(model.Id);
+                        var img = imageRepository.FindById(category.ImageId);
+                        category.ImageId = image.Id;
                         categoryRepository.Update(category);
+                        if (img != null)
+                        {
+                            img.IsActive = false;
+                            img.Modified = DateTimeHelper.Now();
+                            img.ModifiedBy = Session["UName"].ToString();
+                        }
                     }
                     else
                     {
+                        category.ImageId = image.Id;
                         categoryRepository.Insert(category);
                     }
                 }
             }
-            return View(model);
+            return RedirectToAction("Edit", new { Id = model.Id, type = model.type });
         }
         public ActionResult SaveImage(IEnumerable<HttpPostedFileBase> attachments)
         {
             foreach (var file in attachments)
             {
                 var fileName = SHA1.Encode(Path.GetFileNameWithoutExtension(file.FileName)) + Path.GetExtension(file.FileName);
-                var destinationPath = Path.Combine(Server.MapPath("~/App_Data/Storage/Images"), fileName);
+                var destinationPath = Path.Combine(Server.MapPath("~/Storage/Images"), fileName);
                 file.SaveAs(destinationPath);
                 //using (imageRepository = new ImageRepository())
                 //{
@@ -137,7 +145,7 @@ namespace Marketing.Controllers
                 foreach (var fullName in fileNames)
                 {
                     var fileName = SHA1.Encode(Path.GetFileNameWithoutExtension(fullName)) + Path.GetExtension(fullName);
-                    var physicalPath = Path.Combine(Server.MapPath("~/App_Data/Storage/Images"), fileName);
+                    var physicalPath = Path.Combine(Server.MapPath("~/Storage/Images"), fileName);
 
                     // TODO: Verify user permissions
 

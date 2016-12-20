@@ -11,8 +11,12 @@
     .field-validation-error {
         color: red;
     }
+
     .navigation {
         height: 100px;
+    }
+    .u-avatar {
+        background-image: url('@Model.ImagePath')
     }
 </style>
 
@@ -81,6 +85,7 @@
                 @Html.Kendo().DropDownListFor(m => m.ParentCategoryId).DataTextField("Text").DataValueField("Value").BindTo(Model.Categories).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ParentCategoryId)
             </div>
+            <div class="u-avatar"></div>
         }
         <p>
             <input type="submit" class="btn btn-warning" value="Create" />
