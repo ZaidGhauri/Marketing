@@ -4,6 +4,7 @@ using Marketing.Business.Models;
 using Marketing.DataAccess.Interface;
 using StructureMap;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Marketing.Business.Services
@@ -28,6 +29,22 @@ namespace Marketing.Business.Services
             {
                 Category objCategory = new Category();
                 objCategory.Name = category.Name;
+                objCategory.Id = category.Id;
+                objCategory.Image = category.Image;
+                objCategory.Description = category.Description;
+                objCategory.Published = category.Published;
+                objCategory.ShowOnHomePage = category.ShowOnHomePage;
+                objCategory.ParentCategoryId = category.ParentCategoryId;
+                objCategory.IsFeatured = category.IsFeatured;
+                objCategory.IncludeInTopMenu = category.IncludeInTopMenu;
+                objCategory.ImagePath = Path.Combine("/Storage/Images", category.Image.Name);
+                objCategory.Deleted = category.Deleted;
+                objCategory.WebSiteId = category.WebSiteId;
+                objCategory.IsActive = category.IsActive;
+                objCategory.Created = category.Created;
+                objCategory.CreatedBy = category.CreatedBy;
+                objCategory.Modified = category.Modified;
+                objCategory.ModifiedBy = category.ModifiedBy;
                 lst.Add(objCategory);
             }
             return lst;
@@ -64,10 +81,11 @@ namespace Marketing.Business.Services
             model.Name = category.Name;
             model.Published = category.Published;
             model.ShowOnHomePage = category.ShowOnHomePage;
-            model.ParentCategoryId = 0;
+            model.ParentCategoryId = category.ParentCategoryId;
             model.IsFeatured = category.IsFeatured;
             model.IncludeInTopMenu = category.IncludeInTopMenu;
             model.Description = category.Description;
+            model.ImagePath = Path.Combine("/Storage/Images", category.Image.Name);
             model.Deleted = category.Deleted;
             model.WebSiteId = category.WebSiteId;
             model.IsActive = category.IsActive;

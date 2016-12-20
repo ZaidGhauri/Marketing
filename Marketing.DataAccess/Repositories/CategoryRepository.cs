@@ -17,5 +17,11 @@ namespace Marketing.DataAccess.Repositories
         {
             return Context.Categories.Where(a => a.IsActive).OrderBy(z => z.Name).ToList();
         }
+        public int FindByName(string Name)
+        {
+            var category = Context.Categories.Where(a => a.IsActive && a.Name == Name).FirstOrDefault();
+            if (category != null) return category.Id;
+            else return 0;
+        }
     }
 }
