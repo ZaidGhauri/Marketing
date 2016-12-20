@@ -53,10 +53,10 @@
             @Html.Kendo().DatePickerFor(m => m.DateOfBirth).Min(new DateTime(1900, 1, 1))
         </div>
         <div class="form-group">
-            @Html.TextAreaFor(m => m.Address, new { @class = "form-control", placeholder = "Address" })
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address" })
         </div>
         <div class="form-group">
-            @Html.TextAreaFor(m => m.City, new { @class = "form-control", placeholder = "City" })
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City" })
         </div>
         <div class="form-group">
             @Html.Kendo().DropDownListFor(m => m.Gender).DataTextField("Text").DataValueField("Value").BindTo(new List<SelectListItem>() {
@@ -70,23 +70,21 @@
                 }})
         </div>
         <div class="form-group">
-            @Html.TextAreaFor(m => m.PostCode, new { @class = "form-control", placeholder = "Post Code" })
+            @Html.TextBoxFor(m => m.PostCode, new { @class = "form-control", placeholder = "Post Code" })
         </div>
         <div class="form-group">
-            @Html.TextAreaFor(m => m.State, new { @class = "form-control", placeholder = "State" })
+             @Html.TextBoxFor(m => m.State, new { @class = "form-control", placeholder = "State" })
         </div>
 
         <div class="form-group">
-            @Html.CheckBoxFor(m => m.IsNewsLetter, new { title = "Is News Letter" })
-            Is News Letter
-        </div>
-        <div class="form-group">
-        </div>
+            @Html.CheckBoxFor(m => m.IsNewsLetter, new { title = "News Letter" })
+             News Letter
+        </div>       
         if (IsAllowedToAdmin)
         {
             <div class="form-group">
                 @Html.CheckBoxFor(m => m.IsAdmin)
-                Is Admin
+              Is Admin
                 @Html.ValidationMessageFor(m => m.IsAdmin)
             </div>
         }

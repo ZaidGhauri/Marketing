@@ -18,7 +18,7 @@ namespace Marketing.Controllers
 {
     public class CategoryController : BaseController
     {
-        // private ICategoryRepository categoryRepository;
+       
         public IModelManagementService _mapperService { get; set; }
         public ICategoryRepository categoryRepository { get; set; }
         public IImageRepository imageRepository { get; set; }
@@ -52,7 +52,7 @@ namespace Marketing.Controllers
                 {
                     model.ParentCategoryId = 0;
                 }
-            }
+                }
             model.type = type;
             return View(model);
         }
@@ -73,8 +73,8 @@ namespace Marketing.Controllers
                         Modified = DateTimeHelper.Now(),
                         ModifiedBy = Session["UName"].ToString()
                     };
-                    image = imageRepository.Insert(image);
-
+                    image = imageRepository.Insert(image); 
+                    
                     var category = new Data.Category();
                     category.Name = model.Name;
                     category.Published = model.Published;

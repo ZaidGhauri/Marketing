@@ -29,6 +29,9 @@ namespace Marketing.Business.Models
         public int WebSiteId { get; set; }
         public virtual WebSite Website { get; set; }
         public List<SelectListItem> Categories { get; set; }
+
+        [Required]
+        [Display(Name = "Image")]
         public string ImagePath { get; set; }
     }
 }
