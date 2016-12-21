@@ -16,7 +16,7 @@
                 <div class="col-md-3">
                     <div class="im-image">
                         <a href="/Store/Details/@item.Id">
-                            <img src="~/Storage/Images/@(Marketing.Common.SHA1.Encode(item.Image.Name.Split('.')[0]) +"."+ item.Image.Name.Split('.')[1])"
+                            <img src="@item.ImagePath"
                                  alt="@item.Name" class="img-responsive" style="max-width: 100%;height: 300px;">
                         </a>
                         <div class="cont-">
@@ -24,8 +24,8 @@
                             <p class="con-para">@item.Description</p>
                         </div>
                     </div>
-
                 </div>
+                
             }
         </div>
     </div>

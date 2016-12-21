@@ -32,6 +32,19 @@ namespace Marketing.Business.Services
                 objCategory.Id = category.Id;
                 objCategory.Image = category.Image;
                 objCategory.Description = category.Description;
+                objCategory.Published = category.Published;
+                objCategory.ShowOnHomePage = category.ShowOnHomePage;
+                objCategory.ParentCategoryId = category.ParentCategoryId;
+                objCategory.IsFeatured = category.IsFeatured;
+                objCategory.IncludeInTopMenu = category.IncludeInTopMenu;
+                objCategory.ImagePath = Path.Combine("/Storage/Images", category.Image.Name);
+                objCategory.Deleted = category.Deleted;
+                objCategory.WebSiteId = category.WebSiteId;
+                objCategory.IsActive = category.IsActive;
+                objCategory.Created = category.Created;
+                objCategory.CreatedBy = category.CreatedBy;
+                objCategory.Modified = category.Modified;
+                objCategory.ModifiedBy = category.ModifiedBy;
                 lst.Add(objCategory);
             }
             return lst;

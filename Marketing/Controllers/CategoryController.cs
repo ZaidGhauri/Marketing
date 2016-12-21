@@ -116,48 +116,24 @@ namespace Marketing.Controllers
         {
             foreach (var file in attachments)
             {
-                var fileName = SHA1.Encode(Path.GetFileNameWithoutExtension(file.FileName)) + Path.GetExtension(file.FileName);
-                var destinationPath = Path.Combine(Server.MapPath("~/Storage/Images"), fileName);
+                var destinationPath = Path.Combine(Server.MapPath("~/Storage/Images"), file.FileName);
                 file.SaveAs(destinationPath);
-                //using (imageRepository = new ImageRepository())
-                //{
-                //    image = new Image()
-                //    {
-                //        Name = fileName,
-                //        Created = DateTimeHelper.Now(),
-                //        CreatedBy = Session["UName"].ToString(),
-                //        IsActive = true,
-                //        Modified = DateTimeHelper.Now(),
-                //        ModifiedBy = Session["UName"].ToString()
-                //    };
-                //    image = imageRepository.Insert(image);
-                //}
             }
-            //ViewBag.ImageId = image.Id;
             return Content("");
         }
         public ActionResult Remove(string[] fileNames)
         {
-            // The parameter of the Remove action must be called "fileNames"
-
             if (fileNames != null)
             {
                 foreach (var fullName in fileNames)
                 {
-                    var fileName = SHA1.Encode(Path.GetFileNameWithoutExtension(fullName)) + Path.GetExtension(fullName);
-                    var physicalPath = Path.Combine(Server.MapPath("~/Storage/Images"), fileName);
-
-                    // TODO: Verify user permissions
-
+                    var physicalPath = Path.Combine(Server.MapPath("~/Storage/Images"), fullName);
                     if (System.IO.File.Exists(physicalPath))
                     {
-                        // The files are not actually removed in this demo
                         System.IO.File.Delete(physicalPath);
                     }
                 }
             }
-
-            // Return an empty string to signify success
             return Content("");
         }
 

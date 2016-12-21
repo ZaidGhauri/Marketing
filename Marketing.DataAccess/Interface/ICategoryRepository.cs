@@ -9,5 +9,6 @@ namespace Marketing.DataAccess.Interface
     {
         Category FindById(int Id);
         IList<Category> All();
+        int FindByName(string Name);
     }
 }
