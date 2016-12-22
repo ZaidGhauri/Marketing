@@ -11,7 +11,7 @@ namespace Marketing.Business.Models
          [Display(Name = "Store Name")]
         public string Name { get; set; }
 
-        public string img { get; set; }
+         public string ImagePath { get; set; }
         public bool IsPopular { get; set; }
         public bool IsNew { get; set; }
         public string Url { get; set; }

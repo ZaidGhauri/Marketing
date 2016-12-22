@@ -1,7 +1,19 @@
-﻿@model dynamic
+﻿@using Kendo.Mvc.UI;
+@model dynamic
 
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <h4>About</h4>
+
+<form method="post" action='@Url.Action("UploadFiles")' style="width:45%">
+    @(Html.Kendo().Upload().Name("files").HtmlAttributes(new { style = "width:700px" }))
+    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;Upload Categories</button>
+</form>

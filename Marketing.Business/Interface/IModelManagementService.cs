@@ -16,5 +16,6 @@ namespace Marketing.Business.Interface
         Store MapStoreToModel(Data.Store store);
 
         Coupon MapCouponToModel(Data.Coupon coupon);
+        Promotion MapPromotionToModel(Data.Promotion promotion);
     }
 }

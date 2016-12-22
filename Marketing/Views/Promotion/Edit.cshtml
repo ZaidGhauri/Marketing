@@ -1,8 +1,8 @@
 ﻿@using Kendo.Mvc.UI;
-@model Marketing.Business.Models.Category
+@model Marketing.Business.Models.Promotion
 
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = "Promotion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
@@ -15,15 +15,12 @@
     .navigation {
         height: 100px;
     }
-    .u-avatar {
-        background-image: url('@Model.ImagePath')
-    }
 </style>
 
 <div class="col-md-10" style="border:none;">
     @using (Html.BeginForm())
     {
-        @Html.HiddenFor(m => m.ImagePath)
+        @Html.HiddenFor(m => m.Id)
         <div class="form-group">
             @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Name" })
             @Html.ValidationMessageFor(model => model.Name)
@@ -32,6 +29,11 @@
             @Html.TextBoxFor(model => model.Description, new { @class = "form-control", placeholder = "Description" })
             @Html.ValidationMessageFor(model => model.Description)
         </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Coupons, new { @class = "form-control", placeholder = "Coupons" })
+            @Html.ValidationMessageFor(model => model.Coupons)
+        </div>
+        
         <div class="form-group">
             @(Html.Kendo().Upload()
                 .Name("attachments")
@@ -45,45 +47,13 @@
                     )
                 .Multiple(false)
             )
-            @Html.ValidationMessageFor(model => model.ImageId)
+            @Html.ValidationMessageFor(model => model.Id)
         </div>
         <div class="form-group">
-            @Html.CheckBoxFor(m => m.IsFeatured)
-           Is Featured
-            @Html.ValidationMessageFor(model => model.IsFeatured)
-        
-            @Html.CheckBoxFor(m => m.ShowOnHomePage)
-           Show On Home
-            @Html.ValidationMessageFor(model => model.ShowOnHomePage)
-        
-            @Html.CheckBoxFor(m => m.IncludeInTopMenu)
-            Include In Menu
-            @Html.ValidationMessageFor(model => model.IncludeInTopMenu)
-        
-           @Html.CheckBoxFor(m => m.Published)
-            Published
-            @Html.ValidationMessageFor(model => model.Published)
-       
-           @Html.CheckBoxFor(m => m.IsActive)
+            @Html.CheckBoxFor(m => m.IsActive)
             Is Active
             @Html.ValidationMessageFor(model => model.IsActive)
         </div>
-        
-        if (Model.type == "Category")
-        {
-            @Html.HiddenFor(m => m.ParentCategoryId)
-        }
-        else
-        {
-            <div class="form-group">
-                Parent Category
-                @Html.Kendo().DropDownListFor(m => m.ParentCategoryId).DataTextField("Text").DataValueField("Value").OptionLabel("Select Category").BindTo(Model.Categories).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ParentCategoryId)
-            </div>
-      
-    
-        }
-    
         <p>
             <input type="submit" class="btn btn-warning" value="Create" />
         </p>
