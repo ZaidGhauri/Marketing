@@ -18,6 +18,28 @@ namespace Marketing.Controllers
         {
             return View();
         }
+
+
+        private object countryDropdown()
+        {
+            RegisterModel model = new RegisterModel();
+            model.DateOfBirth = DateTimeHelper.Now();
+            using (var countryRepo = new CountryRepository())
+            {
+                var countries = countryRepo.All().ToList();
+
+                foreach (var item in countries)
+                {
+                    model.Countries.Add(new SelectListItem()
+                    {
+                        Text = item.Name,
+                        Value = item.Id.ToString()
+                    });
+                }
+            }
+            return View(model);
+        }
+
         public ActionResult Register()
         {
             RegisterModel model = new RegisterModel();
@@ -72,6 +94,8 @@ namespace Marketing.Controllers
             else
             {
                 ModelState.AddModelError("", "Login data is incorrect!");
+              //  countryDropdown();
+            
             }
             return View(model);
         }

@@ -1,5 +1,4 @@
 ﻿using Marketing.Business.Interface;
-using Marketing.Business.Models;
 using Marketing.Business.Services;
 using Marketing.Common;
 using Marketing.Data;
@@ -19,6 +18,8 @@ namespace Marketing.Controllers
     {
         public IModelManagementService _mapperService { get; set; }
         public ICouponRepository couponRepository { get; set; }
+        public IStoreRepository storeRepository { get; set; }
+        public ICategoryRepository categoryRepository { get; set; }
         public IImageRepository imageRepository { get; set; }
         public ActionResult Index()
         {
@@ -29,14 +30,37 @@ namespace Marketing.Controllers
         {
             var model = new Marketing.Business.Models.Coupon();
             _mapperService = new ModelManagementService();
-            using (couponRepository = new CouponRepository())
+            using (storeRepository = new StoreRepository())
             {
-                if (Id > 0)
+                using (categoryRepository = new CategoryRepository())
                 {
-                    model = _mapperService.MapCouponToModel(couponRepository.FindById(Id));
+                    var categories = categoryRepository.All().ToList();
+                    var stores = storeRepository.All().ToList();
+                    foreach (var item in categories)
+                    {
+                        model.Categories.Add(new SelectListItem()
+                        {
+                            Text = item.Name,
+                            Value = item.Id.ToString()
+                        });
+
+                    }
+                    foreach (var item in stores)
+                    {
+                        model.Stores.Add(new SelectListItem()
+                        {
+                            Text = item.Name,
+                            Value = item.Id.ToString()
+                        });
+
+                    }
+                    if (Id > 0)
+                    {
+                        model = _mapperService.MapCouponToModel(couponRepository.FindById(Id));
+                    }
                 }
             }
-            
+
             return View(model);
         }
         [HttpPost]
@@ -85,5 +109,7 @@ namespace Marketing.Controllers
             }
             return View(model);
         }
+
+             
     }
 }

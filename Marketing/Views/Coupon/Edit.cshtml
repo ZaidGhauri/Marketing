@@ -73,19 +73,12 @@
        
             <div class="form-group">
                 Category
-                @Html.Kendo().DropDownListFor(m => m.CategoryId).DataTextField("Text").DataValueField("Value").BindTo(Model.Categories).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
+                @Html.Kendo().DropDownListFor(m => m.CategoryId).DataTextField("Text").DataValueField("Value").OptionLabel("Select Category").BindTo(Model.Categories).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CategoryId)
-            </div>
-      <div class="form-group">
-                SubCategory
-                @Html.Kendo().DropDownListFor(m => m.CategoryId).DataTextField("Text").DataValueField("Value").BindTo(Model.Categories).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CategoryId)
-            </div>
-    
-    <div class="form-group">
+            
                Store
-                @Html.Kendo().DropDownListFor(m => m.StoreId).DataTextField("Text").DataValueField("Value").BindTo(Model.Stores).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.StoreId)
+              @Html.Kendo().DropDownListFor(m => m.Stores).DataTextField("Text").DataValueField("Value").OptionLabel("Select Store").BindTo(Model.Stores).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
+              @Html.ValidationMessageFor(model => model.StoreId)
             </div>
         
         <p>

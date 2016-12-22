@@ -10,7 +10,8 @@ namespace Marketing.Business.Models
     {
         public Coupon()
         {
-            
+            Categories = new List<SelectListItem>();     
+            Stores = new List<SelectListItem>();          
             Promotions = new List<Promotion>();
         }
         public string Name { get; set; }
@@ -29,8 +30,8 @@ namespace Marketing.Business.Models
         public int? CategoryId { get; set; }
         public int? StoreId { get; set; }
         public int? TagId { get; set; }
-        public virtual Category Category { get; set; }
-        public virtual Store Store { get; set; }
+        //public virtual Category Category { get; set; }
+        //public virtual Store Store { get; set; }
         public virtual Tag Tag { get; set; }
         public ICollection<Promotion> Promotions { get; set; }
 
@@ -41,9 +42,9 @@ namespace Marketing.Business.Models
         [Required]
         public int ImageId { get; set; }
         public virtual Image Image { get; set; }
-       
-        public List<SelectListItem> Categories { get; set; }
-
+        
         public List<SelectListItem> Stores { get; set; }
+        public List<SelectListItem> Categories { get; set; }
+       
     }
 }

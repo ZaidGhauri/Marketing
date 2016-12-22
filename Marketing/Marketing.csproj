@@ -430,6 +430,8 @@
     <Content Include="Views\Home\ImageUpload.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Coupon\Edit.cshtml" />
+    <Content Include="Views\Home\_Coupon.cshtml" />
+    <Content Include="Views\Shared\_Coupon.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

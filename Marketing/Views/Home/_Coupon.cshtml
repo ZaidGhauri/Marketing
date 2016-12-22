@@ -1,0 +1,20 @@
+﻿@model List<Marketing.Business.Models.Coupon>
+@*@{
+    var model = ViewBag.Coupon != null ? ViewBag.Coupon : new Marketing.Business.Models.Coupon();
+}*@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<h2 id="our"> Coupon </h2>
+<hr>
+<div class="col-md-12">
+    @foreach (var item in Model)
+    {
+        <div class="span4">
+            <div class="col-md-4">
+                <a href="@item.Name">
+                    <p id="offer-1">@item.Name</p>
+                    @*<img src="@Url.Content(@item.img)" class="img-responsive center-block" style="border:1px solid #e6e6e6">*@
+                </a>
+            </div>
+        </div>}
+
+</div>

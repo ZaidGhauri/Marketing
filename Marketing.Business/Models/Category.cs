@@ -11,6 +11,7 @@ namespace Marketing.Business.Models
         public Category()
         {
             Categories = new List<SelectListItem>();
+            Coupons = new List<SelectListItem>();
         }
         [Required]
         [Display(Name = "Category Name")]
@@ -29,6 +30,9 @@ namespace Marketing.Business.Models
         public int WebSiteId { get; set; }
         public virtual WebSite Website { get; set; }
         public List<SelectListItem> Categories { get; set; }
+
+        public List<SelectListItem> Coupons { get; set; }
+
 
         [Required]
         [Display(Name = "Image")]

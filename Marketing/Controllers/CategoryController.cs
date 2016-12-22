@@ -26,6 +26,21 @@ namespace Marketing.Controllers
         {
             return View();
         }
+
+        public ActionResult Details(int id)
+        {
+           
+            var Category = new List<Marketing.Business.Models.Category>();
+            using (categoryRepository = new CategoryRepository())
+            {
+                
+            }
+            return View(Category);
+           
+        }
+
+
+
         public ActionResult Edit(int Id, string type)
         {
             var model = new Marketing.Business.Models.Category();

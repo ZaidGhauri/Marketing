@@ -33,6 +33,18 @@ namespace Marketing.Business.Services
             return lst;
         }
 
+        public IList<Coupon> MapCouponsToModel(IList<Data.Coupon> coupons)
+        {
+            IList<Coupon> lst = new List<Coupon>();
+            foreach (var coupon in coupons)
+            {
+                Coupon objCoupon = new Coupon();
+                objCoupon.Name = coupon.Name;
+                lst.Add(objCoupon);
+            }
+            return lst;
+        }
+
         public IList<Promotion> MapPromotionsToModel(IList<Data.Promotion> promotions)
         {
             IList<Promotion> lst = new List<Promotion>();

@@ -1,11 +1,9 @@
-﻿using Marketing.Common;
-using Marketing.Data;
-using Marketing.DataAccess.Interface;
+﻿using Marketing.Data;
 using Marketing.DataAccess.Repositories.Core;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Marketing.DataAccess.Repositories
+namespace Marketing.DataAccess.Interface
 {
     public class CouponRepository : WriteRepository<Context>, ICouponRepository
     {
