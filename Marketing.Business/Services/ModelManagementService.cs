@@ -105,6 +105,7 @@ namespace Marketing.Business.Services
             model.CreatedBy = category.CreatedBy;
             model.Modified = category.Modified;
             model.ModifiedBy = category.ModifiedBy;
+            model.Counpons = MapCouponsToModel(category.Counpons);
             return model;
         }
         public Store MapStoreToModel(Data.Store store)

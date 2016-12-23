@@ -1,0 +1,21 @@
+﻿@using Kendo.Mvc.UI;
+@model Marketing.Business.Models.Category
+
+@{
+    ViewBag.Title = @Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+<style>
+    .field-validation-error {
+        color: red;
+    }
+    .navigation {
+        height: 100px;
+    }
+</style>
+
+<div class="col-md-10" style="border:none;">
+    @Html.Partial("_Counpon", Model.Counpons)
+</div>

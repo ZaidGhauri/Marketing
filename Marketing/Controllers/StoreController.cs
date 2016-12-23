@@ -86,8 +86,13 @@ namespace Marketing.Controllers
                         storeRepository.Insert(store);
                     }
                 }
+                return RedirectToAction("Index", "Home");
             }
-            return View(model);
+            else
+            {
+                ModelState.AddModelError("", "Store data is incorrect!");
+                return View(model);
+            }
         }
     }
 }

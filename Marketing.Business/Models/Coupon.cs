@@ -10,8 +10,8 @@ namespace Marketing.Business.Models
     {
         public Coupon()
         {
-            Categories = new List<SelectListItem>();     
-            Stores = new List<SelectListItem>();          
+            Categories = new List<SelectListItem>();
+            Stores = new List<SelectListItem>();
             Promotions = new List<Promotion>();
         }
         public string Name { get; set; }
@@ -42,9 +42,9 @@ namespace Marketing.Business.Models
         [Required]
         public int ImageId { get; set; }
         public virtual Image Image { get; set; }
-        
+
         public List<SelectListItem> Stores { get; set; }
         public List<SelectListItem> Categories { get; set; }
-       
+
     }
 }
