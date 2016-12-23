@@ -38,7 +38,7 @@
 
                             @foreach (var item in model.Categories)
                             {
-                                <li class="dropdown-menu">@Html.ActionLink((string)item.Name, "Edit", "Category", new { Id = item.Id, type = "Category" }, null)</li>
+                                <li>@Html.ActionLink((string)item.Name, "Details", "Category", new { Id = item.Id}, null)</li>
                                 <li class="divider"></li>
                             }
                             @if (Session["IsAdmin"] != null)
