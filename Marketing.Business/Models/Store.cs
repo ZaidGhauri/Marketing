@@ -7,6 +7,12 @@ namespace Marketing.Business.Models
 {
     public class Store : DomainObject
     {
+        public Store()
+        {
+            Counpons = new List<Coupon>();
+        }
+
+
          [Required]
          [Display(Name = "Store Name")]
         public string Name { get; set; }
@@ -25,5 +31,7 @@ namespace Marketing.Business.Models
         public bool Deleted { get; set; }
         public int WebSiteId { get; set; }
         public virtual WebSite Website { get; set; }
+
+        public IList<Coupon> Counpons { get; set; }
     }
 }
