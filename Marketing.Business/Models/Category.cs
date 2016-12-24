@@ -10,7 +10,7 @@ namespace Marketing.Business.Models
     {
         public Category()
         {
-            Categories = new List<SelectListItem>();
+            SubCategories = new List<SelectListItem>();
             Counpons = new List<Coupon>();
         }
         [Required]
@@ -29,12 +29,12 @@ namespace Marketing.Business.Models
         public string type { get; set; }
         public int WebSiteId { get; set; }
         public virtual WebSite Website { get; set; }
-        public List<SelectListItem> Categories { get; set; }
+        public List<SelectListItem> SubCategories { get; set; }
 
         [Required]
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
         public string ParentCategoryName { get; set; }
-        public List<Coupon> Counpons { get; set; }
+        public IList<Coupon> Counpons { get; set; }
     }
 }

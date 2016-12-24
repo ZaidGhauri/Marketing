@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 @{
-    var model = ViewBag.HeaderMenu != null ? ViewBag.HeaderMenu : new Marketing.Models.HeaderMenu(); 
+    var model = ViewBag.HeaderMenu != null ? ViewBag.HeaderMenu : new Marketing.Models.HeaderMenu();
 }
 <div class="navigation">
 
@@ -21,7 +21,6 @@
                 <a class="navbar-brand" href="/"><img src="~/img/logo.jpg" alt="logo" class="img-responsive" style="max-width: 191px;margin-top: -10px;" /></a>
             </div>
             <style>
-               
                 .mega-dropdown-menu {
                     padding: 20px 0px;
                     width: 100%;
@@ -34,18 +33,14 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
 
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
-    <ul class="dropdown-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
 
-        @foreach (var item in model.Categories)
-        {
-           
-            <li class="dropdown-menu">@Html.ActionLink((string)item.Name, "Edit", "Category", new { Id = item.Id, type = "Category" }, null)</li>
-
-
-            <li class="divider"></li>
-       
-        }
+                            @foreach (var item in model.Categories)
+                            {
+                                <li>@Html.ActionLink((string)item.Name, "Details", "Category", new { Id = item.Id}, null)</li>
+                                <li class="divider"></li>
+                            }
                             @if (Session["IsAdmin"] != null)
                             {
                                 <li>@Html.ActionLink("Add New Category", "Edit", "Category", new { Id = 0, type = "Category" }, new { type = "Category" })</li>
@@ -69,11 +64,11 @@
                                 <li><a href="#">@item.Name</a></li>
                             }
                             @*@if (Session["IsAdmin"] != null)
-                            {
-                                <li>@Html.ActionLink("Add New Store", "Edit", "Store")</li>
-                            }*@
+                                {
+                                    <li>@Html.ActionLink("Add New Store", "Edit", "Store")</li>
+                                }*@
                             <li>@Html.ActionLink("Add New Store", "Edit", "Store", new { Id = 0 }, null)</li>
-                            
+
                             <li>@Html.ActionLink("View All Store", "Edit", "Promotion", new { Id = 0 }, null)</li>
                         </ul>
                     </li>
@@ -83,10 +78,10 @@
                         <ul class="dropdown-menu">
                             @if (Session["IsAdmin"] != null)
                             {
-                            <li>@Html.ActionLink("Add New Coupon", "Edit", "Coupon", new { Id = 0, type = "Coupon" }, null)</li>
+                                <li>@Html.ActionLink("Add New Coupon", "Edit", "Coupon", new { Id = 0, type = "Coupon" }, null)</li>
                             }
                             <li class="mega-dropdown-menu"><a href="#">Action</a></li>
-                            <li class ="mega-dropdown-menu"><a href="#">Another action</a></li>
+                            <li class="mega-dropdown-menu"><a href="#">Another action</a></li>
                             <li class="mega-dropdown-menu"><a href="#">Something else here</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Separated link</a></li>

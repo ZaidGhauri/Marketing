@@ -425,10 +425,16 @@
     <Content Include="Views\Home\Promotions.cshtml" />
     <Content Include="Views\Store\Save.cshtml" />
     <Content Include="Views\Home\_SetHeader.cshtml" />
-    <Content Include="Views\_Menu.cshtml" />
     <Content Include="Views\Administrator\Index.cshtml" />
     <Content Include="Views\Home\ImageUpload.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Promotion\Edit.cshtml" />
+    <Content Include="Views\Store\Edit.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Coupon\Edit.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Shared\_Coupons.cshtml" />
     <Content Include="Views\Coupon\Edit.cshtml" />
     <Content Include="Views\Home\_Coupon.cshtml" />
     <Content Include="Views\Shared\_Coupon.cshtml" />

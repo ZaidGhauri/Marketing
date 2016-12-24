@@ -1,0 +1,36 @@
+﻿@using Kendo.Mvc.UI;
+@model Marketing.Business.Models.Category
+
+@{
+    ViewBag.Title = @Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+<style>
+    .field-validation-error {
+        color: red;
+    }
+    .navigation {
+        height: 100px;
+    }
+</style>
+
+<div class="col-md-10" style="border:none;">
+    <div class="col-md-12">
+        @foreach (var item in Model.Counpons)
+        {
+            <div class="span4">
+                <div class="col-md-4">
+                    <a href="@item.Name">
+                        <p id="offer-1">@item.Name</p>
+                        <a href="/Coupon/Details/@item.Id">
+                            <img src="@item.ImagePath"
+                                 alt="@item.Name" class="img-responsive" style="max-width: 100%;height: 300px;" />
+                        </a>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

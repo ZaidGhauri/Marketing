@@ -30,11 +30,6 @@
             @Html.ValidationMessageFor(model => model.Description)
         </div>
         <div class="form-group">
-            @Html.TextBoxFor(model => model.Coupons, new { @class = "form-control", placeholder = "Coupons" })
-            @Html.ValidationMessageFor(model => model.Coupons)
-        </div>
-        
-        <div class="form-group">
             @(Html.Kendo().Upload()
                 .Name("attachments")
                 .Async(async => async

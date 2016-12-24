@@ -1,0 +1,17 @@
+﻿@model List<Marketing.Business.Models.Coupon>
+<div class="col-md-12">
+    @foreach (var item in Model)
+    {
+        <div class="span4">
+            <div class="col-md-4">
+                <a href="@item.Name">
+                    <p id="offer-1">@item.Name</p>
+                    <a href="/Coupon/Details/@item.Id">
+                        <img src="@item.ImagePath"
+                             alt="@item.Name" class="img-responsive" style="max-width: 100%;height: 300px;" />
+                    </a>
+                </a>
+            </div>
+        </div>
+    }
+</div>

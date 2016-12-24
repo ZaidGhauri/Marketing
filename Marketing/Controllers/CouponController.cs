@@ -89,6 +89,8 @@ namespace Marketing.Controllers
                     coupon.IsFeatured = model.IsFeatured;
                     coupon.IncludeInTopMenu = model.IncludeInTopMenu;
                     coupon.FullDescription = model.FullDescription;
+                    coupon.CategoryId = model.CategoryId;
+                    coupon.StoreId = model.StoreId;
                     coupon.Deleted = model.Deleted;
                     coupon.IsActive = model.IsActive;
                     coupon.Created = DateTimeHelper.Now();
@@ -106,8 +108,13 @@ namespace Marketing.Controllers
                         couponRepository.Insert(coupon);
                     }
                 }
+                return RedirectToAction("Index", "Home");
             }
-            return View(model);
+            else
+            {
+                ModelState.AddModelError("", "Login data is incorrect!");
+                return View(model);                    
+            }
         }
 
 
