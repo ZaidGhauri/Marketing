@@ -45,5 +45,6 @@ namespace Marketing.Business.Models
         public List<SelectListItem> Categories { get; set; }
 
         public List<SelectListItem> Stores { get; set; }
+        
     }
 }

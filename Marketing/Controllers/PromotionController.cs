@@ -48,7 +48,6 @@ namespace Marketing.Controllers
                 using (promotionRepository = new PromotionRepository())
                 using (imageRepository = new ImageRepository())
                 {
-
                     var image = new Image()
                     {
                         Name = model.Name,

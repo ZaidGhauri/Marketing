@@ -30,9 +30,30 @@
             @Html.ValidationMessageFor(model => model.Description)
         </div>
         <div class="form-group">
+            @Html.TextBoxFor(model => model.Created, new { @class = "form-control", placeholder = "Created" })
+            @Html.ValidationMessageFor(model => model.Created)
+        </div>
+        
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.CreatedBy, new { @class = "form-control", placeholder = "CreatedBy" })
+            @Html.ValidationMessageFor(model => model.CreatedBy)
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.IsActive, new { @class = "form-control", placeholder = "IsActive" })
+            @Html.ValidationMessageFor(model => model.IsActive)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Modified, new { @class = "form-control", placeholder = "Modified" })
+            @Html.ValidationMessageFor(model => model.Modified)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.ModifiedBy, new { @class = "form-control", placeholder = "ModifiedBy" })
+            @Html.ValidationMessageFor(model => model.ModifiedBy)
+        </div>
+        @*<div class="form-group">
             @Html.TextBoxFor(model => model.Coupons, new { @class = "form-control", placeholder = "Coupons" })
             @Html.ValidationMessageFor(model => model.Coupons)
-        </div>
+        </div*@
         
         <div class="form-group">
             @(Html.Kendo().Upload()
