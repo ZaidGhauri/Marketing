@@ -83,6 +83,7 @@ namespace Marketing.Controllers
                     };
                     userRepository.Insert(user);
                     Session["UName"] = model.UserName;
+                    Session["UId"] = user.Id;
                     Session["IsAdmin"] = model.IsAdmin;
                     return RedirectToAction("Index", "Home");
                 }
@@ -110,6 +111,7 @@ namespace Marketing.Controllers
                     if (user != null && user.Id > 0)
                     {
                         Session["UName"] = model.UserName;
+                        Session["UId"] = user.Id;
                         Session["IsAdmin"] = user.IsAdmin;
                         return RedirectToAction("Index", "Home");
                     }
