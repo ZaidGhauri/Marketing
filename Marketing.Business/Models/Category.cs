@@ -11,7 +11,8 @@ namespace Marketing.Business.Models
         public Category()
         {
             SubCategories = new List<SelectListItem>();
-            Counpons = new List<Coupon>();
+            Coupons = new List<Coupon>();
+            Stores = new List<Store>();
         }
         [Required]
         [Display(Name = "Category Name")]
@@ -35,6 +36,7 @@ namespace Marketing.Business.Models
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
         public string ParentCategoryName { get; set; }
-        public IList<Coupon> Counpons { get; set; }
+        public IList<Coupon> Coupons { get; set; }
+        public IList<Store> Stores { get; set; }
     }
 }

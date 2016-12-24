@@ -2,15 +2,38 @@
 @model Marketing.Business.Models.Category
 
 @{
-    ViewBag.Title = @Model.Name;
+    ViewBag.Title = @Model.Name; ;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
-<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
 
+<br>
+<br>
+<div class="three-box-top-event">
+    <div class="container">
+        <h2 style="text-align:left;">Categories </h2>
+        <div class="row">
+            @foreach (var item in Model.Coupons)
+            {
+                <div class="col-md-3">
+                    <div class="im-image">
+                        <a href="/Category/Details/@item.Id">
+                            <img src="@item.ImagePath"
+                                 alt="@item.Name" class="img-responsive" style="max-width: 100%;height: 300px;">
+                        </a>
+                        <div class="cont-">
+                            <a id="hed" href="/Category/Details/@item.Id">@item.Name</a>
+                            <p class="con-para">@item.ShortDescription</p>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
 <div class="col-md-10" style="border:none;">
     <div class="col-md-12">
-        @foreach (var item in Model.Counpons)
+        @foreach (var item in Model.Stores)
         {
             <div class="span4">
                 <div class="col-md-4">
@@ -24,5 +47,6 @@
                 </div>
             </div>
         }
+
     </div>
 </div>
