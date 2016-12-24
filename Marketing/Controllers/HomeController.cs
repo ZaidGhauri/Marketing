@@ -9,15 +9,12 @@ using System.Web.Mvc;
 using Marketing.Business.Interface;
 using Marketing.Business.Services;
 using Marketing.DataAccess.Interface;
-
-
 namespace Marketing.Controllers
 {
     public class HomeController : BaseController
     {
         public IStoreRepository storeRepository { get; set; }
         public ICategoryRepository categoryRepository { get; set; }
-
         public ICouponRepository couponRepository { get; set; }
         public IPromotionRepository promotionRepository { get; set; }
         public ActionResult Index()
@@ -49,11 +46,8 @@ namespace Marketing.Controllers
 
             
         }
-
-        
         public ActionResult Promotions()
         {
-
             Promotion model = new Promotion();
             _mapperService = new ModelManagementService();
             var Promotions = new List<Promotion>();
@@ -62,16 +56,11 @@ namespace Marketing.Controllers
                 Promotions = _mapperService.MapPromotionsToModel(promotionRepository.All()).ToList();
             }
             return View(Promotions);
-
-
-
         }
         public ActionResult fb()
         {
            
             return View();
         }
-
-
     }
 }

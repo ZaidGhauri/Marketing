@@ -18,11 +18,8 @@ namespace Marketing.Controllers
         {
             return View();
         }
-
-
-        private object countryDropdown()
+        private RegisterModel BindRegisterData(RegisterModel model)
         {
-            RegisterModel model = new RegisterModel();
             model.DateOfBirth = DateTimeHelper.Now();
             using (var countryRepo = new CountryRepository())
             {
@@ -37,9 +34,8 @@ namespace Marketing.Controllers
                     });
                 }
             }
-            return View(model);
+            return model;
         }
-
         public ActionResult Register()
         {
             RegisterModel model = new RegisterModel();
@@ -94,7 +90,7 @@ namespace Marketing.Controllers
             else
             {
                 ModelState.AddModelError("", "Login data is incorrect!");
-                //  countryDropdown();
+                model = BindRegisterData(model);
 
             }
             return View(model);
@@ -129,6 +125,10 @@ namespace Marketing.Controllers
         {
             Session.Abandon();
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult LoginError()
+        {
+            return View();
         }
     }
 }

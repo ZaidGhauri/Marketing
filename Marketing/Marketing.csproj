@@ -147,6 +147,7 @@
     <Compile Include="Controllers\CouponController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -432,12 +433,13 @@
     <Content Include="Views\Store\Edit.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\Coupon\Edit.cshtml" />
     <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Shared\_Coupons.cshtml" />
     <Content Include="Views\Coupon\Edit.cshtml" />
     <Content Include="Views\Home\_Coupon.cshtml" />
     <Content Include="Views\Shared\_Coupon.cshtml" />
+    <Content Include="Views\User\LoginError.cshtml" />
+    <Content Include="Views\Promotion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

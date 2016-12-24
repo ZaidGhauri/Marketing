@@ -20,38 +20,36 @@
     @using (Html.BeginForm())
     {
         @Html.HiddenFor(m => m.ImagePath)
-         <div class="form-group">
+        <div class="form-group">
             @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Url, new { @class = "form-control", placeholder = "Url" })
+            @Html.ValidationMessageFor(model => model.Url)
+        </div>
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.CompanyId)
+                @Html.EditorFor(model => model.CompanyId)
+                @Html.ValidationMessageFor(model => model.CompanyId)
+            </div>*@
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control", placeholder = "Company Name" })
+            @Html.ValidationMessageFor(model => model.CompanyName)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.CompanyPhoneNo, new { @class = "form-control", placeholder = "Company Phone No." })
+            @Html.ValidationMessageFor(model => model.CompanyPhoneNo)
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.IsPopular)
-            @Html.TextBoxFor(model => model.IsPopular, new { @class = "form-control", placeholder = "IsPopular" })
+            @Html.EditorFor(model => model.IsPopular)
             @Html.ValidationMessageFor(model => model.IsPopular)
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.IsNew)
             @Html.EditorFor(model => model.IsNew)
             @Html.ValidationMessageFor(model => model.IsNew)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Url)
-            @Html.EditorFor(model => model.Url)
-            @Html.ValidationMessageFor(model => model.Url)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyId)
-            @Html.EditorFor(model => model.CompanyId)
-            @Html.ValidationMessageFor(model => model.CompanyId)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyName)
-            @Html.EditorFor(model => model.CompanyName)
-            @Html.ValidationMessageFor(model => model.CompanyName)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompanyPhoneNo)
-            @Html.EditorFor(model => model.CompanyPhoneNo)
-            @Html.ValidationMessageFor(model => model.CompanyPhoneNo)
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.IsFeatured)
@@ -79,7 +77,7 @@
             @Html.EditorFor(model => model.Deleted)
             @Html.ValidationMessageFor(model => model.Deleted)
         </div>
-      
+
         <div class="form-group">
             @(Html.Kendo().Upload()
                 .Name("attachments")
@@ -93,16 +91,17 @@
                     )
                 .Multiple(false)
             )
-        <p>
-            <input type="submit" class="btn btn-warning" value="Create" />
-        </p>
-    <div>
-        @Html.ActionLink("Back To Categories", "Categories", "Home")
-    </div>
+            <p>
+                <input type="submit" class="btn btn-warning" value="Create" />
+            </p>
+            <div>
+                @Html.ActionLink("Back To Categories", "Categories", "Home")
+            </div>
+        </div>
+    }
 </div>
 <script>
     function onSuccess(e) {
         document.getElementById('ImagePath').value = e.files[0].name;
     }
 </script>
-    }

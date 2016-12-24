@@ -16,7 +16,6 @@
         height: 100px;
     }
 </style>
-
 <div class="col-md-10" style="border:none;">
     @using (Html.BeginForm())
     {
@@ -78,7 +77,6 @@
             @Html.Kendo().DropDownListFor(m => m.StoreId).DataTextField("Text").DataValueField("Value").OptionLabel("Select Store").BindTo(Model.Stores).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
             @Html.ValidationMessageFor(model => model.StoreId)
         </div>
-
         <p>
             <input type="submit" class="btn btn-warning" value="Create" />
         </p>
