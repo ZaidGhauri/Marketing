@@ -58,9 +58,9 @@ namespace Marketing.Controllers
                         ModifiedBy = Session["UName"].ToString()
                     };
                     image = imageRepository.Insert(image);
-
                     var promotion = new Data.Promotion();
                     promotion.Name = model.Name;
+                    promotion.Description = model.Description;
                     promotion.IsActive = model.IsActive;
                     promotion.Created = DateTimeHelper.Now();
                     promotion.CreatedBy = Session["UName"].ToString();
@@ -76,8 +76,13 @@ namespace Marketing.Controllers
                         promotionRepository.Insert(promotion);
                     }
                 }
+                return RedirectToAction("Index", "Home");
             }
-            return View(model);
+            else
+            {
+                ModelState.AddModelError("", "Promotions data is incorrect!");
+                return View(model);
+            }
         }
     }
 }

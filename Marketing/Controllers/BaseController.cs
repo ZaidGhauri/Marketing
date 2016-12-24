@@ -21,7 +21,16 @@ namespace Marketing.Controllers
         {
             getWebSite();
             setHeader();
+            //checkUserLogin();
         }
+
+        //private void checkUserLogin()
+        //{
+        //    if (Session == null || Session["UName"] == null)
+        //    {
+        //        Response.Redirect("/User/LoginError");
+        //    }
+        //}
 
         private void getWebSite()
         {

@@ -9,49 +9,16 @@ using System.Web.Mvc;
 using Marketing.Business.Interface;
 using Marketing.Business.Services;
 using Marketing.DataAccess.Interface;
-
-
 namespace Marketing.Controllers
 {
     public class HomeController : BaseController
     {
         public IStoreRepository storeRepository { get; set; }
         public ICategoryRepository categoryRepository { get; set; }
+        public ICouponRepository couponRepository { get; set; }
         public IPromotionRepository promotionRepository { get; set; }
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult ImageUpload()
-        {
-            return View();
-        }
-
-
-         [HttpPost]
-        public ActionResult ImageUpload(HttpPostedFileBase file)
-        {
-            try
-            {
-                /*Geting the file name*/
-                string filename = System.IO.Path.GetFileName(file.FileName);
-                /*Saving the file in server folder*/
-                file.SaveAs(Server.MapPath("~/Picture/" + filename));
-                string filepathtosave = "Picture/" + filename;
-                /*Storing image path to show preview*/
-                ViewBag.ImageURL = filepathtosave;
-                /*
-                 * HERE WILL BE YOUR CODE TO SAVE THE FILE DETAIL IN DATA BASE
-                 *
-                 */
-
-                ViewBag.Message = "File Uploaded successfully.";
-            }
-            catch
-            {
-                ViewBag.Message = "Error while uploading the files.";
-            }
             return View();
         }
         public ActionResult Stores()
@@ -81,7 +48,6 @@ namespace Marketing.Controllers
         }
         public ActionResult Promotions()
         {
-
             Promotion model = new Promotion();
             _mapperService = new ModelManagementService();
             var Promotions = new List<Promotion>();
@@ -90,16 +56,11 @@ namespace Marketing.Controllers
                 Promotions = _mapperService.MapPromotionsToModel(promotionRepository.All()).ToList();
             }
             return View(Promotions);
-
-
-
         }
         public ActionResult fb()
         {
            
             return View();
         }
-
-
     }
 }

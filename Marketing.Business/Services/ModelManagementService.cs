@@ -50,6 +50,37 @@ namespace Marketing.Business.Services
             return lst;
         }
 
+        public IList<Coupon> MapCouponsToModel(IList<Data.Coupon> coupons)
+        {
+            IList<Coupon> lst = new List<Coupon>();
+            foreach (var coupon in coupons)
+            {
+                Coupon objCoupon = new Coupon();
+                objCoupon.Name = coupon.Name;
+
+                objCoupon.Name = coupon.Name;
+                objCoupon.Published = coupon.Published;
+                objCoupon.ShowOnHomePage = coupon.ShowOnHomePage;
+                objCoupon.IsFeatured = coupon.IsFeatured;
+                objCoupon.IncludeInTopMenu = coupon.IncludeInTopMenu;
+                objCoupon.Deleted = coupon.Deleted;
+                objCoupon.IsActive = coupon.IsActive;
+                objCoupon.Created = coupon.Created;
+                objCoupon.CreatedBy = coupon.CreatedBy;
+                objCoupon.Modified = coupon.Modified;
+                objCoupon.ModifiedBy = coupon.ModifiedBy;
+                objCoupon.AllowCustomerReviews = coupon.AllowCustomerReviews;
+                objCoupon.TotalReviews = coupon.TotalReviews;
+                objCoupon.ManufacturerNo = coupon.ManufacturerNo;
+                objCoupon.CategoryId = coupon.CategoryId;
+                objCoupon.StoreId = coupon.StoreId;
+                objCoupon.TagId = coupon.TagId;
+                objCoupon.ImagePath = Path.Combine("/Storage/Images", coupon.Image.Name);
+                lst.Add(objCoupon);
+            }
+            return lst;
+        }
+
         public IList<Promotion> MapPromotionsToModel(IList<Data.Promotion> promotions)
         {
             IList<Promotion> lst = new List<Promotion>();
@@ -93,6 +124,7 @@ namespace Marketing.Business.Services
             model.CreatedBy = category.CreatedBy;
             model.Modified = category.Modified;
             model.ModifiedBy = category.ModifiedBy;
+            model.Counpons = MapCouponsToModel(category.Counpons);
             return model;
         }
         public Store MapStoreToModel(Data.Store store)

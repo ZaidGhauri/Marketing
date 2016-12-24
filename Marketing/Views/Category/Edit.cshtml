@@ -77,7 +77,7 @@
         {
             <div class="form-group">
                 Parent Category
-                @Html.Kendo().DropDownListFor(m => m.ParentCategoryId).DataTextField("Text").DataValueField("Value").BindTo(Model.Categories).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
+                @Html.Kendo().DropDownListFor(m => m.ParentCategoryId).DataTextField("Text").DataValueField("Value").OptionLabel("Select Category").BindTo(Model.SubCategories).HtmlAttributes(new { style = "width: 100%", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ParentCategoryId)
             </div>
       

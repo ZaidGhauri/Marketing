@@ -18,13 +18,27 @@ namespace Marketing.Controllers
 {
     public class CategoryController : BaseController
     {
-       
+
         public IModelManagementService _mapperService { get; set; }
         public ICategoryRepository categoryRepository { get; set; }
         public IImageRepository imageRepository { get; set; }
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Details(int Id)
+        {
+            var model = new Marketing.Business.Models.Category();
+            _mapperService = new ModelManagementService();
+            using (categoryRepository = new CategoryRepository())
+            {
+                if (Id > 0)
+                {
+                    model = _mapperService.MapCategoryToModel(categoryRepository.FindById(Id));
+                }
+            }
+            return View(model);
         }
         public ActionResult Edit(int Id, string type)
         {
@@ -38,10 +52,10 @@ namespace Marketing.Controllers
                 }
                 if (type == "SubCategory")
                 {
-                    var categories = categoryRepository.All().Where(a=>a.ParentCategoryId == 0).ToList();
+                    var categories = categoryRepository.All().Where(a => a.ParentCategoryId == 0).ToList();
                     foreach (var item in categories)
                     {
-                        model.Categories.Add(new SelectListItem()
+                        model.SubCategories.Add(new SelectListItem()
                         {
                             Text = item.Name,
                             Value = item.Id.ToString()
@@ -52,7 +66,7 @@ namespace Marketing.Controllers
                 {
                     model.ParentCategoryId = 0;
                 }
-                }
+            }
             model.type = type;
             return View(model);
         }
@@ -73,8 +87,8 @@ namespace Marketing.Controllers
                         Modified = DateTimeHelper.Now(),
                         ModifiedBy = Session["UName"].ToString()
                     };
-                    image = imageRepository.Insert(image); 
-                    
+                    image = imageRepository.Insert(image);
+
                     var category = new Data.Category();
                     category.Name = model.Name;
                     category.Published = model.Published;
@@ -109,8 +123,13 @@ namespace Marketing.Controllers
                         categoryRepository.Insert(category);
                     }
                 }
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Edit", new { Id = model.Id, type = model.type });
+            else
+            {
+                ModelState.AddModelError("", "Category data is incorrect!");
+                return View(model);
+            }
         }
         public ActionResult SaveImage(IEnumerable<HttpPostedFileBase> attachments)
         {

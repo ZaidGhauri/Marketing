@@ -9,7 +9,7 @@ namespace Marketing.Business.Interface
     {
         IList<Store> MapStoresToModel(IList<Marketing.Data.Store> stores);
         IList<Category> MapCategoriesToModel(IList<Marketing.Data.Category> categories);
-
+        IList<Coupon> MapCouponsToModel(IList<Marketing.Data.Coupon> coupons);
         IList<Promotion> MapPromotionsToModel(IList<Data.Promotion> promotions);
         IList<Store> GetStoreDetail(int id);
         Category MapCategoryToModel(Data.Category category);

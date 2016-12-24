@@ -18,6 +18,24 @@ namespace Marketing.Controllers
         {
             return View();
         }
+        private RegisterModel BindRegisterData(RegisterModel model)
+        {
+            model.DateOfBirth = DateTimeHelper.Now();
+            using (var countryRepo = new CountryRepository())
+            {
+                var countries = countryRepo.All().ToList();
+
+                foreach (var item in countries)
+                {
+                    model.Countries.Add(new SelectListItem()
+                    {
+                        Text = item.Name,
+                        Value = item.Id.ToString()
+                    });
+                }
+            }
+            return model;
+        }
         public ActionResult Register()
         {
             RegisterModel model = new RegisterModel();
@@ -72,6 +90,8 @@ namespace Marketing.Controllers
             else
             {
                 ModelState.AddModelError("", "Login data is incorrect!");
+                model = BindRegisterData(model);
+
             }
             return View(model);
         }
@@ -105,6 +125,10 @@ namespace Marketing.Controllers
         {
             Session.Abandon();
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult LoginError()
+        {
+            return View();
         }
     }
 }

@@ -5,6 +5,10 @@ namespace Marketing.Data
 {
     public class Store : DomainObject
     {
+        public Store()
+        {
+            Counpons = new List<Coupon>();
+        }
         public string Name { get; set; }
         public bool IsPopular { get; set; }
         public bool IsNew { get; set; }
@@ -21,5 +25,6 @@ namespace Marketing.Data
         public virtual WebSite WebSite { get; set; }
         public int ImageId { get; set; }
         public virtual Image Image { get; set; }
+        public virtual IList<Coupon> Counpons { get; set; }
     }
 }
