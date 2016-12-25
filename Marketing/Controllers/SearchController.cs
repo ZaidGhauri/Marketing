@@ -34,7 +34,7 @@ namespace Marketing.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult Details(int id)
         {
-           modelx model = new modelx();
+           autocomplete model = new autocomplete();
             // select data by id here display static data;
             if (id == 0)
             {

@@ -92,7 +92,6 @@ namespace Marketing.Controllers
             {
                 ModelState.AddModelError("", "Login data is incorrect!");
                 model = BindRegisterData(model);
-
             }
             return View(model);
         }
