@@ -452,6 +452,7 @@
     <Content Include="Views\Coupon\Details.cshtml" />
     <Content Include="Views\Partial1test.cshtml" />
     <Content Include="Views\Coupon\Edit.cshtml" />
+    <Content Include="Views\Home\Coupons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Search\" />

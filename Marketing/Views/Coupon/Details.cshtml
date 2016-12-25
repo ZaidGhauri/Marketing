@@ -45,6 +45,7 @@
             </div>
         </div>
     </div>*@
+    
     <img src="@Model.ImagePath"
          alt="@Model.Name" class="img-responsive" style="max-width: 100%;height: 300px;" />
     <p>@Model.ShortDescription</p>
@@ -62,23 +63,17 @@
                     </li>
                     <li>
                         Author
-                    </li>                  
+                    </li>  
+                    <li>
+                        Reviews
+                    </li>                 
                 </ul>
              
                 <div>
                     <label>Full Description : @Model.FullDescription</label><br>
                     <label>Manufacturer No : @Model.ManufacturerNo</label><br>
                     <label>Total Reviews : @Model.TotalReviews</label><br>
-                    <label>Rating : </label>
-                    <ul class="star-rating" data-bind="value: rating">
-                        <li data-value="1" title="Fine"></li>
-                        <li data-value="2" title="Fine"></li>
-                        <li data-value="3" title="Good"></li>
-                        <li data-value="4" title="Very Good"></li>
-                        <li data-value="5" title="Excellent"></li>
-                    </ul>
                   
-                    
                 </div>
                 <div>
                     <label>Created On: @Model.Created </label><br>
@@ -87,9 +82,24 @@
                     <label>Modified By: @Model.ModifiedBy </label>
                    
                 </div>
+                <div>
+                    <label>Rating : </label>
+                    <ul class="star-rating" data-bind="value: rating">
+                        <li data-value="1" title="Fine"></li>
+                        <li data-value="2" title="Fine"></li>
+                        <li data-value="3" title="Good"></li>
+                        <li data-value="4" title="Very Good"></li>
+                        <li data-value="5" title="Excellent"></li>
+                    </ul>
+
+                </div>
             </div>
 
         </div>
+        @if (Session["IsAdmin"] != null)
+        {  <a href="/coupon/Edit/@Model.Id">Update </a>
+           
+        }
         <style>
         .reply-rating {
         margin: 0;

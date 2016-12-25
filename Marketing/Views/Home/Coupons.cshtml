@@ -1,0 +1,30 @@
+﻿@model List<Marketing.Business.Models.Coupon>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br>
+<br>
+<div class="three-box-top-event">
+    <div class="container">
+        <h2 style="text-align:left;">Coupons </h2>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="im-image">
+                        <a href="/coupon/Details/@item.Id">
+                            <img src="@item.ImagePath"
+                                 alt="@item.Name" class="img-responsive" style="max-width: 100%;height: 300px;">
+                        </a>
+                        <div class="cont-">
+                            <a id="hed" href="/coupon/Details/@item.Id">@item.Name</a>
+                           
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
