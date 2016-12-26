@@ -26,6 +26,21 @@ namespace Marketing.Controllers
             return View();
         }
 
+        public ActionResult Details(int Id)
+        {
+            var model = new Marketing.Business.Models.Coupon();
+            _mapperService = new ModelManagementService();
+            using (couponRepository = new CouponRepository()) 
+            {
+                if (Id > 0)
+                {
+                    model = _mapperService.MapCouponToModel(couponRepository.FindById(Id));
+                }
+            }
+            return View(model);
+        }
+
+
         public ActionResult Edit(int Id)
         {
             var model = new Marketing.Business.Models.Coupon();

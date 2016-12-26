@@ -63,7 +63,7 @@
                             {
                                 <li>@Html.ActionLink("Add New Store", "Edit", "Store", new { Id = 0 }, null)</li>
                             }
-                            <li>@Html.ActionLink("View All Store", "Stores", "Home", new { Id = 0 }, null)</li>
+                            <li>@Html.ActionLink("View All Store", "Stores", "Home")</li>
                         </ul>
                     </li>
                     <li>@Html.ActionLink("Coupons Deals", "Index", "Promotion")</li>
@@ -110,3 +110,4 @@
     </nav>
 
 </div>
+@Html.Partial("Partialtest");

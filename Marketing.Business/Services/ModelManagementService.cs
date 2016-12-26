@@ -18,6 +18,20 @@ namespace Marketing.Business.Services
             {
                 Store objStore = new Store();
                 objStore.Name = store.Name;
+                objStore.Id = store.Id;
+               
+                objStore.Published = store.Published;
+                objStore.ShowOnHomePage = store.ShowOnHomePage;
+                objStore.IsFeatured = store.IsFeatured;
+                objStore.IncludeInTopMenu = store.IncludeInTopMenu;
+                objStore.ImagePath = Path.Combine("/Storage/Images", store.Image.Name);
+                objStore.Deleted = store.Deleted;
+                objStore.WebSiteId = store.WebSiteId;
+                objStore.IsActive = store.IsActive;
+                objStore.Created = store.Created;
+                objStore.CreatedBy = store.CreatedBy;
+                objStore.Modified = store.Modified;
+                objStore.ModifiedBy = store.ModifiedBy;
                 lst.Add(objStore);
             }
             return lst;

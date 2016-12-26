@@ -441,9 +441,9 @@
     <Content Include="Views\Shared\_Coupons.cshtml" />
     <Content Include="Views\Coupon\Edit.cshtml" />
     <Content Include="Views\Home\_Coupon.cshtml" />
-    <Content Include="Views\Shared\_Coupon.cshtml" />
     <Content Include="Views\User\LoginError.cshtml" />
     <Content Include="Views\Promotion\Index.cshtml" />
+    <Content Include="Views\Coupon\Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

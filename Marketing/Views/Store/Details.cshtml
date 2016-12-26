@@ -2,21 +2,10 @@
 @model Marketing.Business.Models.Store
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-<div id="fb-root"></div>
-<script>
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=2007289246165212";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <h2 id="our">OUR STORES </h2>
 <hr>
 <div class="rec-deals">
@@ -25,17 +14,17 @@
         @*@{
             var lst = TempData["Model"] as List<Marketing.Business.Models.Store>;
         }*@
-            <div class="span4">
+            @*<div class="span4">
                 <div class="col-md-4">
                     <a href="@Html.DisplayFor(modelItem => modelItem.Name)">
                         @*<img src="@Url.Content(@item.bimg)" class="img-responsive center-block" style="border:1px solid #e6e6e6">*@
-                    </a>
+                    @*</a>
                     <div class="button-1">
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Get your discount coupon</button>
                     </div>
                     <p id="offer-2">@Html.DisplayFor(modelItem => modelItem.Name)</p>
                 </div>
-            </div>}
+            </div>*@
         <div class="col-md-10" style="border:none;">
             <div class="col-md-12">
                 @foreach (var item in Model.Counpons)
@@ -55,8 +44,6 @@
             </div>
         </div>
         <br clear="all">
-        <div class="fb-like" data-href="http://localhost:24735" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-        <div class="fb-comments" data-href="http://localhost:24735" data-numposts="5"></div>
     </div>
 
     @*@foreach (var item in lst)

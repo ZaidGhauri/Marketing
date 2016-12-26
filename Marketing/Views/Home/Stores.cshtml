@@ -3,27 +3,33 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <h2 id="our"> Stores </h2>
 <hr>
-<div class="col-md-12">
-    @foreach (var item in Model)
-    {
-        <div class="span4">
-            <div class="col-md-4">
-                <a href="@item.Name"><p id="offer-1">@item.Name</p>
-                    @*<img src="@Url.Content(@item.img)" class="img-responsive center-block" style="border:1px solid #e6e6e6">*@</a>
-                                  
-                <div class="button-1">
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Get your discount coupon</button>
+<div class="three-box-top-event">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="im-image">
+                        <a href="/Store/Details/@item.Id">
+                            <img src="@item.ImagePath"
+                                 alt="@item.Name" class="img-responsive" style="max-width: 100%;height: 300px;">
+                        </a>
+                        <div class="cont-">
+                            <a id="hed" href="/Store/Details/@item.Id">@item.Name</a>    
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>}
 
+            }
+        </div>
+    </div>
 </div>
 
 <br clear="all">
-@foreach (var item in Model)
+@*foreach (var item in Model)
 {
           <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
@@ -40,9 +46,9 @@
                 </div>
                 <div class="modal-footer">
                                            @*<img src="@Url.Content(@item.img)" class="img-responsive center-block" style="border:1px solid #e6e6e6">*@
-                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                   @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
 
         </div>
-    </div>}
+    </div>}*@
