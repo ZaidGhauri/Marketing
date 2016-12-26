@@ -8,6 +8,5 @@ namespace Marketing.DataAccess.Interface
     public interface ICouponRepository : IWriteRepository
     {
         Coupon FindById(int Id);
-        IList<Coupon> All();
     }
 }

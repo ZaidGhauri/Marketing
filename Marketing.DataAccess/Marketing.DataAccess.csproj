@@ -93,10 +93,6 @@
     <Compile Include="Migrations\201612171054446_UpdateUrlColumntoNameInImageEntity.Designer.cs">
       <DependentUpon>201612171054446_UpdateUrlColumntoNameInImageEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201612230125575_updateCouponLstInEntity.cs" />
-    <Compile Include="Migrations\201612230125575_updateCouponLstInEntity.Designer.cs">
-      <DependentUpon>201612230125575_updateCouponLstInEntity.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,9 +136,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612171054446_UpdateUrlColumntoNameInImageEntity.resx">
       <DependentUpon>201612171054446_UpdateUrlColumntoNameInImageEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612230125575_updateCouponLstInEntity.resx">
-      <DependentUpon>201612230125575_updateCouponLstInEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

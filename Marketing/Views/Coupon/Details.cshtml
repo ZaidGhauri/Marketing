@@ -1,0 +1,181 @@
+﻿@using Kendo.Mvc.UI;
+@model Marketing.Business.Models.Coupon
+
+@{
+    ViewBag.Title = @Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+
+<hr>
+<div class="three-box-top-event">
+    <div class="container">
+        <h2 style="text-align:left;">Details</h2>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="im-image">
+                    <a href="#">
+                        <img src="@Model.ImagePath"
+                             alt="@Model.Name" class="img-responsive" style="max-width: 100%;height: 300px;" />
+                    </a>
+                    <div class="cont-">
+                        <a id="hed" href="#">@Model.Name</a>
+                        <p class="con-para">@Model.ShortDescription</p>
+                        <p class="con-para">@Model.FullDescription</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+            <br clear="all">
+
+
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.IsFeatured)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.IsFeatured)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.ShowOnHomePage)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.ShowOnHomePage)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.IncludeInTopMenu)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.IncludeInTopMenu)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Published)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Published)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Deleted)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Deleted)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.AllowCustomerReviews)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.AllowCustomerReviews)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.RatingSum)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.RatingSum)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.TotalReviews)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.TotalReviews)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.ManufacturerNo)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.ManufacturerNo)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.DisplayOrder)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.DisplayOrder)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.CategoryId)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.StoreId)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.StoreId)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.TagId)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.TagId)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.ImagePath)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.ImageId)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.ImageId)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.IsActive)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.IsActive)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Created)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Created)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.CreatedBy)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Modified)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Modified)
+            </div>
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.ModifiedBy)
+            </div>
+            </fieldset>
+            <p>
+                <li>@Html.ActionLink("Add New Coupon", "Edit", "Coupon", new { id = Model.Id }, null)</li>
+                @Html.ActionLink("Back to List", "Index")
+            </p>
