@@ -56,13 +56,14 @@
                         <ul class="dropdown-menu">
                             @foreach (var item in model.Stores)
                             {
-                                <li><a href="#">@item.Name</a></li>
+                               <li>@Html.ActionLink((string)item.Name, "Details", "Store", new { Id = item.Id }, null)</li>
+                                <li class="divider"></li>
                             }
                             @if (Session["IsAdmin"] != null)
                             {
                                 <li>@Html.ActionLink("Add New Store", "Edit", "Store", new { Id = 0 }, null)</li>
                             }
-                            <li>@Html.ActionLink("View All Store", "Promotion", "Home", new { Id = 0 }, null)</li>
+                            <li>@Html.ActionLink("View All Store", "Stores", "Home", new { Id = 0 }, null)</li>
                         </ul>
                     </li>
                     <li>@Html.ActionLink("Coupons Deals", "Index", "Promotion")</li>

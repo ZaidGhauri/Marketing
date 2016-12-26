@@ -26,6 +26,22 @@ namespace Marketing.Controllers
         {
             return View();
         }
+
+        public ActionResult Details(int Id)
+        {
+            var model = new Marketing.Business.Models.Store();
+            _mapperService = new ModelManagementService();
+            using (storeRepository = new StoreRepository())
+            {
+                if (Id > 0)
+                {
+                    model = _mapperService.MapStoreToModel(storeRepository.FindById(Id));
+                }
+            }
+            return View(model);
+        }
+
+
         public ActionResult Edit(int Id)
         {
             var model = new Marketing.Business.Models.Store();
