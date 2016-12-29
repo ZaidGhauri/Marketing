@@ -148,6 +148,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\PromotionController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -156,6 +157,7 @@
     <Compile Include="Models\ContactUsModel.cs" />
     <Compile Include="Models\HeaderMenu.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\modelx.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\SessionExpireAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -385,11 +387,14 @@
     <Content Include="js\star-rating.min.js" />
     <Content Include="no-jquery.html" />
     <Content Include="Picture\images.jpg" />
+    <Content Include="Scripts\jquery-1.11.0.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -449,7 +454,9 @@
     <Content Include="Views\Coupon\Edit.cshtml" />
     <Content Include="Views\Home\Coupons.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Search\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>

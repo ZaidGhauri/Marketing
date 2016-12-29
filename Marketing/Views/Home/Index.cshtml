@@ -1,7 +1,7 @@
 ﻿@using System.Web.Mvc;
 @{
     ViewBag.Title = "Home";
-    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
     /* jssor slider bullet navigator skin 01 css */
@@ -247,25 +247,29 @@
         //responsive code end
         var item;
         $("#Category").autocomplete({
+
             source: function (request, response) {
-                var customer = new Array();
-                $.ajax({
-                    async: false,
-                    cache: false,
-                    type: "POST",
-                    url: "@(Url.Action("Autocomplete", "Search"))",
-                    data: { "term": request.term },
-                    success: function (data) {
-                        for (var i = 0; i < data.length ; i++) {
-                            customer[i] = { label: data[i].EventName, Id: data[i].EventId };
+                var filteredDate = new Array();
+                if (request.term && request.term.length > 3) {
+                    $.ajax({
+                        async: false,
+                        cache: false,
+                        type: "POST",
+                        url: "@(Url.Action("Autocomplete", "Search"))",
+                        data: { "term": request.term },
+                        success: function (data) {
+                            debugger;
+                            for (var i = 0; i < data.length ; i++) {
+                                filteredDate[i] = { label: data[i].Value, Id: data[i].Key };
+                            }
                         }
-                    }
-                });
-                response(customer);
+                    });
+                }
+                response(filteredDate);
             },
             select: function (event, ui) {
 
-                //fill selected customer details on form
+                //fill selected filteredDate details on form
                 $.ajax({
                     cache: false,
                     async: false,
@@ -274,6 +278,7 @@
                     data: { "Id": ui.item.Id },
 
                     success: function (data) {
+                        debugger;
                         var id = parseInt(ui.item.Id);
                         alert(id);
                         window.location = "/Search/Details/" + id;
