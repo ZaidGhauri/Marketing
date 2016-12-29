@@ -46,6 +46,19 @@ namespace Marketing.Controllers
 
             
         }
+
+
+        public ActionResult Coupons()
+        {
+            _mapperService = new ModelManagementService();
+            var Coupons = new List<Coupon>();
+            using (couponRepository = new CouponRepository())
+            {
+                Coupons = _mapperService.MapCouponsToModel(couponRepository.All()).ToList();
+            }
+            return View(Coupons);
+        }
+
         public ActionResult Promotions()
         {
             Promotion model = new Promotion();

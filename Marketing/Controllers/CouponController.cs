@@ -98,6 +98,7 @@ namespace Marketing.Controllers
                     image = imageRepository.Insert(image);
 
                     var coupon = new Data.Coupon();
+                    coupon.Id = model.Id;
                     coupon.Name = model.Name;
                     coupon.Published = model.Published;
                     coupon.ShowOnHomePage = model.ShowOnHomePage;

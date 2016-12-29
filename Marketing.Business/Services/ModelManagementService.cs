@@ -36,7 +36,7 @@ namespace Marketing.Business.Services
                 objCategory.Modified = category.Modified;
                 objCategory.ModifiedBy = category.ModifiedBy;
                 objCategory.Coupons = MapCouponsToModel(category.Coupons);
-                objCategory.Stores = MapStoresToModel(category.Stores);
+                objCategory.Stores = MapStoresToModel(category.Coupons.Select(a => a.Store).ToList());
                 lst.Add(objCategory);
             }
             return lst;
@@ -61,7 +61,7 @@ namespace Marketing.Business.Services
             model.Modified = category.Modified;
             model.ModifiedBy = category.ModifiedBy;
             model.Coupons = MapCouponsToModel(category.Coupons);
-            model.Stores = MapStoresToModel(category.Stores);
+            model.Stores = MapStoresToModel(category.Coupons.Select(a=>a.Store).ToList());
             return model;
         }
 
@@ -128,7 +128,7 @@ namespace Marketing.Business.Services
             model.Modified = store.Modified;
             model.ModifiedBy = store.ModifiedBy;
             model.Coupons = MapCouponsToModel(store.Coupons);
-            model.Categories = MapCategoriesToModel(store.Categories);
+            model.Categories = MapCategoriesToModel(store.Coupons.Select(a => a.Category).ToList());
             return model;
         }
         public IList<Coupon> MapCouponsToModel(IList<Data.Coupon> coupons)
@@ -138,7 +138,7 @@ namespace Marketing.Business.Services
             {
                 Coupon objCoupon = new Coupon();
                 objCoupon.Name = coupon.Name;
-
+                objCoupon.Id = coupon.Id;
                 objCoupon.Name = coupon.Name;
                 objCoupon.Published = coupon.Published;
                 objCoupon.ShowOnHomePage = coupon.ShowOnHomePage;
@@ -167,6 +167,7 @@ namespace Marketing.Business.Services
         public Coupon MapCouponToModel(Data.Coupon coupon)
         {
             Coupon model = new Coupon();
+            model.Id = coupon.Id;
             model.Name = coupon.Name;
             model.Published = coupon.Published;
             model.ShowOnHomePage = coupon.ShowOnHomePage;
