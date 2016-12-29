@@ -7,7 +7,8 @@ namespace Marketing.Data
     {
         public Category()
         {
-            Counpons = new List<Coupon>();
+            Coupons = new List<Coupon>();
+            Stores = new List<Store>();
         }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -21,6 +22,7 @@ namespace Marketing.Data
         public bool Deleted { get; set; }
         public int WebSiteId { get; set; }
         public virtual WebSite WebSite { get; set; }
-        public virtual IList<Coupon> Counpons { get; set; }
+        public virtual IList<Coupon> Coupons { get; set; }
+        public virtual IList<Store> Stores { get; set; }
     }
 }

@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201612171054446_UpdateUrlColumntoNameInImageEntity.Designer.cs">
       <DependentUpon>201612171054446_UpdateUrlColumntoNameInImageEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612291105188_AddCategoriesObjectToStoreEntity.cs" />
+    <Compile Include="Migrations\201612291105188_AddCategoriesObjectToStoreEntity.Designer.cs">
+      <DependentUpon>201612291105188_AddCategoriesObjectToStoreEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612171054446_UpdateUrlColumntoNameInImageEntity.resx">
       <DependentUpon>201612171054446_UpdateUrlColumntoNameInImageEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612291105188_AddCategoriesObjectToStoreEntity.resx">
+      <DependentUpon>201612291105188_AddCategoriesObjectToStoreEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

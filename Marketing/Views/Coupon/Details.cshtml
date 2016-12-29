@@ -5,177 +5,222 @@
     ViewBag.Title = @Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
-<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
 
-<hr>
-<div class="three-box-top-event">
-    <div class="container">
-        <h2 style="text-align:left;">Details</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Details</title>
+    <link rel="stylesheet" href="~/Content/kendo/kendo.common.min.css" />
+ 
 
-        <div class="row">
-            <div class="col-md-3">
-                <div class="im-image">
-                    <a href="#">
-                        <img src="@Model.ImagePath"
-                             alt="@Model.Name" class="img-responsive" style="max-width: 100%;height: 300px;" />
-                    </a>
-                    <div class="cont-">
-                        <a id="hed" href="#">@Model.Name</a>
-                        <p class="con-para">@Model.ShortDescription</p>
-                        <p class="con-para">@Model.FullDescription</p>
+    <script src="~/Content/kendo/js/jquery.min.js"></script>
+    <script src="~/Content/kendo/js/kendo.all.min.js"></script>
+
+    <link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
+    <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+
+</head>
+<body>
+   
+    <hr>
+    @*<div class="three-box-top-event">
+        <div class="container">
+            <h2 style="text-align:left;">Details</h2>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="im-image">
+                        <a href="#">
+                            <img src="@Model.ImagePath"
+                                 alt="@Model.Name" class="img-responsive" style="max-width: 100%;height: 300px;" />
+                        </a>
+                        <div class="cont-">
+                            <a id="hed" href="#">@Model.Name</a>
+                            <p class="con-para">@Model.ShortDescription</p>
+                            <p class="con-para">@Model.FullDescription</p>
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
+    </div>*@
+    <img src="@Model.ImagePath"
+         alt="@Model.Name" class="img-responsive" style="max-width: 100%;height: 300px;" />
+    <p>@Model.ShortDescription</p>
+    <br clear="all">
+
+    <div id="example">
+
+        <div class="demo-section k-content">
+
+            <div id="tabstrip">
+                <ul>
+                   
+                    <li class="k-state-active">
+                        Description
+                    </li>
+                    <li>
+                        Author
+                    </li>                  
+                </ul>
+             
+                <div>
+                    <label>Full Description : @Model.FullDescription</label><br>
+                    <label>Manufacturer No : @Model.ManufacturerNo</label><br>
+                    <label>Total Reviews : @Model.TotalReviews</label><br>
+                    <label>Rating : </label>
+                    <ul class="star-rating" data-bind="value: rating">
+                        <li data-value="1" title="Fine"></li>
+                        <li data-value="2" title="Fine"></li>
+                        <li data-value="3" title="Good"></li>
+                        <li data-value="4" title="Very Good"></li>
+                        <li data-value="5" title="Excellent"></li>
+                    </ul>
+                  
+                    
+                </div>
+                <div>
+                    <label>Created On: @Model.Created </label><br>
+                    <label>Created By: @Model.CreatedBy </label><br>
+                    <label>Modified On: @Model.Modified </label><br>
+                    <label>Modified By: @Model.ModifiedBy </label>
+                   
+                </div>
+            </div>
+
+        </div>
+        <style>
+        .reply-rating {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        cursor: default;
+        display: inline-block;
+        }
+
+        .reply-rating li {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        cursor: pointer;
+        }
+
+        .reply-rating li.reply-rating-star-full:after {
+        content: "\2605";
+        font-family: Arial;
+        font-size: 16px;
+        color: orange;
+        }
+
+        .reply-rating li.reply-rating-star-empty:after {
+        content: "\2606";
+        font-family: Arial;
+        font-size: 16px;
+        color: gray;
+        }
+            </style>
+       
+        <script>
+        (function($, kendo, undefined) {
+
+        var NS = ".replyRating",
+        PREFIX = "Reply",
+        WIDGET = kendo.ui.Widget,
+        PROXY = $.proxy,
+        STAR = "li",
+        SELECT = "select",
+        CHANGE = "change",
+        MOUSEOVER = "mouseover",
+        MOUSELEAVE = "mouseleave",
+        CLICK = "click",
+        REPLY_RATING = "reply-rating";
+
+        var Rating = WIDGET.extend({
+        init: function (element, options) {
+        var that = this;
+
+        WIDGET.fn.init.call(that, element, options);
+
+        element = that.element;
+        options = that.options;
+
+        element.addClass(REPLY_RATING)
+        .on(MOUSEOVER + NS, STAR, PROXY(that._mouseover, that))
+        .on(MOUSELEAVE + NS, PROXY(that._mouseleave, that))
+       
+        element.find(STAR).addClass(options.starEmptyClass);
+
+        that.value(options.value);
+        },
+
+        options: {
+        prefix: PREFIX,
+        name: "Rating",
+        starEmptyClass: "reply-rating-star-empty",
+        starFullClass: "reply-rating-star-full",
+        value: null
+        },
+
+      
+
+        value: function(value) {
+        var that = this;
+
+        if (value === undefined) {
+        return that._currentValue;
+        }
+        else {
+            that._currentValue = @Model.TotalReviews
+        that._render(@Model.TotalReviews);
+        }
+        },
+
+        _render: function(value) {
+        var that = this,
+        opt = that.options,
+        star = that.element.find(STAR + '[data-value="' + value + '"]');
+
+        if (value === null || value === undefined || star.length === 0) {
+        that.element.find(STAR).removeClass(opt.starFullClass).addClass(opt.starEmptyClass);
+        }
+        else {
+        star.prevAll(STAR).removeClass(opt.starEmptyClass).addClass(opt.starFullClass);
+        star.removeClass(opt.starEmptyClass).addClass(opt.starFullClass);
+        star.nextAll(STAR).removeClass(opt.starFullClass).addClass(opt.starEmptyClass);
+        }
+        },
+
+        });
+
+        kendo.ui.plugin(Rating, kendo.ui, PREFIX);
+
+        })(window.jQuery, window.kendo);
+
+        jQuery(function($) {
+
+        var viewModel,
+        ratingWidget;
+
+        ratingWidget = $('.star-rating').kendoReplyRating({
+       
+        }).data('kendoReplyRating');
+
+        viewModel = kendo.observable({
+        rating: null
+        });
+
+        kendo.bind($('body'), viewModel);
+        });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#tabstrip").kendoTabStrip();
+            });
+        </script>
     </div>
-</div>
-            <br clear="all">
 
 
+</body>
+</html>
 
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.IsFeatured)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.IsFeatured)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.ShowOnHomePage)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.ShowOnHomePage)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.IncludeInTopMenu)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.IncludeInTopMenu)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.Published)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.Published)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.Deleted)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.Deleted)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.AllowCustomerReviews)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.AllowCustomerReviews)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.RatingSum)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.RatingSum)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.TotalReviews)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.TotalReviews)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.ManufacturerNo)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.ManufacturerNo)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.DisplayOrder)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.DisplayOrder)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.CategoryId)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.CategoryId)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.StoreId)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.StoreId)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.TagId)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.TagId)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.ImagePath)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.ImageId)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.ImageId)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.IsActive)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.IsActive)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.Created)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.Created)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.CreatedBy)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.CreatedBy)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.Modified)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.Modified)
-            </div>
-
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.ModifiedBy)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.ModifiedBy)
-            </div>
-            </fieldset>
-            <p>
-                <li>@Html.ActionLink("Add New Coupon", "Edit", "Coupon", new { id = Model.Id }, null)</li>
-                @Html.ActionLink("Back to List", "Index")
-            </p>

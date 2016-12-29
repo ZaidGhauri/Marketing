@@ -406,6 +406,9 @@
     <Content Include="Storage\Images\4.png" />
     <Content Include="Storage\Images\images.jpg" />
     <Content Include="stores.html" />
+    <Content Include="Views\Category\Details.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -437,14 +440,13 @@
     <Content Include="Views\Store\Edit.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Shared\_Coupons.cshtml" />
-    <Content Include="Views\Coupon\Edit.cshtml" />
     <Content Include="Views\Home\_Coupon.cshtml" />
     <Content Include="Views\User\LoginError.cshtml" />
     <Content Include="Views\Promotion\Index.cshtml" />
     <Content Include="Views\Coupon\Details.cshtml" />
     <Content Include="Views\Partial1test.cshtml" />
+    <Content Include="Views\Coupon\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

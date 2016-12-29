@@ -9,7 +9,8 @@ namespace Marketing.Business.Models
     {
         public Store()
         {
-            Counpons = new List<Coupon>();
+            Coupons = new List<Coupon>();
+            Categories = new List<Category>();
         }
 
 
@@ -32,6 +33,7 @@ namespace Marketing.Business.Models
         public int WebSiteId { get; set; }
         public virtual WebSite Website { get; set; }
 
-        public IList<Coupon> Counpons { get; set; }
+        public IList<Coupon> Coupons { get; set; }
+        public IList<Category> Categories { get; set; }
     }
 }
