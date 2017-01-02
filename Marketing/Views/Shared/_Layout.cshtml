@@ -2,19 +2,25 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/css/bootstrap.css")
-    @Styles.Render("~/css/bootstrap-theme.css")
+    @Styles.Render("~/nav/bootstrap.css")
+    @Styles.Render("~/nav/bootstrap-theme.css")
+    @Styles.Render("~/nav/style.css")
     @Styles.Render("~/css/Custom.css")
     @Styles.Render("~/css/font-awesome.min.css")
     @Scripts.Render("~/js/jquery-1.11.3.min.js")
     @Scripts.Render("~/js/bootstrap.js")
+    @Scripts.Render("~/js/jquery.js")
     <script src="~/Scripts/kendo/kendo.all.min.js"></script>
 </head>
 
 <body>
     @Html.Partial("_Menu");
-    @RenderBody()
 
+    <div class="container">
+
+
+        @RenderBody()
+    </div>
     <footer>
         <div class="foot">
             <div class="col-md-12" style="width: 100%;background-color: #1a1a1a;margin-top: 30px;">
@@ -77,5 +83,7 @@
     <!-- #endregion Jssor Slider End -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+
 </body>
 </html>

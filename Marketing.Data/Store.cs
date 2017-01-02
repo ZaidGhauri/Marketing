@@ -8,7 +8,6 @@ namespace Marketing.Data
         public Store()
         {
             Coupons = new List<Coupon>();
-            Categories = new List<Category>();
         }
         public string Name { get; set; }
         public bool IsPopular { get; set; }
@@ -27,6 +26,5 @@ namespace Marketing.Data
         public int ImageId { get; set; }
         public virtual Image Image { get; set; }
         public virtual IList<Coupon> Coupons { get; set; }
-        public virtual IList<Category> Categories { get; set; }
     }
 }

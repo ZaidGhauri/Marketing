@@ -27,6 +27,7 @@ namespace Marketing.DataAccess
 
         public DbSet<Image> Images { get; set; }
 
+        public DbSet<Reviews> Reviews { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new WebSiteConfig());
@@ -39,7 +40,7 @@ namespace Marketing.DataAccess
             modelBuilder.Configurations.Add(new PromotionConfig());
             modelBuilder.Configurations.Add(new TagConfig());
             modelBuilder.Configurations.Add(new ImageConfig());
-         
+            modelBuilder.Configurations.Add(new ReviewConfig());
         }
     }
 }
