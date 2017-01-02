@@ -91,166 +91,182 @@
 <link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
 <link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
 <script src="~/Scripts/kendo/kendo.all.min.js"></script>
-
-<div class="slider">
-    <div id="myCarousel" class="carousel slide">
-
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-
-        <div class="carousel-inner">
-
-            <div class="item active"><img src="~/img/Banner  (1).png" alt="~//Banner  (1)" class="img-responsive" /></div>
-            <div class="item"><img src="~/img/Banner  (1).png" alt="~//Banner  (1)" class="img-responsive" /></div>
-            <div class="item"><img src="~/img/Banner  (3).png" alt="~//Banner  (3)" class="img-responsive" /></div>
-        </div>
-
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
-    </div>
-</div>
-@*<div class="container-fluid dd-BrandScroller">
-        <div class="container">
+<div class="container">
+    <div class="row">
+        <h2 id="heading-1">
+            Top Trending Brands Coupons That Let You Save More...
+        </h2>
+        <div>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="dd-TopBrands">
-                        <h1 class="dd-Heading dd-headingUcase" id="home_heading" name="home_heading">Top Trending Brands Coupons That Let You Save More...</h1>
-                        <div class="dd-BrandScroller">
-                            <ul class="list-unstyled dd-Brandlist" id="tStores" name="tStores"><li id="store_31"><a class="list-coupfav" href="javascript:void(0)" onclick="storeFav(31)"><i class="fa fa-star-o"></i></a><a onclick="storeClick(31,'Campmor')" "=" " href=" http />/www.dealsdiscount4u.com/store/campmor-coupons"><img src="http://www.dealsdiscount4u.com/uploads/small/stores/Campmor.jpg" alt="Campmor" title="Find-out-Campmor-Promo-Codes-and-Coupons-–-Deals-Discount4u" onerror="this.src=&quot;http://www.dealsdiscount4u.com/front-end/assets/images/image-not-found-thumb.png&quot;"></a></li><li id="store_288"><a class="list-coupfav" href="javascript:void(0)" onclick="storeFav(288)"><i class="fa fa-star-o"></i></a><a onclick="storeClick(288,'Shutterfly')" "=" " href=" http />/www.dealsdiscount4u.com/store/shutterfly-coupons"><img src="http://www.dealsdiscount4u.com/uploads/small/stores/Shutterfly.png" alt="Shutterfly" title="Shutterfly" onerror="this.src=&quot;http://www.dealsdiscount4u.com/front-end/assets/images/image-not-found-thumb.png&quot;"></a></li><li id="store_1"><a class="list-coupfav" href="javascript:void(0)" onclick="storeFav(1)"><i class="fa fa-star-o"></i></a><a onclick="storeClick(1,'Bebe')" "=" " href=" http />/www.dealsdiscount4u.com/store/bebe-coupons"><img src="http://www.dealsdiscount4u.com/uploads/small/stores/Bebe.jpg" alt="Bebe" title="Get-new-Bebe-discount-coupon-from-Deals-Discount4uand-shop-away" onerror="this.src=&quot;http://www.dealsdiscount4u.com/front-end/assets/images/image-not-found-thumb.png&quot;"></a></li><li id="store_29"><a class="list-coupfav" href="javascript:void(0)" onclick="storeFav(29)"><i class="fa fa-star-o"></i></a><a onclick="storeClick(29,'Gemplers')" "=" " href=" http />/www.dealsdiscount4u.com/store/gemplers-coupons"><img src="http://www.dealsdiscount4u.com/uploads/small/stores/Gemplers.jpg" alt="Gemplers" title="Great-Discount-can-be-availed-for-Gemplers-from-Deals-Discount4u" onerror="this.src=&quot;http://www.dealsdiscount4u.com/front-end/assets/images/image-not-found-thumb.png&quot;"></a></li><li id="store_1586"><a class="list-coupfav" href="javascript:void(0)" onclick="storeFav(1586)"><i class="fa fa-star-o"></i></a><a onclick="storeClick(1586,'Purple Parking')" "=" " href=" http />/www.dealsdiscount4u.com/store/purple-parking-coupons"><img src="http://www.dealsdiscount4u.com/uploads/small/stores/Purple-Parking.jpg" alt="Purple-Parking" title="Purple-Parking" onerror="this.src=&quot;http://www.dealsdiscount4u.com/front-end/assets/images/image-not-found-thumb.png&quot;"></a></li><li id="store_70"><a class="list-coupfav" href="javascript:void(0)" onclick="storeFav(70)"><i class="fa fa-star-o"></i></a><a onclick="storeClick(70,'Card Cash')" "=" " href=" http />/www.dealsdiscount4u.com/store/card-cash-coupons"><img src="http://www.dealsdiscount4u.com/uploads/small/stores/Card-Cash.jpg" alt="Card-Cash" title="Card-Cash" onerror="this.src=&quot;http://www.dealsdiscount4u.com/front-end/assets/images/image-not-found-thumb.png&quot;"></a></li><li id="store_93"><a class="list-coupfav" href="javascript:void(0)" onclick="storeFav(93)"><i class="fa fa-star-o"></i></a><a onclick="storeClick(93,'A1Supplement')" "=" " href=" http />/www.dealsdiscount4u.com/store/a1supplement-coupons"><img src="http://www.dealsdiscount4u.com/uploads/small/stores/A1Supplement.jpg" alt="A1Supplement" title="$20-Off-A1Supplements-Coupon-2016,-Promo-Codes" onerror="this.src=&quot;http://www.dealsdiscount4u.com/front-end/assets/images/image-not-found-thumb.png&quot;"></a></li></ul>
-                        </div>
+                <div class="span4">
+                    <div class="col-md-2">
+                        <a href="#"><img src="img/2.png" class="img-responsive center-block"><i class="fa fa-star-o"></i></a>
+
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="col-md-2">
+                        <a href="#"><img src="img/2.png" class="img-responsive center-block"></a>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="col-md-2">
+                        <a href="#"><img src="img/3.png" class="img-responsive center-block"></a>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="col-md-2">
+                        <a href="#"> <img src="img/3.png" class="img-responsive center-block"></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>*@
-<div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 300px; overflow: hidden; visibility: hidden;">
-    <!-- Loading Screen -->
-    <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
-        <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-        <div style="position:absolute;display:block;background:url('~/img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
-    </div>
-    <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 300px; overflow: hidden;">
-        <div data-p="112.50" style="display: none;">
-            <a href="#"> <img data-u="image" src="~/img/4.png" /></a>
-        </div>
-        <div data-p="112.50" style="display: none;">
-            <a href="#"><img data-u="image" src="~/img/5.png" alt="5" class="img-responsive" /></a>
-        </div>
-        <div data-p="112.50" style="display: none;">
-            <a href="#"> <img data-u="image" src="~/img/3.png" alt="3" class="img-responsive" /></a>
-        </div>
-        <div data-p="112.50" style="display: none;">
-            <a href="#"> <img data-u="image" src="~/img/6.png" alt="6" class="img-responsive" /></a>
-        </div>
-        <div data-p="112.50" style="display: none;">
-            <a href="#"> <img data-u="image" src="~/img/5.png" alt="5" class="img-responsive" /></a>
-        </div>
-        <div data-p="112.50" style="display: none;">
-            <a href="#"> <img data-u="image" src="~/img/4.png" alt="4" class="img-responsive" /></a>
-        </div>
-        <div data-p="112.50" style="display: none;">
-            <a href="#"> <img data-u="image" src="~/img/3.png" alt="3" class="img-responsive" /></a>
-        </div>
-        <div data-p="112.50" style="display: none;">
-            <a href="#"> <img data-u="image" src="~/img/6.png" alt="6" class="img-responsive" /></a>
-        </div>
-        <a data-u="add" href="#" style="display:none">Jssor Slider</a>
 
+        </div>
+    </div>
+    <br>
+    <div class="slider">
+        <div id="myCarousel" class="carousel slide">
+
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="item"><img src="~/img/Banner  (3).png" alt="~//Banner  (3)" class="img-responsive" /></div>
+                <div class="item active"><img src="~/img/Banner  (1).png" alt="~//Banner  (1)" class="img-responsive" /></div>
+                <div class="item"><img src="~/img/Banner  (1).png" alt="~//Banner  (1)" class="img-responsive" /></div>
+            </div>
+
+            <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+
+            <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </div>
     </div>
 
+    <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 300px; overflow: hidden; visibility: hidden;">
+        <!-- Loading Screen -->
+        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+            <div style="position:absolute;display:block;background:url('img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+        </div>
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 300px; overflow: hidden;">
+            <div data-p="112.50" style="display: none;">
+                <a href="#"> <img data-u="image" src="~/img/4.png" /></a>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <a href="#"><img data-u="image" src="~/img/5.png" alt="5" class="img-responsive" /></a>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <a href="#"> <img data-u="image" src="~/img/3.png" alt="3" class="img-responsive" /></a>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <a href="#"> <img data-u="image" src="~/img/6.png" alt="6" class="img-responsive" /></a>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <a href="#"> <img data-u="image" src="~/img/5.png" alt="5" class="img-responsive" /></a>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <a href="#"> <img data-u="image" src="~/img/4.png" alt="4" class="img-responsive" /></a>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <a href="#"> <img data-u="image" src="~/img/3.png" alt="3" class="img-responsive" /></a>
+            </div>
+            <div data-p="112.50" style="display: none;">
+                <a href="#"> <img data-u="image" src="~/img/6.png" alt="6" class="img-responsive" /></a>
+            </div>
+            <a data-u="add" href="#" style="display:none">Jssor Slider</a>
+
+        </div>
 
 
-    <!-- Bullet Navigator -->
-    <div data-u="navigator" class="jssorb01" style="bottom:16px;right:16px;" data-autocenter="1">
-        <div data-u="prototype" style="width:12px;height:12px;"></div>
+
+        <!-- Bullet Navigator -->
+        <div data-u="navigator" class="jssorb01" style="bottom:16px;right:16px;" data-autocenter="1">
+            <div data-u="prototype" style="width:12px;height:12px;"></div>
+        </div>
+        <!-- Arrow Navigator -->
+        <span data-u="arrowleft" class="jssora13l" style="top:0px;left:30px;width:40px;height:50px;" data-autocenter="2"></span>
+        <span data-u="arrowright" class="jssora13r" style="top:0px;right:30px;width:40px;height:50px;" data-autocenter="2"></span>
     </div>
-    <!-- Arrow Navigator -->
-    <span data-u="arrowleft" class="jssora13l" style="top:0px;left:30px;width:40px;height:50px;" data-autocenter="2"></span>
-    <span data-u="arrowright" class="jssora13r" style="top:0px;right:30px;width:40px;height:50px;" data-autocenter="2"></span>
-</div>
-@Scripts.Render("~/js/jssor.slider.mini.js")
-<script src="~/Scripts/jquery-ui-1.8.24.js" type="text/javascript"></script>
-<script>
-    $(function () {
-        // Remove Search if user Resets Form or hits Escape!
-        $('body, .navbar-collapse form[role="search"] button[type="reset"]').on('click keyup', function (event) {
-            if (event.which == 27 && $('.navbar-collapse form[role="search"]').hasClass('active') ||
-                $(event.currentTarget).attr('type') == 'reset') {
-                closeSearch();
+    @Scripts.Render("~/js/jssor.slider.mini.js")
+    <script src="~/Scripts/jquery-ui-1.8.24.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            // Remove Search if user Resets Form or hits Escape!
+            $('body, .navbar-collapse form[role="search"] button[type="reset"]').on('click keyup', function (event) {
+                if (event.which == 27 && $('.navbar-collapse form[role="search"]').hasClass('active') ||
+                    $(event.currentTarget).attr('type') == 'reset') {
+                    closeSearch();
+                }
+            });
+
+            function closeSearch() {
+                var $form = $('.navbar-collapse form[role="search"].active')
+                $form.find('input').val('');
+                $form.removeClass('active');
             }
-        });
 
-        function closeSearch() {
-            var $form = $('.navbar-collapse form[role="search"].active')
-            $form.find('input').val('');
-            $form.removeClass('active');
-        }
+            // Show Search if form is not active // event.preventDefault() is important, this prevents the form from submitting
+            $(document).on('click', '.navbar-collapse form[role="search"]:not(.active) button[type="submit"]', function (event) {
+                event.preventDefault();
+                var $form = $(this).closest('form'),
+                    $input = $form.find('input');
 
-        // Show Search if form is not active // event.preventDefault() is important, this prevents the form from submitting
-        $(document).on('click', '.navbar-collapse form[role="search"]:not(.active) button[type="submit"]', function (event) {
-            event.preventDefault();
-            var $form = $(this).closest('form'),
-                $input = $form.find('input');
+                $form.addClass('active');
+                $input.focus();
 
-            $form.addClass('active');
-            $input.focus();
+            });
+            // ONLY FOR DEMO // Please use $('form').submit(function(event)) to track from submission
+            // if your form is ajax remember to call `closeSearch()` to close the search container
+            $(document).on('click', '.navbar-collapse form[role="search"].active button[type="submit"]', function (event) {
+                event.preventDefault();
+                var $form = $(this).closest('form'),
+                    $input = $form.find('input');
+                $('#showSearchTerm').text($input.val());
+                closeSearch()
+            });
+            var jssor_1_options = {
+                $AutoPlay: true,
+                $SlideWidth: 600,
+                $Cols: 2,
+                $Align: 100,
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$
+                },
+                $BulletNavigatorOptions: {
+                    $Class: $JssorBulletNavigator$
+                }
+            };
 
-        });
-        // ONLY FOR DEMO // Please use $('form').submit(function(event)) to track from submission
-        // if your form is ajax remember to call `closeSearch()` to close the search container
-        $(document).on('click', '.navbar-collapse form[role="search"].active button[type="submit"]', function (event) {
-            event.preventDefault();
-            var $form = $(this).closest('form'),
-                $input = $form.find('input');
-            $('#showSearchTerm').text($input.val());
-            closeSearch()
-        });
-        var jssor_1_options = {
-            $AutoPlay: true,
-            $SlideWidth: 600,
-            $Cols: 2,
-            $Align: 100,
-            $ArrowNavigatorOptions: {
-                $Class: $JssorArrowNavigator$
-            },
-            $BulletNavigatorOptions: {
-                $Class: $JssorBulletNavigator$
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizing
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 800);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
             }
-        };
-
-        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-        //responsive code begin
-        //you can remove responsive code if you don't want the slider scales while window resizing
-        function ScaleSlider() {
-            var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-            if (refSize) {
-                refSize = Math.min(refSize, 800);
-                jssor_1_slider.$ScaleWidth(refSize);
-            }
-            else {
-                window.setTimeout(ScaleSlider, 30);
-            }
-        }
-        ScaleSlider();
-        $(window).bind("load", ScaleSlider);
-        $(window).bind("resize", ScaleSlider);
-        $(window).bind("orientationchange", ScaleSlider);
-        //responsive code end
-        var item;
-        $("#Category").autocomplete({
-
-            source: function (request, response) {
-                var filteredDate = new Array();
-                if (request.term && request.term.length > 3) {
+            ScaleSlider();
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+            //responsive code end
+            var item;
+            $("#Category").autocomplete({
+                source: function (request, response) {
+                    var customer = new Array();
                     $.ajax({
                         async: false,
                         cache: false,
@@ -258,36 +274,34 @@
                         url: "@(Url.Action("Autocomplete", "Search"))",
                         data: { "term": request.term },
                         success: function (data) {
-                            debugger;
                             for (var i = 0; i < data.length ; i++) {
-                                filteredDate[i] = { label: data[i].Value, Id: data[i].Key };
+                                customer[i] = { label: data[i].EventName, Id: data[i].EventId };
                             }
                         }
                     });
+                    response(customer);
+                },
+                select: function (event, ui) {
+
+                    //fill selected customer details on form
+                    $.ajax({
+                        cache: false,
+                        async: false,
+                        type: "POST",
+                        url: "@(Url.Action("Details", "Search"))",
+                        data: { "Id": ui.item.Id },
+
+                        success: function (data) {
+                            var id = parseInt(ui.item.Id);
+                            alert(id);
+                            window.location = "/Search/Details/" + id;
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError);
+                        }
+                    });
                 }
-                response(filteredDate);
-            },
-            select: function (event, ui) {
-
-                //fill selected filteredDate details on form
-                $.ajax({
-                    cache: false,
-                    async: false,
-                    type: "POST",
-                    url: "@(Url.Action("Details", "Search"))",
-                    data: { "Id": ui.item.Id },
-
-                    success: function (data) {
-                        debugger;
-                        var id = parseInt(ui.item.Id);
-                        alert(id);
-                        window.location = "/Search/Details/" + id;
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert(thrownError);
-                    }
-                });
-            }
+            });
         });
-    });
-</script>
+    </script>
+</div>
