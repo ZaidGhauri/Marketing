@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Marketing.Models
 {
-    public class modelx
+    public class autocomplete
     {
         public int id { get; set; }
         public string name { get; set; }

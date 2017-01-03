@@ -157,7 +157,7 @@
     <Compile Include="Models\ContactUsModel.cs" />
     <Compile Include="Models\HeaderMenu.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\modelx.cs" />
+    <Compile Include="Models\autocomplete.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\SessionExpireAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
