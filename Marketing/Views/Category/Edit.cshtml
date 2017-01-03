@@ -15,12 +15,10 @@
     .navigation {
         height: 100px;
     }
-    .u-avatar {
-        background-image: url('@Model.ImagePath')
-    }
+
 </style>
 
-<div class="col-md-10" style="border:none;">
+<div class="col-md-10" style="border:none">
     @using (Html.BeginForm())
     {
         @Html.HiddenFor(m => m.ImagePath)

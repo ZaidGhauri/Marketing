@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Interface\IModelManagementService.cs" />
     <Compile Include="Mappings\Mapper.cs" />
+    <Compile Include="Models\Reviews.cs" />
     <Compile Include="Models\Category.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -14,5 +14,9 @@ namespace Marketing.DataAccess.Repositories
             return Context.Coupon.Where(a => a.IsActive && a.Id == Id).FirstOrDefault();
 
         }
+        public IList<Coupon> All()
+        {
+            return Context.Coupon.Where(a => a.IsActive).OrderBy(z => z.Name).ToList();
+        }
     }
 }

@@ -98,6 +98,7 @@
         </div>
         @if (Session["IsAdmin"] != null)
         {  <a href="/coupon/Edit/@Model.Id">Update </a>
+             <li>@Html.ActionLink("Add New Coupon", "Edit", "Coupon", new { Id = @Model.Id }, null)</li>
            
         }
         <style>

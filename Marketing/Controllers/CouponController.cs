@@ -32,7 +32,7 @@ namespace Marketing.Controllers
             _mapperService = new ModelManagementService();
             using (couponRepository = new CouponRepository()) 
             {
-                if (Id > 0)
+               if (Id > 0)
                 {
                     model = _mapperService.MapCouponToModel(couponRepository.FindById(Id));
                 }
@@ -71,9 +71,28 @@ namespace Marketing.Controllers
                     }
                     if (Id > 0)
                     {
-                        model = _mapperService.MapCouponToModel(couponRepository.FindById(Id));
+                        // model = _mapperService.MapCouponToModel(couponRepository.FindById(Id));
+                         var coupon = new Data.Coupon();
+                         coupon.Id = model.Id;
+                         coupon.Name = model.Name;
+                         coupon.Published = model.Published;
+                         coupon.ShowOnHomePage = model.ShowOnHomePage;
+                         coupon.IsFeatured = model.IsFeatured;
+                         coupon.IncludeInTopMenu = model.IncludeInTopMenu;
+                         coupon.FullDescription = model.FullDescription;
+                         coupon.CategoryId = model.CategoryId;
+                         coupon.StoreId = model.StoreId;
+                         coupon.Deleted = model.Deleted;
+                         coupon.IsActive = model.IsActive;
+                         coupon.Created = DateTimeHelper.Now();
+                         coupon.CreatedBy = Session["UName"].ToString();
+                         coupon.Modified = DateTimeHelper.Now();
+                         coupon.ModifiedBy = Session["UName"].ToString();
+                        
+
+                       
                     }
-                }
+                        }
             }
 
             return View(model);
@@ -116,12 +135,41 @@ namespace Marketing.Controllers
                     coupon.ImageId = image.Id;
                     if (model.Id > 0)
                     {
-                        coupon = couponRepository.FindById(model.Id);
-                        couponRepository.Update(coupon);
-                    }
-                    else
-                    {
-                        couponRepository.Insert(coupon);
+
+                        using (couponRepository = new CouponRepository())
+                        using (imageRepository = new ImageRepository())
+                        {
+                            var imageUpdate = new Image()
+                            {
+                                Name = model.ImagePath,
+                                Created = DateTimeHelper.Now(),
+                                CreatedBy = Session["UName"].ToString(),
+                                IsActive = true,
+                                Modified = DateTimeHelper.Now(),
+                                ModifiedBy = Session["UName"].ToString()
+                            };
+                            imageUpdate = imageRepository.Update(imageUpdate);
+                            var couponUpdate = new Data.Coupon();
+                            coupon.Id = model.Id;
+                            coupon.Name = model.Name;
+                            coupon.Published = model.Published;
+                            coupon.ShowOnHomePage = model.ShowOnHomePage;
+                            coupon.IsFeatured = model.IsFeatured;
+                            coupon.IncludeInTopMenu = model.IncludeInTopMenu;
+                            coupon.FullDescription = model.FullDescription;
+                            coupon.CategoryId = model.CategoryId;
+                            coupon.StoreId = model.StoreId;
+                            coupon.Deleted = model.Deleted;
+                            coupon.IsActive = model.IsActive;
+                            coupon.Created = DateTimeHelper.Now();
+                            coupon.CreatedBy = Session["UName"].ToString();
+                            coupon.Modified = DateTimeHelper.Now();
+                            coupon.ModifiedBy = Session["UName"].ToString();
+
+                            couponRepository.Update(coupon);
+
+                        }
+
                     }
                 }
                 return RedirectToAction("Index", "Home");

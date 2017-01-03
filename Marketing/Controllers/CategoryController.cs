@@ -78,18 +78,18 @@ namespace Marketing.Controllers
                 using (categoryRepository = new CategoryRepository())
                 using (imageRepository = new ImageRepository())
                 {
-                    var image = new Image()
-                    {
-                        Name = model.ImagePath,
-                        Created = DateTimeHelper.Now(),
-                        CreatedBy = Session["UName"].ToString(),
-                        IsActive = true,
-                        Modified = DateTimeHelper.Now(),
-                        ModifiedBy = Session["UName"].ToString()
-                    };
-                    image = imageRepository.Insert(image);
-
                     var category = new Data.Category();
+                    if (model.Id > 0)
+                    {
+                        category = categoryRepository.FindById(model.Id);
+                        var img = category.Image;
+                        if (img != null)
+                        {
+                            img.IsActive = false;
+                            img.Modified = DateTimeHelper.Now();
+                            img.ModifiedBy = Session["UName"].ToString();
+                        }
+                    }
                     category.Name = model.Name;
                     category.Published = model.Published;
                     category.ShowOnHomePage = model.ShowOnHomePage;
@@ -104,22 +104,23 @@ namespace Marketing.Controllers
                     category.CreatedBy = Session["UName"].ToString();
                     category.Modified = DateTimeHelper.Now();
                     category.ModifiedBy = Session["UName"].ToString();
+                    var image = new Image()
+                    {
+                        Name = model.ImagePath,
+                        Created = DateTimeHelper.Now(),
+                        CreatedBy = Session["UName"].ToString(),
+                        IsActive = true,
+                        Modified = DateTimeHelper.Now(),
+                        ModifiedBy = Session["UName"].ToString()
+                    };
+                    image = imageRepository.Insert(image);
+                    category.ImageId = image.Id;
                     if (model.Id > 0)
                     {
-                        category = categoryRepository.FindById(model.Id);
-                        var img = imageRepository.FindById(category.ImageId);
-                        category.ImageId = image.Id;
                         categoryRepository.Update(category);
-                        if (img != null)
-                        {
-                            img.IsActive = false;
-                            img.Modified = DateTimeHelper.Now();
-                            img.ModifiedBy = Session["UName"].ToString();
-                        }
                     }
                     else
                     {
-                        category.ImageId = image.Id;
                         categoryRepository.Insert(category);
                     }
                 }

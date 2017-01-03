@@ -235,15 +235,13 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Coupon-codes.html" />
     <Content Include="css\bootstrap-theme.css" />
-    <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
-    <Content Include="css\bootstrap.min.css" />
     <Content Include="css\Custom.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
-    <Content Include="css\index.html" />
     <Content Include="css\star-rating.css" />
     <Content Include="css\star-rating.min.css" />
+    <Content Include="css\style.css" />
     <Content Include="deep-minified.html" />
     <Content Include="event.html" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -251,10 +249,6 @@
     <Content Include="free-shipping.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="css\bootstrap-theme.css.map" />
-    <Content Include="css\bootstrap-theme.min.css.map" />
-    <Content Include="css\bootstrap.css.map" />
-    <Content Include="css\bootstrap.min.css.map" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -265,6 +259,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Index.html" />
+    <Content Include="js\jquery.js" />
     <Content Include="js\less\animated.less" />
     <Content Include="js\less\bordered-pulled.less" />
     <Content Include="js\less\core.less" />
@@ -385,6 +380,12 @@
     <Content Include="js\npm.js" />
     <Content Include="js\star-rating.js" />
     <Content Include="js\star-rating.min.js" />
+    <Content Include="nav\bootstrap-theme.css" />
+    <Content Include="nav\bootstrap.css" />
+    <Content Include="nav\jquery.js" />
+    <Content Include="nav\js\bootstrap.js" />
+    <Content Include="nav\nav.html" />
+    <Content Include="nav\style.css" />
     <Content Include="no-jquery.html" />
     <Content Include="Picture\images.jpg" />
     <Content Include="Scripts\jquery-1.11.0.min.js" />
@@ -394,7 +395,6 @@
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
-    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />

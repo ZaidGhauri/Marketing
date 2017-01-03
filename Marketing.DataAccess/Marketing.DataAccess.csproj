@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityConfigurations\ReviewConfig.cs" />
     <Compile Include="EntityConfigurations\CategoryConfig.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="EntityConfigurations\ContactUsConfig.cs" />
@@ -97,6 +98,18 @@
     <Compile Include="Migrations\201612291105188_AddCategoriesObjectToStoreEntity.Designer.cs">
       <DependentUpon>201612291105188_AddCategoriesObjectToStoreEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612291121385_UndoCategoriesObjectToStoreEntity.cs" />
+    <Compile Include="Migrations\201612291121385_UndoCategoriesObjectToStoreEntity.Designer.cs">
+      <DependentUpon>201612291121385_UndoCategoriesObjectToStoreEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612291301522_Review.cs" />
+    <Compile Include="Migrations\201612291301522_Review.Designer.cs">
+      <DependentUpon>201612291301522_Review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701021030484_update review.cs" />
+    <Compile Include="Migrations\201701021030484_update review.Designer.cs">
+      <DependentUpon>201701021030484_update review.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +156,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612291105188_AddCategoriesObjectToStoreEntity.resx">
       <DependentUpon>201612291105188_AddCategoriesObjectToStoreEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612291121385_UndoCategoriesObjectToStoreEntity.resx">
+      <DependentUpon>201612291121385_UndoCategoriesObjectToStoreEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612291301522_Review.resx">
+      <DependentUpon>201612291301522_Review.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701021030484_update review.resx">
+      <DependentUpon>201701021030484_update review.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
