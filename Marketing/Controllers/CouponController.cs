@@ -25,7 +25,6 @@ namespace Marketing.Controllers
         {
             return View();
         }
-
         public ActionResult Details(int Id)
         {
             var model = new Marketing.Business.Models.Coupon();
@@ -39,8 +38,6 @@ namespace Marketing.Controllers
             }
             return View(model);
         }
-
-
         public ActionResult Edit(int Id)
         {
             var model = new Marketing.Business.Models.Coupon();
@@ -180,7 +177,17 @@ namespace Marketing.Controllers
                 return View(model);                    
             }
         }
-
-
+        public ActionResult List()
+        {
+            if (Session["IsAdmin"] == null)
+                return RedirectToAction("Login", "User");
+            _mapperService = new ModelManagementService();
+            var model = new List<Marketing.Business.Models.Coupon>();
+            using (couponRepository = new CouponRepository())
+            {
+                model = _mapperService.MapCouponsToModel(couponRepository.All()).ToList();
+            }
+            return View(model);
+        }
     }
 }

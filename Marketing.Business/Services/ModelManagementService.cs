@@ -36,12 +36,11 @@ namespace Marketing.Business.Services
                 objCategory.Modified = category.Modified;
                 objCategory.ModifiedBy = category.ModifiedBy;
                 objCategory.Coupons = MapCouponsToModel(category.Coupons);
-                objCategory.Stores = MapStoresToModel(category.Coupons.Select(a => a.Store).ToList());
+                objCategory.Stores = MapStoresToModel(category.Coupons.Any(a=>a.StoreId.HasValue) ? category.Coupons.Select(a => a.Store).ToList() : null);
                 lst.Add(objCategory);
             }
             return lst;
         }
-
         public Category MapCategoryToModel(Data.Category category)
         {
             Category model = new Category();
@@ -61,13 +60,10 @@ namespace Marketing.Business.Services
             model.Modified = category.Modified;
             model.ModifiedBy = category.ModifiedBy;
             model.Coupons = MapCouponsToModel(category.Coupons);
-            model.Stores = MapStoresToModel(category.Coupons.Select(a=>a.Store).ToList());
+            model.Stores = MapStoresToModel(category.Coupons.Any(a => a.StoreId.HasValue) ? category.Coupons.Select(a => a.Store).ToList() : null);
+
             return model;
         }
-
-      
-
-       
         public IList<Store> GetStoreDetail(int id)
         {
             var store1 = new List<Marketing.Data.Store>();
@@ -84,25 +80,27 @@ namespace Marketing.Business.Services
         public IList<Store> MapStoresToModel(IList<Marketing.Data.Store> stores)
         {
             IList<Store> lst = new List<Store>();
-            foreach (var store in stores)
+            if (stores != null)
             {
-                Store objStore = new Store();
-                objStore.Name = store.Name;
-                objStore.Id = store.Id;
-
-                objStore.Published = store.Published;
-                objStore.ShowOnHomePage = store.ShowOnHomePage;
-                objStore.IsFeatured = store.IsFeatured;
-                objStore.IncludeInTopMenu = store.IncludeInTopMenu;
-                objStore.ImagePath = Path.Combine("/Storage/Images", store.Image.Name);
-                objStore.Deleted = store.Deleted;
-                objStore.WebSiteId = store.WebSiteId;
-                objStore.IsActive = store.IsActive;
-                objStore.Created = store.Created;
-                objStore.CreatedBy = store.CreatedBy;
-                objStore.Modified = store.Modified;
-                objStore.ModifiedBy = store.ModifiedBy;
-                lst.Add(objStore);
+                foreach (var store in stores)
+                {
+                    Store objStore = new Store();
+                    objStore.Name = store.Name;
+                    objStore.Id = store.Id;
+                    objStore.Published = store.Published;
+                    objStore.ShowOnHomePage = store.ShowOnHomePage;
+                    objStore.IsFeatured = store.IsFeatured;
+                    objStore.IncludeInTopMenu = store.IncludeInTopMenu;
+                    objStore.ImagePath = Path.Combine("/Storage/Images", store.Image.Name);
+                    objStore.Deleted = store.Deleted;
+                    objStore.WebSiteId = store.WebSiteId;
+                    objStore.IsActive = store.IsActive;
+                    objStore.Created = store.Created;
+                    objStore.CreatedBy = store.CreatedBy;
+                    objStore.Modified = store.Modified;
+                    objStore.ModifiedBy = store.ModifiedBy;
+                    lst.Add(objStore);
+                }   
             }
             return lst;
         }
@@ -128,7 +126,7 @@ namespace Marketing.Business.Services
             model.Modified = store.Modified;
             model.ModifiedBy = store.ModifiedBy;
             model.Coupons = MapCouponsToModel(store.Coupons);
-            model.Categories = MapCategoriesToModel(store.Coupons.Select(a => a.Category).ToList());
+            model.Categories = MapCategoriesToModel(store.Coupons.Any(a => a.CategoryId.HasValue) ? store.Coupons.Select(a => a.Category).ToList() : null);
             return model;
         }
         public IList<Coupon> MapCouponsToModel(IList<Data.Coupon> coupons)
@@ -215,6 +213,40 @@ namespace Marketing.Business.Services
             model.Modified = promotion.Modified;
             model.ModifiedBy = promotion.ModifiedBy;
           return model;
+        }
+
+
+        public User MapUserToModel(Data.User user)
+        {
+            User model = new User();
+            model.Name = user.Name;
+            model.Id = user.Id;
+            model.Created = user.Created;
+            model.IsActive = user.IsActive;
+            model.Modified = user.Modified;
+            model.ModifiedBy = user.ModifiedBy;
+            return model;
+        }
+
+        public IList<User> MapUsersToModel(List<Data.User> users)
+        {
+            IList<User> lst = new List<User>();
+            foreach (var user in users)
+            {
+                User objUser = new User();
+                objUser.Name = user.Name;
+                objUser.Address = user.Address;
+                objUser.Email = user.Email;
+                objUser.State = user.State;
+                objUser.City = user.City;
+                objUser.CountryName = user.Country != null ? user.Country.Name : "N/A";
+                objUser.WebSiteName = user.WebSite != null ? user.WebSite.Name : "N/A";
+                objUser.Gender = user.Gender;
+                objUser.Phone = user.Phone;
+                objUser.IsNewsLetter = user.IsNewsLetter == true ? "True" : "False";
+                lst.Add(objUser);
+            }
+            return lst;
         }
     }
 }

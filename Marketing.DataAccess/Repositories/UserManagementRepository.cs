@@ -13,5 +13,9 @@ namespace Marketing.DataAccess.Repositories
         {
             return Context.User.Where(a => a.IsActive && a.Name == UserName && a.Password == Password && a.WebSiteId == WebSiteId).ToList().FirstOrDefault();
         }
+        public List<User> All()
+        {
+            return Context.User.Where(a => a.IsActive).ToList();
+        }
     }
 }

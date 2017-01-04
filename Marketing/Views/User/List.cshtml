@@ -1,0 +1,31 @@
+﻿@using Kendo.Mvc.UI;
+@model List<Marketing.Business.Models.User>
+
+@{
+    ViewBag.Title = "List of Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+@(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.Name).Title("Name");
+        columns.Bound(p => p.Email).Title("Email").Width(100);
+        columns.Bound(p => p.Address).Title("Address");
+        columns.Bound(p => p.State).Title("State");
+        columns.Bound(p => p.City).Title("City");
+        columns.Bound(p => p.CountryName).Title("City");
+        columns.Bound(p => p.Gender).Title("Gender");
+        columns.Bound(p => p.Phone).Title("Phone");
+        columns.Bound(p => p.IsNewsLetter).Title("News Letter");
+        columns.Bound(p => p.WebSiteName).Title("WebSite");
+        
+    })
+    .HtmlAttributes(new { style = "height: 550px;" })
+    .Pageable()
+    .Sortable()
+    .Scrollable(scr => scr.Height(430))
+    .Filterable()
+)

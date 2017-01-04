@@ -84,5 +84,17 @@ namespace Marketing.Controllers
                 return View(model);
             }
         }
+        public ActionResult List()
+        {
+            if (Session["IsAdmin"] == null)
+                return RedirectToAction("Login", "User");
+            _mapperService = new ModelManagementService();
+            var model = new List<Marketing.Business.Models.Promotion>();
+            using (promotionRepository = new PromotionRepository())
+            {
+                model = _mapperService.MapPromotionsToModel(promotionRepository.All()).ToList();
+            }
+            return View(model);
+        }
     }
 }

@@ -3,6 +3,10 @@
     var model = ViewBag.HeaderMenu != null ? ViewBag.HeaderMenu : new Marketing.Models.HeaderMenu();
 }
 <nav class="navbar navbar-inverse">
+    @if (Session["IsAdmin"] != null)
+    {
+        <div style=" text-align: center;padding: 10px 10px 10px 10px;background-color: darkgray;"><a href="/Administrator" style="color: white; font-size: 17px;text-decoration:none">Administrator</a></div>
+    }
     <div class="navbar-header">
         <div class="container">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">

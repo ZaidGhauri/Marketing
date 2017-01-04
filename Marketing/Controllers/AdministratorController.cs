@@ -20,8 +20,15 @@ namespace Marketing.Controllers
         public ICategoryRepository categoryRepository { get; set; }
         public IImageRepository imageRepository { get; set; }
 
+
+
+
         public ActionResult Index()
         {
+            if (Session["UName"] == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
             return View();
         }
         public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files)

@@ -17,5 +17,7 @@ namespace Marketing.Business.Interface
 
         Coupon MapCouponToModel(Data.Coupon coupon);
         Promotion MapPromotionToModel(Data.Promotion promotion);
+        User MapUserToModel(Data.User user);
+        IList<User> MapUsersToModel(List<Data.User> users);
     }
 }

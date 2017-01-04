@@ -1,4 +1,6 @@
-﻿using Marketing.Common;
+﻿using Marketing.Business.Interface;
+using Marketing.Business.Services;
+using Marketing.Common;
 using Marketing.DataAccess;
 using Marketing.DataAccess.Interface;
 using Marketing.DataAccess.Repositories;
@@ -13,6 +15,8 @@ namespace Marketing.Controllers
 {
     public class UserController : BaseController
     {
+        public IModelManagementService _mapperService { get; set; }
+
         private IUserManagementRepository userRepository;
         public ActionResult Index()
         {
@@ -130,6 +134,22 @@ namespace Marketing.Controllers
         public ActionResult LoginError()
         {
             return View();
+        }
+        public ActionResult Manage()
+        {
+            return View();
+        }
+        public ActionResult List()
+        {
+            if(Session["IsAdmin"] == null)
+                return RedirectToAction("Login", "User");
+            _mapperService = new ModelManagementService();
+            var model = new List<Marketing.Business.Models.User>();
+            using (userRepository = new UserManagementRepository())
+            {
+                model = _mapperService.MapUsersToModel(userRepository.All()).ToList();
+            }
+            return View(model);
         }
     }
 }

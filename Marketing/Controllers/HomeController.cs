@@ -22,8 +22,8 @@ namespace Marketing.Controllers
             return View();
         }
         public ActionResult Stores()
-            {
-                _mapperService = new ModelManagementService();
+        {
+            _mapperService = new ModelManagementService();
             var Stores = new List<Store>();
             using (storeRepository = new StoreRepository())
             {
@@ -33,7 +33,6 @@ namespace Marketing.Controllers
         }
         public ActionResult Categories()
         {
-
             Category model = new Category();
             _mapperService = new ModelManagementService();
             var Category = new List<Category>();
@@ -42,11 +41,7 @@ namespace Marketing.Controllers
                 Category = _mapperService.MapCategoriesToModel(categoryRepository.All()).ToList();
             }
             return View(Category);
-           
-
-            
         }
-
 
         public ActionResult Coupons()
         {
@@ -72,7 +67,7 @@ namespace Marketing.Controllers
         }
         public ActionResult fb()
         {
-           
+
             return View();
         }
     }

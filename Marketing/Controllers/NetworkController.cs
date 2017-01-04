@@ -11,22 +11,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
-
 namespace Marketing.Controllers
 {
-    public class StoreController : BaseController
+    public class NetworkController : BaseController
     {
         //private IStoreRepository storeRepository;
         public IModelManagementService _mapperService { get; set; }
         public IStoreRepository storeRepository { get; set; }
         public IImageRepository imageRepository { get; set; }
-        
         public ActionResult Index()
         {
             return View();
         }
-
         public ActionResult Details(int Id)
         {
             var model = new Marketing.Business.Models.Store();
@@ -108,7 +104,6 @@ namespace Marketing.Controllers
                 return View(model);
             }
         }
-
         public ActionResult List()
         {
             if (Session["IsAdmin"] == null)

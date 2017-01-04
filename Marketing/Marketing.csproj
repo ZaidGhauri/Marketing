@@ -149,6 +149,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\NetworkController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -357,13 +358,9 @@
     <Content Include="img\women-wear.jpg" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
-    <Content Include="js\jquery-1.11.3.min %282%29.js" />
     <Content Include="js\jquery-1.11.3.min.js" />
-    <Content Include="js\jssor.slider.debug %282%29.js" />
     <Content Include="js\jssor.slider.debug.js" />
-    <Content Include="js\jssor.slider.min %282%29.js" />
     <Content Include="js\jssor.slider.min.js" />
-    <Content Include="js\jssor.slider.mini %282%29.js" />
     <Content Include="js\jssor.slider.mini.js" />
     <Content Include="js\locales\ar.js" />
     <Content Include="js\locales\de.js" />
@@ -453,6 +450,14 @@
     <Content Include="Views\Partial1test.cshtml" />
     <Content Include="Views\Coupon\Edit.cshtml" />
     <Content Include="Views\Home\Coupons.cshtml" />
+    <Content Include="Views\Shared\_AdminMenu.cshtml" />
+    <Content Include="Views\Network\Edit.cshtml" />
+    <Content Include="Views\User\List.cshtml" />
+    <Content Include="Views\Category\List.cshtml" />
+    <Content Include="Views\Coupon\List.cshtml" />
+    <Content Include="Views\Store\List.cshtml" />
+    <Content Include="Views\Network\List.cshtml" />
+    <Content Include="Views\Promotion\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Search\" />

@@ -1,0 +1,21 @@
+﻿@using Kendo.Mvc.UI;
+@model List<Marketing.Business.Models.Category>
+
+@{
+    ViewBag.Title = "List of Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/kendo/kendo.blueopal.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+@(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.Name).Title("Name");
+    })
+    .HtmlAttributes(new { style = "height: 550px;" })
+    .Pageable()
+    .Sortable()
+    .Scrollable(scr => scr.Height(430))
+    .Filterable()
+)

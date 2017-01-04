@@ -14,7 +14,14 @@
 </head>
 
 <body>
-    @Html.Partial("_Menu")
+    @if (Session["IsAdmin"] != null)
+    {
+        @Html.Partial("_AdminMenu")
+    }
+    else
+    {
+     @Html.Partial("_Menu")
+    }
 
     <div class="container">
 

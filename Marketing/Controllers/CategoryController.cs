@@ -132,6 +132,18 @@ namespace Marketing.Controllers
                 return View(model);
             }
         }
+        public ActionResult List(string type ="Category")
+        {
+            if (Session["IsAdmin"] == null)
+                return RedirectToAction("Login", "User");
+            _mapperService = new ModelManagementService();
+            var model = new List<Marketing.Business.Models.Category>();
+            using (categoryRepository = new CategoryRepository())
+            {
+                model = _mapperService.MapCategoriesToModel(categoryRepository.All()).ToList();
+            }
+            return View(model);
+        }
         public ActionResult SaveImage(IEnumerable<HttpPostedFileBase> attachments)
         {
             foreach (var file in attachments)

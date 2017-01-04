@@ -1,0 +1,104 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+@{
+    var model = ViewBag.HeaderMenu != null ? ViewBag.HeaderMenu : new Marketing.Models.HeaderMenu();
+}
+<nav class="navbar navbar-inverse">
+    @if (Session["IsAdmin"] != null)
+    {
+        <div style=" text-align: center;padding: 10px 10px 10px 10px;background-color: darkgray;"><a href="/Administrator" style="color: white; font-size: 17px;text-decoration:none">Administrator</a></div>
+    }
+    <div class="navbar-header">
+        <div class="container">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="~/img/logo.jpg" alt="logo" class="img-responsive" style="max-width: 191px;margin-top: -10px;" /></a>
+            <div class="collapse navbar-collapse js-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown mega-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
+                        <ul class="dropdown-menu mega-dropdown-menu">
+                            <li class="col-sm-10">
+                                <a href="#">@Html.ActionLink("Search Users", "List", "User")</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown mega-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stores <span class="caret"></span></a>
+                        <ul class="dropdown-menu mega-dropdown-menu">
+                            <li class="col-sm-10">
+                                <ul>
+                                    <li><a href="#">@Html.ActionLink("Add New Store", "Edit", "Store", new { Id = 0 }, null)</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">@Html.ActionLink("Search Stores", "List", "Store")</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown mega-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
+                        <ul class="dropdown-menu mega-dropdown-menu">
+                            <li class="col-sm-10">
+                                <ul>
+                                    <li><a href="#">@Html.ActionLink("Add New Category", "Edit", "Category", new { Id = 0, type = "Category" }, null)</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">@Html.ActionLink("Search Categories", "List", "Category", new { type = "Category" }, null)</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">@Html.ActionLink("Add New Sub-Category", "Edit", "Category", new { Id = 0, type = "SubCategory" }, null)</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">@Html.ActionLink("Search Sub-Category", "List", "Category", new { type = "SubCategory" }, null)</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown mega-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Coupons<span class="caret"></span></a>
+                        <ul class="dropdown-menu mega-dropdown-menu">
+                            <li class="col-sm-10">
+                                <ul>
+                                    <li><a href="#">@Html.ActionLink("Add New Coupon", "Edit", "Coupon", new { Id = 0 }, null)</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">@Html.ActionLink("Search Coupons", "List", "Coupon")</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown mega-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Networks<span class="caret"></span></a>
+                        <ul class="dropdown-menu mega-dropdown-menu">
+                            <li class="col-sm-10">
+                                <ul>
+                                    <li><a href="#">@Html.ActionLink("Add New Network", "Edit", "Network", new { Id = 0 }, null)</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">@Html.ActionLink("Search Networks", "List", "Network")</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["UName"] != null)
+                    {
+                        <strong>Hi! @Html.Encode(Session["UName"])</strong>
+                        @Html.ActionLink("Sign Out", "Logout", "User")
+
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Register", "Register", "User", null, new { style = "color: #777 text-shadow: 0 1px 0 rgba(255, 255, 255, .25);" })
+                        <span> | </span>
+                        @Html.ActionLink("Sign In", "Login", "User", null, new { style = "color: #777; text-shadow: 0 1px 0 rgba(255, 255, 255, .25);" })
+                    }
+                    <li><a href="#">My cart (0) items</a></li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- /.nav-collapse -->
+</nav>
